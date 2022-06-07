@@ -7,14 +7,15 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    first_name = db.Column(db.String(40), nullable=False)
+    last_name = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    listings = db.relationship('Listing', backpopulate='owner')
-    reviews = db.relationship('Review', backpopulate='user')
-    images = db.relationship('Image', backpopulate='user')
-    bookings = db.relationship('Booking', backpopulate='user')
+    listings_owner = db.relationship('Listing', back_populates='owner_listing')
+    user_reviews = db.relationship('Review', back_populates='reviews_user')
+    user_images = db.relationship('Image', back_populates='images_user')
+    user_bookings = db.relationship('Booking', back_populates='bookings_user')
 
     @property
     def password(self):
@@ -30,6 +31,7 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.username,
+            'firstName': self.first_name,
+            'lastName': self.last_name,
             'email': self.email
         }

@@ -18,10 +18,11 @@ class Listing(db.Model):
     location_id = db.Column(db.Integer, db.ForeignKey('locations.id'))
     agent_id = db.Column(db.Integer, db.ForeignKey('agents.id'))
 
-    agent = db.relationship('Agent', backpopulate='listings')
-    owner = db.relationship('User', backpopulate='listings')
-    location = db.relationship('Location', backpopulate='listings')
-    images = db.relationship('Image', backpopulate='listing')
+    agent_of_listing = db.relationship('Agent', back_populates='listing_agent')
+    owner_listing = db.relationship('User', back_populates='listings_owner')
+    location_of_listing = db.relationship('Location', back_populates='listing_location')
+    images_of_listing = db.relationship('Image', back_populates='listing_images')
+    bookings_listing = db.relationship('Booking', back_populates='listing_booking')
 
     def to_dict(self):
         return {

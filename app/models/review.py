@@ -4,13 +4,13 @@ class Review(db.Model):
     __tablename__ = "reviews"
 
     id = db.Column(db.Integer, primary_key=True)
-    rating = db.Column(db.Integer, nullable=False)
+    rating = db.Column(db.String(255), nullable=False)
     comment = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     agent_id = db.Column(db.Integer, db.ForeignKey('agents.id'))
 
-    user = db.relationship('User', backpopulate='reviews')
-    agent = db.relationship('Agent', backpopulate='reviews')
+    reviews_user = db.relationship('User', back_populates='user_reviews')
+    agent_review = db.relationship('Agent', back_populates='reviews_agent')
 
     def to_dict(self):
         return {

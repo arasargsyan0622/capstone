@@ -8,12 +8,10 @@ class Image(db.Model):
     listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'))
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    agent_id = db.Column(db.Integer, db.ForeignKey('agents.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    user = db.relationship('User', backpopulate='images')
-    listing = db.relationship('Listing', backpopulate='images')
-    agent = db.relationship('Agent', backpopulate='images')
+    images_user = db.relationship('User', back_populates='user_images')
+    listing_images = db.relationship('Listing', back_populates='images_of_listing')
 
     def to_dict(self):
         return {

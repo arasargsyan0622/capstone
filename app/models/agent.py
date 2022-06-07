@@ -13,6 +13,5 @@ class Agent(db.Model):
     bio = db.Column(db.Text, nullable=False)
     photo = db.Column(db.String(255), nullable=False)
 
-    listings = db.relationship('Listing', backpopulate='agent')
-    reviews = db.relationship('Review', backpopulate='agent')
-    images = db.relationship('Image', backpopulate='agent')
+    listing_agent = db.relationship('Listing', back_populates='agent_of_listing')
+    reviews_agent = db.relationship('Review', back_populates='agent_review')
