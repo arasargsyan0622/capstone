@@ -1,18 +1,28 @@
 from app.models import db, User
+from werkzeug.security import generate_password_hash
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        first_name='Demo', last_name="Lition", email='demo@aa.io', hashed_password=generate_password_hash('password'))
+    Paul = User(
+        first_name='Dukey', last_name="Silver", email='duke@silver.io', hashed_password=generate_password_hash('password'))
+    Chris = User(
+        first_name='poop', last_name="stain", email='poop@stain.io', hashed_password=generate_password_hash('password123'))
+    Darren = User(
+        first_name='ComeEat', last_name="ChinaCity", email="china@city.io", hashed_password=generate_password_hash('password'))
+    Vern = User(
+        first_name='Drip', last_name="God", email="drip@god.io", hashed_password=generate_password_hash('password'))
+    Ara = User(
+        first_name='Zen', last_name="san", email="zen@san.io", hashed_password=generate_password_hash('password'))
 
     db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(Paul)
+    db.session.add(Chris)
+    db.session.add(Darren)
+    db.session.add(Vern)
+    db.session.add(Ara)
 
     db.session.commit()
 
