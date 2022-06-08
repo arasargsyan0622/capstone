@@ -31,7 +31,6 @@ def create_listing():
             image.filename = get_unique_filename(image.filename)
 
             upload = upload_file_to_s3(image)
-            # check if upload worked
             if "url" not in upload:
                 return upload, 400
 
