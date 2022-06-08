@@ -9,9 +9,9 @@ class Listing(db.Model):
     price = db.Column(db.Integer, nullable=False)
     is_available = db.Column(db.Boolean, nullable=False)
     year_built = db.Column(db.Integer)
-    size = db.Column(db.Integer)
-    bedrooms = db.Column(db.Integer)
-    bathrooms = db.Column(db.Integer)
+    size = db.Column(db.Integer, nullable=False)
+    bedrooms = db.Column(db.Integer, nullable=False)
+    bathrooms = db.Column(db.Integer, nullable=False)
     parking = db.Column(db.Boolean)
     laundry = db.Column(db.Boolean)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -30,13 +30,13 @@ class Listing(db.Model):
             'title': self.title,
             'description': self.description,
             'price': self.price,
-            'is_available': self.active,
+            'is_available': self.is_available,
             'year_built': self.year_built,
             'size': self.size,
             'bedrooms': self.bedrooms,
             'bathrooms': self.bathrooms,
             'parking': self.parking,
             'laundry': self.laundry,
-            'user_id': self.userId,
-            'location_id': self.locationId
+            'user_id': self.user_id,
+            'location_id': self.location_id
         }
