@@ -10,7 +10,7 @@ function Listings() {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const listings = Object.values(useSelector(state => state.listings));
-    console.log("listings in ocmponent-------", listings)
+    // console.log("listings in ocmponent-------", listings)
     const session = useSelector(state => state.session);
 
     useEffect(() => {
@@ -33,7 +33,7 @@ function Listings() {
                 ))}
             </div>
             <NewListingModal></NewListingModal>
-            {/* <EditListingModal></EditListingModal> */}
+            <EditListingModal></EditListingModal>
         </div>
         // ) : null
     );

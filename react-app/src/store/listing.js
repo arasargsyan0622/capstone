@@ -4,6 +4,7 @@ const clone = rfdc()
 const LOAD_ALL_LISTING = "/api/listings/LOAD_LISTINGS"
 const CREATE_LISTING = "/api/listings/CREATE_LISTING"
 const EDIT_LISTING = "/api/listings/EDIT_LISTING"
+const DELETE_LISTING = "/api/listings/DELETE_LISTING"
 
 const allListings = listings => {
     return {
@@ -22,6 +23,13 @@ const addListing = listing => {
 const editListing = listing => {
     return {
         type: EDIT_LISTING,
+        listing
+    }
+}
+
+const deleteListing = listing => {
+    return {
+        type: DELETE_LISTING,
         listing
     }
 }
@@ -62,15 +70,14 @@ export const createListing = data => async dispatch => {
 }
 
 export const updateListing = data => async dispatch => {
-    console.log()
+    console.log("Data in updateListing", data)
     const formData = new FormData()
     formData.append("title", data.title)
     formData.append("description", data.description)
     formData.append("price", data.price)
     formData.append("is_available", data.is_available)
-    formData.append("id", data.id)
 
-    const response = await fetch(`/api/listings/${data.id}/`, {
+    const response = await fetch(`/api/listings/${data.id}`, {
         method: "PUT",
         body: formData
     })
@@ -78,7 +85,18 @@ export const updateListing = data => async dispatch => {
     if(response.ok) {
         const editedListing = await response.json()
         dispatch(editListing(editedListing))
-        return editedListing
+        // return editedListing
+    }
+}
+export const removeListing = id => async dispatch => {
+    const response = await fetch(`/api/listings/${id}`, {
+        method: "DELETE"
+    })
+
+    if(response.ok) {
+        const listingId = await response.json()
+        console.log("listingid in thunk", listingId)
+        // dispatch(deleteListing())
     }
 }
 
@@ -89,7 +107,7 @@ const listingReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOAD_ALL_LISTING:
             const listings = action.listings.listings
-            console.log("listnigs in reducer", listings)
+            // console.log("listnigs in reducer", listings)
             listings.forEach(listing => {
                 newState[listing.id] = listing
             })
@@ -102,6 +120,7 @@ const listingReducer = (state = initialState, action) => {
         case EDIT_LISTING:
             delete newState[action.listing.id]
             newState[action.listing.id] = action.listing;
+            console.log("newState in reducer", newState)
             return newState;
         default:
             return state

@@ -66,30 +66,33 @@ def create_listing():
 @listing_routes.route("/<int:id>", methods=["PUT"])
 def update_listing(id):
     listing = Listing.query.get(id)
+    print("listing in backend", listing)
     form = ListingUpdateForm()
+    print("===========================")
+    print("form in backend", form)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        current_user = User.query.get(form.user_id.data)
-        if request.files:
-            image = request.files["image"]
-            if not allowed_file(image.filename):
-                return {"errors":"file type not permitted"}, 400
+        print("in api riyutes")
+        # current_user = User.query.get(form.user_id.data)
+        # if request.files:
+        #     image = request.files["image"]
+        #     if not allowed_file(image.filename):
+        #         return {"errors":"file type not permitted"}, 400
 
-            image.filename = get_unique_filename(image.filename)
+        #     image.filename = get_unique_filename(image.filename)
 
-            upload = upload_file_to_s3(image)
-            if "url" not in upload:
-                return upload, 400
+        #     upload = upload_file_to_s3(image)
+        #     if "url" not in upload:
+        #         return upload, 400
 
-            url = upload["url"]
-        else:
-            url =server.server_icon_url
+        #     url = upload["url"]
+        # else:
+        #     url =listing.server_icon_url
 
         listing.title = form.title.data
         listing.description = form.description.data
         listing.price = form.price.data
         listing.is_available = form.is_available.data
-        user_id = form.user_id.data,
         db.session.add(listing)
         db.session.commit()
         return listing.to_dict()

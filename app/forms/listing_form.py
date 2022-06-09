@@ -20,4 +20,4 @@ class ListingUpdateForm(FlaskForm):
     title = StringField('Name', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
     price = IntegerField('Price', validators=[DataRequired()])
-    is_available = BooleanField('Is Available')
+    is_available = BooleanField('Is Available', validators=[DataRequired()])

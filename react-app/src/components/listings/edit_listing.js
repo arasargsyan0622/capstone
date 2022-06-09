@@ -4,17 +4,17 @@ import { useHistory } from 'react-router-dom';
 import { updateListing } from '../../store/listing';
 
 function EditListing() {
+    const history = useHistory();
+    const dispatch = useDispatch();
+
     const [ title, setTitle ] = useState("");
     const [ description, setDescription ] = useState("");
     const [ price, setPrice ] = useState("");
     const [ isAvailable, setIsAvailable ] = useState(false);
     const [ image, setImage ] = useState("");
 
-    const history = useHistory();
-    const dispatch = useDispatch();
-
-    const session = useSelector((state) => state.session);
-
+    const listingId = useSelector(state => state.listing)
+    console.log("listingId in component-------", listingId)
     const handleSubmit = (e) => {
         e.preventDefault();
         const payload = {
