@@ -13,8 +13,8 @@ function EditListing() {
     const [ isAvailable, setIsAvailable ] = useState(false);
     const [ image, setImage ] = useState("");
 
-    const listingId = useSelector(state => state.listing)
-    console.log("listingId in component-------", listingId)
+    // const listingId = useSelector(state => state.listing)
+    // console.log("listingId in component-------", listingId)
     const handleSubmit = (e) => {
         e.preventDefault();
         const payload = {

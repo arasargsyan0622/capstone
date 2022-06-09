@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { getListings } from "../../store/listing"
 import NewListingModal from '../modal/NewListingModal';
 import EditListingModal from '../modal/EditListingModal';
+import DeleteListing from "./delete_listing"
 
 function Listings() {
     const history = useHistory();
@@ -34,6 +35,7 @@ function Listings() {
             </div>
             <NewListingModal></NewListingModal>
             <EditListingModal></EditListingModal>
+            <DeleteListing></DeleteListing>
         </div>
         // ) : null
     );

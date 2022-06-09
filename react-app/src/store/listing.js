@@ -85,7 +85,6 @@ export const updateListing = data => async dispatch => {
     if(response.ok) {
         const editedListing = await response.json()
         dispatch(editListing(editedListing))
-        // return editedListing
     }
 }
 export const removeListing = id => async dispatch => {
@@ -96,7 +95,7 @@ export const removeListing = id => async dispatch => {
     if(response.ok) {
         const listingId = await response.json()
         console.log("listingid in thunk", listingId)
-        // dispatch(deleteListing())
+        dispatch(deleteListing(listingId))
     }
 }
 
@@ -122,6 +121,9 @@ const listingReducer = (state = initialState, action) => {
             newState[action.listing.id] = action.listing;
             console.log("newState in reducer", newState)
             return newState;
+        case DELETE_LISTING:
+            delete newState[action.id]
+            return newState
         default:
             return state
     }
