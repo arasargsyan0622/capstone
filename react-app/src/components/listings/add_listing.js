@@ -2,35 +2,66 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { createListing } from "../../store/listing";
+import { createListing, getListings } from "../../store/listing";
 
 const NewListing = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-  const [size, setSize] = useState("");
+  const [price, setPrice] = useState(0);
+  const [size, setSize] = useState(0);
   const [isAvailable, setIsAvailable] = useState(false);
-  const [yearBuilt, setYearBuilt] = useState("");
-  const [parking, setParking] = useState("");
-  const [laundry, setLaundry] = useState("");
-  const [bedrooms, setBedrooms] = useState("");
-  const [bathrooms, setBathrooms] = useState("");
-  const [image, setImage] = useState("");
+  const [yearBuilt, setYearBuilt] = useState(0);
+  const [parking, setParking] = useState(false);
+  const [laundry, setLaundry] = useState(false);
+  const [bedrooms, setBedrooms] = useState(0);
+  const [bathrooms, setBathrooms] = useState(0);
+  const user = useSelector((state) => state.session.user);
+  console.log("user in new listing", user);
+  // const [userId, setUserId] = useState(0);
+  // const [locationId, setLocationId] = useState(0);
+  // const [agentId, setAgentId] = useState(0);
+  // const [image, setImage] = useState("");
 
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const session = useSelector((state) => state.session);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createListing({ title, description, price, image }));
-    history.push("/listings");
+    const payload = {
+      title,
+      description,
+      price,
+      size,
+      isAvailable,
+      year_built: yearBuilt,
+      parking,
+      laundry,
+      bedrooms,
+      bathrooms,
+      user_id: user.id,
+      // location_id: locationId,
+      // agent_id: agentId,
+      // image,
+    }
+    console.log("payload in new listing", payload);
+    dispatch(createListing(payload));
   };
+
+  const handleCheckbox = (data) => {
+    if(data===isAvailable)
+      setIsAvailable(!isAvailable);
+    }
+    const handleCheckbox2 = (data) => {
+    if(data===parking)
+      setParking(!parking);
+    }
+    const handleCheckbox3 = (data) => {
+    if(data===laundry)
+      setLaundry(!laundry);
+    }
 
   return (
     <div>
-      <h1>New Listing</h1>
       <form onSubmit={handleSubmit}>
         <label>Title:</label>
         <input
@@ -46,13 +77,13 @@ const NewListing = () => {
         />
         <label>Price:</label>
         <input
-          type="text"
+          type="number"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
         <label>Size:</label>
         <input
-          type="text"
+          type="number"
           value={size}
           onChange={(e) => setSize(e.target.value)}
         />
@@ -60,7 +91,8 @@ const NewListing = () => {
         <input
           type="checkbox"
           value={isAvailable}
-          onChange={(e) => setIsAvailable(e.target.checked)}
+          checked={isAvailable}
+          onChange={() => handleCheckbox(isAvailable)}
         />
         <label>Year Built:</label>
         <input
@@ -72,31 +104,27 @@ const NewListing = () => {
         <input
           type="checkbox"
           value={parking}
-          onChange={(e) => setParking(e.target.value)}
+          checked={parking}
+          onChange={() => handleCheckbox2(parking)}
         />
         <label>Laundry:</label>
         <input
           type="checkbox"
           value={laundry}
-          onChange={(e) => setLaundry(e.target.value)}
+          checked={laundry}
+          onChange={() =>  handleCheckbox3(laundry)}
         />
         <label>Bedrooms:</label>
         <input
-          type="text"
+          type="number"
           value={bedrooms}
           onChange={(e) => setBedrooms(e.target.value)}
         />
         <label>Bathrooms:</label>
         <input
-          type="text"
+          type="number"
           value={bathrooms}
           onChange={(e) => setBathrooms(e.target.value)}
-        />
-        <label>Image:</label>
-        <input
-          type="text"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
         />
         <button type="submit">Submit</button>
       </form>

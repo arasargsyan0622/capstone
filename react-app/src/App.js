@@ -12,11 +12,14 @@ import Listings from "./components/listings/listing_display";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
-      await dispatch(authenticate());
+    (async () => {
+      await dispatch(authenticate()).then(() => {
+        setIsLoaded(true);
+      });
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -26,29 +29,31 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
-        <Route path="/listings">
-          <Listings />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    isLoaded && (
+      <BrowserRouter>
+        <NavBar />
+        <Switch>
+          <Route path='/login' exact={true}>
+            <LoginForm />
+          </Route>
+          <Route path='/sign-up' exact={true}>
+            <SignUpForm />
+          </Route>
+          <ProtectedRoute path='/users' exact={true} >
+            <UsersList/>
+          </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId' exact={true} >
+            <User />
+          </ProtectedRoute>
+          <ProtectedRoute path='/' exact={true} >
+            <h1>My Home Page</h1>
+          </ProtectedRoute>
+          <Route path="/listings">
+            <Listings />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    )
   );
 }
 

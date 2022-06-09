@@ -1,7 +1,7 @@
 """empty message
 
 Revision ID: 2e2cdc03719c
-Revises: 
+Revises:
 Create Date: 2022-06-07 16:08:36.972398
 
 """
@@ -54,7 +54,7 @@ def upgrade():
     sa.Column('description', sa.Text(), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
     sa.Column('is_available', sa.Boolean(), nullable=False),
-    sa.Column('year_built', sa.Integer(), nullable=True),
+    sa.Column('year_built', sa.Integer(), nullable=False),
     sa.Column('size', sa.Integer(), nullable=True),
     sa.Column('bedrooms', sa.Integer(), nullable=True),
     sa.Column('bathrooms', sa.Integer(), nullable=True),

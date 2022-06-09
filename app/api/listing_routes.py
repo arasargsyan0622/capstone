@@ -19,10 +19,15 @@ def get_listing(id):
 
 @listing_routes.route("/", methods=["POST"])
 def create_listing():
+    # print("Wefwerfgwefgweewwgwegwegw")
     form = ListingCreateForm()
-    user = User.query.get(form.user_id.data)
+    listings = Listing.query.all()
+    print("form ===========", form.data)
+    # print("efewfwefwefwe---------", request.files)
+    print("listings ===========", listings)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        print("validate_on_submit")
         if request.files:
             image = request.files["image"]
             if not allowed_file(image.filename):
@@ -49,14 +54,14 @@ def create_listing():
             laundry=form.laundry.data,
             bedrooms=form.bedrooms.data,
             bathrooms=form.bathrooms.data,
-            image_url=url,
-            user_id=user.id
+            user_id=form.user_id.data,
         )
 
         db.session.add(listing)
         db.session.commit()
 
         return listing.to_dict()
+    return jsonify(form.errors), 400
 
 @listing_routes.route("/<int:id>", methods=["PUT"])
 def update_listing(id):
@@ -64,6 +69,7 @@ def update_listing(id):
     form = ListingUpdateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        current_user = User.query.get(form.user_id.data)
         if request.files:
             image = request.files["image"]
             if not allowed_file(image.filename):
@@ -83,8 +89,8 @@ def update_listing(id):
         listing.description = form.description.data
         listing.price = form.price.data
         listing.is_available = form.is_available.data
-        listing.image_url = url
-
+        user_id = form.user_id.data,
+        db.session.add(listing)
         db.session.commit()
         return listing.to_dict()
 

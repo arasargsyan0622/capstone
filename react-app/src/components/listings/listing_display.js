@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getListings } from "../../store/listing"
 import NewListingModal from '../modal/NewListingModal';
+import EditListingModal from '../modal/EditListingModal';
 
 function Listings() {
     const history = useHistory();
     const dispatch = useDispatch();
-
+    const [isLoaded, setIsLoaded] = useState(false);
     const listings = Object.values(useSelector(state => state.listings));
+    console.log("listings in ocmponent-------", listings)
     const session = useSelector(state => state.session);
 
     useEffect(() => {
@@ -17,24 +19,23 @@ function Listings() {
         }
 
         dispatch(getListings());
-
-        // return () => {
-        //     dispatch(clearListings());
-        // }
-    }, [dispatch, history, session]);
+    }, [dispatch]);
 
     return (
+        // isLoaded ? (
         <div>
             <h1>Listings</h1>
-            <ul>
+            <div>
                 {listings.map(listing => (
-                    <li key={listing.id}>
-                        <a href={`/listings/${listing.id}`}>{listing.title}</a>
-                    </li>
+                    <div key={listing?.id}>
+                        <a href={`/listings/${listing?.id}`}>Title: {listing?.title}</a>
+                    </div>
                 ))}
-            </ul>
+            </div>
             <NewListingModal></NewListingModal>
+            {/* <EditListingModal></EditListingModal> */}
         </div>
+        // ) : null
     );
 }
 

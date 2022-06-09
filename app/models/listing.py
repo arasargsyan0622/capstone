@@ -7,9 +7,9 @@ class Listing(db.Model):
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Integer, nullable=False)
-    is_available = db.Column(db.Boolean, nullable=False)
-    year_built = db.Column(db.Integer)
     size = db.Column(db.Integer, nullable=False)
+    is_available = db.Column(db.Boolean, nullable=False)
+    year_built = db.Column(db.Integer, nullable=False)
     bedrooms = db.Column(db.Integer, nullable=False)
     bathrooms = db.Column(db.Integer, nullable=False)
     parking = db.Column(db.Boolean)
@@ -38,5 +38,4 @@ class Listing(db.Model):
             'parking': self.parking,
             'laundry': self.laundry,
             'user_id': self.user_id,
-            'location_id': self.location_id
         }
