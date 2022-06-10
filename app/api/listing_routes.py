@@ -50,7 +50,7 @@ def create_listing():
             bedrooms=form.bedrooms.data,
             bathrooms=form.bathrooms.data,
             user_id=form.user_id.data,
-            
+            agent_id=form.agent_id.data
         )
 
         db.session.add(listing)

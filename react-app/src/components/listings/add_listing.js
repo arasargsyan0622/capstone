@@ -15,13 +15,15 @@ const NewListing = ({ setShow }) => {
   const [laundry, setLaundry] = useState(false);
   const [bedrooms, setBedrooms] = useState(0);
   const [bathrooms, setBathrooms] = useState(0);
+  const [agent, setAgent] = useState()
   const user = useSelector((state) => state.session.user);
   const agents = Object.values(useSelector(state => state.agents));
 
-  // console.log("user in new listing", user);
-  // const [userId, setUserId] = useState(0);
+  let agentId
+  agents.map((agent) => {
+    agentId = agent?.id
+  })
   // const [locationId, setLocationId] = useState(0);
-  // const [agentId, setAgentId] = useState(0);
   // const [image, setImage] = useState("");
 
   const history = useHistory();
@@ -41,13 +43,13 @@ const NewListing = ({ setShow }) => {
       bedrooms,
       bathrooms,
       user_id: user.id,
+      agent_id: agentId
       // location_id: locationId,
-      // agent_id: agentId,
       // image,
     }
     // console.log("payload in new listing", payload);
-    const finishLoad = await dispatch(createListing(payload));
-    history.push(`/listings/${finishLoad.id}`);
+    await dispatch(createListing(payload));
+    history.push("/listings")
     setShow(false)
   };
 
@@ -130,7 +132,15 @@ const NewListing = ({ setShow }) => {
           value={bathrooms}
           onChange={(e) => setBathrooms(e.target.value)}
         />
-        
+        <select value={agent} onChange={(e) => setAgent(agent?.id)}>
+          {agents.map((agent) => {
+            return (
+              <option key={agent?.id} value={agent?.id}>
+                {agent?.first_name}
+              </option>
+            )
+          })}
+        </select>
         <button type="submit">Submit</button>
       </form>
     </div>

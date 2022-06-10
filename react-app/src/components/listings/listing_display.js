@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getListings } from "../../store/listing"
+import { getAgents } from "../../store/agent";
 import NewListingModal from '../modal/NewListingModal';
 import EditListingModal from '../modal/EditListingModal';
 import DeleteListing from "./delete_listing"
@@ -11,7 +12,6 @@ function Listings() {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const listings = Object.values(useSelector(state => state.listings));
-    const listingId = listings[0]?.id;
     // console.log("listing id in ocmponent-------", listingId)
     const session = useSelector(state => state.session);
 
@@ -20,7 +20,7 @@ function Listings() {
             history.push('/login');
         }
 
-        dispatch(getListings());
+        dispatch(getAgents()).then(() => dispatch(getListings()));
     }, [dispatch]);
 
     return (

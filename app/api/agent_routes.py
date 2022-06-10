@@ -9,5 +9,5 @@ agent_routes = Blueprint("agent_routes", __name__)
 @agent_routes.route("/")
 def all_agents():
     agents = Agent.query.all()
+    print("in agent route", agents)
     return {"agents": [agent.to_dict() for agent in agents]}
-

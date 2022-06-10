@@ -7,7 +7,6 @@ function AgentDisplay() {
     const dispatch = useDispatch();
     const history = useHistory();
     const agents = Object.values(useSelector(state => state.agents));
-
     const session = useSelector(state => state.session);
 
     useEffect(() => {

@@ -27,5 +27,5 @@ class Agent(db.Model):
             'license_number': self.license_number,
             'bio': self.bio,
             'photo': self.photo,
+            # 'reviews_agent': self.reviews_agent
         }
-
