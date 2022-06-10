@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { updateListing } from '../../store/listing';
 
-function EditListing() {
+function EditListing({ setShow }) {
     const history = useHistory();
     const dispatch = useDispatch();
-
     const [ title, setTitle ] = useState("");
     const [ description, setDescription ] = useState("");
     const [ price, setPrice ] = useState("");
     const [ isAvailable, setIsAvailable ] = useState(false);
     const [ image, setImage ] = useState("");
 
-    // const listingId = useSelector(state => state.listing)
-    // console.log("listingId in component-------", listingId)
+    const { listingId } = useParams()
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const payload = {
@@ -23,10 +23,11 @@ function EditListing() {
             price,
             isAvailable,
             image,
-            id: "4"
+            id: listingId
         }
         dispatch(updateListing(payload));
-        history.push("/listings");
+        history.push(`/listings/${listingId}`);
+        setShow(false)
     }
 
     return (
@@ -64,6 +65,7 @@ function EditListing() {
                     onChange={(e) => setImage(e.target.value)}
                 /> */}
                 <button type="submit">Submit</button>
+                <></>
             </form>
         </div>
     );

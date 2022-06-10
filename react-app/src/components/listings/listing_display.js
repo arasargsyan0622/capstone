@@ -11,7 +11,8 @@ function Listings() {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const listings = Object.values(useSelector(state => state.listings));
-    // console.log("listings in ocmponent-------", listings)
+    const listingId = listings[0]?.id;
+    // console.log("listing id in ocmponent-------", listingId)
     const session = useSelector(state => state.session);
 
     useEffect(() => {

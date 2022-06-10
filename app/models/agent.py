@@ -15,3 +15,17 @@ class Agent(db.Model):
 
     listing_agent = db.relationship('Listing', back_populates='agent_of_listing')
     reviews_agent = db.relationship('Review', back_populates='agent_review')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'email': self.email,
+            'phone': self.phone,
+            'company': self.company,
+            'license_number': self.license_number,
+            'bio': self.bio,
+            'photo': self.photo,
+        }
+

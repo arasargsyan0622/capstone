@@ -14,6 +14,7 @@ class ListingCreateForm(FlaskForm):
     parking = BooleanField('Parking')
     laundry = BooleanField('Laundry')
     user_id = IntegerField('UserId', validators=[DataRequired()])
+    agent_id = IntegerField('AgentId', validators=[DataRequired()])
 
 
 class ListingUpdateForm(FlaskForm):

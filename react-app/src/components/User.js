@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 function User() {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
-
   useEffect(() => {
     if (!userId) {
       return;
@@ -14,6 +13,8 @@ function User() {
       const user = await response.json();
       setUser(user);
     })();
+  console.log("uisers", user)
+  console.log("userId", userId)
   }, [userId]);
 
   if (!user) {
@@ -23,10 +24,11 @@ function User() {
   return (
     <ul>
       <li>
-        <strong>User Id</strong> {userId}
+        <strong>User Id</strong> {user.id}
       </li>
       <li>
-        <strong>Username</strong> {user.username}
+        <strong>First Name</strong> {user.firstName}
+        <strong>Last Name</strong> {user.lastName}
       </li>
       <li>
         <strong>Email</strong> {user.email}

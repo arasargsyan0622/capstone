@@ -19,15 +19,10 @@ def get_listing(id):
 
 @listing_routes.route("/", methods=["POST"])
 def create_listing():
-    # print("Wefwerfgwefgweewwgwegwegw")
     form = ListingCreateForm()
     listings = Listing.query.all()
-    print("form ===========", form.data)
-    # print("efewfwefwefwe---------", request.files)
-    print("listings ===========", listings)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print("validate_on_submit")
         if request.files:
             image = request.files["image"]
             if not allowed_file(image.filename):
@@ -55,6 +50,7 @@ def create_listing():
             bedrooms=form.bedrooms.data,
             bathrooms=form.bathrooms.data,
             user_id=form.user_id.data,
+            
         )
 
         db.session.add(listing)
@@ -66,13 +62,9 @@ def create_listing():
 @listing_routes.route("/<int:id>", methods=["PUT"])
 def update_listing(id):
     listing = Listing.query.get(id)
-    print("listing in backend", listing)
     form = ListingUpdateForm()
-    print("===========================")
-    print("form in backend", form)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print("in api riyutes")
         # current_user = User.query.get(form.user_id.data)
         # if request.files:
         #     image = request.files["image"]

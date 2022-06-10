@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import { createListing, getListings } from "../../store/listing";
 
-const NewListing = () => {
+const NewListing = ({ setShow }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
@@ -16,7 +16,9 @@ const NewListing = () => {
   const [bedrooms, setBedrooms] = useState(0);
   const [bathrooms, setBathrooms] = useState(0);
   const user = useSelector((state) => state.session.user);
-  console.log("user in new listing", user);
+  const agents = Object.values(useSelector(state => state.agents));
+
+  // console.log("user in new listing", user);
   // const [userId, setUserId] = useState(0);
   // const [locationId, setLocationId] = useState(0);
   // const [agentId, setAgentId] = useState(0);
@@ -25,7 +27,7 @@ const NewListing = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
       title,
@@ -43,8 +45,10 @@ const NewListing = () => {
       // agent_id: agentId,
       // image,
     }
-    console.log("payload in new listing", payload);
-    dispatch(createListing(payload));
+    // console.log("payload in new listing", payload);
+    const finishLoad = await dispatch(createListing(payload));
+    history.push(`/listings/${finishLoad.id}`);
+    setShow(false)
   };
 
   const handleCheckbox = (data) => {
@@ -126,6 +130,7 @@ const NewListing = () => {
           value={bathrooms}
           onChange={(e) => setBathrooms(e.target.value)}
         />
+        
         <button type="submit">Submit</button>
       </form>
     </div>
