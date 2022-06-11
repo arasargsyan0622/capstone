@@ -12,8 +12,12 @@ def seed_listings():
         bathrooms=2,
         parking=True,
         laundry=True,
+        address='123 Main St',
+        city='New York',
+        state='NY',
+        country='USA',
+        zipcode=10001,
         user_id=1,
-        location_id=1,
         agent_id=1
     )
 
@@ -28,8 +32,12 @@ def seed_listings():
         bathrooms=3,
         parking=False,
         laundry=False,
+        address='123 Some St',
+        city='New York',
+        state='NY',
+        country='USA',
+        zipcode=10234,
         user_id=2,
-        location_id=2,
         agent_id=2
     )
 
@@ -44,8 +52,12 @@ def seed_listings():
         bathrooms=4,
         parking=True,
         laundry=True,
+        address='123 Cool st',
+        city='New York',
+        state='NY',
+        country='USA',
+        zipcode=10345,
         user_id=3,
-        location_id=3,
         agent_id=3
     )
 

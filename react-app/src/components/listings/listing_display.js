@@ -12,7 +12,6 @@ function Listings() {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const listings = Object.values(useSelector(state => state.listings));
-    // console.log("listing id in ocmponent-------", listingId)
     const session = useSelector(state => state.session);
 
     useEffect(() => {
@@ -20,7 +19,8 @@ function Listings() {
             history.push('/login');
         }
 
-        dispatch(getAgents()).then(() => dispatch(getListings()));
+        dispatch(getAgents())
+            .then(() => dispatch(getListings()))
     }, [dispatch]);
 
     return (

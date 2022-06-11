@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 2e2cdc03719c
-Revises:
-Create Date: 2022-06-07 16:08:36.972398
+Revision ID: d1f8da8608f4
+Revises: 
+Create Date: 2022-06-10 19:55:50.848491
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '2e2cdc03719c'
+revision = 'd1f8da8608f4'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -30,15 +30,6 @@ def upgrade():
     sa.Column('photo', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('locations',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('address', sa.String(length=255), nullable=False),
-    sa.Column('city', sa.String(length=255), nullable=False),
-    sa.Column('state', sa.String(length=255), nullable=False),
-    sa.Column('country', sa.String(length=255), nullable=False),
-    sa.Column('zipcode', sa.Integer(), nullable=False),
-    sa.PrimaryKeyConstraint('id')
-    )
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('first_name', sa.String(length=40), nullable=False),
@@ -53,18 +44,21 @@ def upgrade():
     sa.Column('title', sa.String(length=255), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
+    sa.Column('size', sa.Integer(), nullable=False),
     sa.Column('is_available', sa.Boolean(), nullable=False),
     sa.Column('year_built', sa.Integer(), nullable=False),
-    sa.Column('size', sa.Integer(), nullable=True),
-    sa.Column('bedrooms', sa.Integer(), nullable=True),
-    sa.Column('bathrooms', sa.Integer(), nullable=True),
+    sa.Column('bedrooms', sa.Integer(), nullable=False),
+    sa.Column('bathrooms', sa.Integer(), nullable=False),
     sa.Column('parking', sa.Boolean(), nullable=True),
     sa.Column('laundry', sa.Boolean(), nullable=True),
+    sa.Column('address', sa.String(length=255), nullable=False),
+    sa.Column('city', sa.String(length=255), nullable=False),
+    sa.Column('state', sa.String(length=255), nullable=False),
+    sa.Column('country', sa.String(length=255), nullable=False),
+    sa.Column('zipcode', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.Column('location_id', sa.Integer(), nullable=True),
     sa.Column('agent_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['agent_id'], ['agents.id'], ),
-    sa.ForeignKeyConstraint(['location_id'], ['locations.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -108,6 +102,5 @@ def downgrade():
     op.drop_table('reviews')
     op.drop_table('listings')
     op.drop_table('users')
-    op.drop_table('locations')
     op.drop_table('agents')
     # ### end Alembic commands ###

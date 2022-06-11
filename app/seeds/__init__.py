@@ -1,7 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .listings import seed_listings, undo_listings
-from .locations import seed_locations, undo_locations
+# from .locations import seed_locations, undo_locations
 from .agents import seed_agents, undo_agents
 from .bookings import seed_bookings, undo_bookings
 from .images import seed_images, undo_images
@@ -18,7 +18,7 @@ seed_commands = AppGroup('seed')
 def seed():
     seed_users()
     seed_agents()
-    seed_locations()
+    # seed_locations()
     seed_listings()
     seed_bookings()
     seed_images()
@@ -31,7 +31,7 @@ def seed():
 def undo():
     undo_users()
     undo_listings()
-    undo_locations()
+    # undo_locations()
     undo_agents()
     undo_bookings()
     undo_images()

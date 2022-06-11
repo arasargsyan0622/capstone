@@ -14,13 +14,16 @@ class Listing(db.Model):
     bathrooms = db.Column(db.Integer, nullable=False)
     parking = db.Column(db.Boolean)
     laundry = db.Column(db.Boolean)
+    address = db.Column(db.String(255), nullable=False)
+    country = db.Column(db.String(255), nullable=False)
+    city = db.Column(db.String(255), nullable=False)
+    state = db.Column(db.String(255), nullable=False)
+    zipcode = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    location_id = db.Column(db.Integer, db.ForeignKey('locations.id'))
     agent_id = db.Column(db.Integer, db.ForeignKey('agents.id'))
 
     agent_of_listing = db.relationship('Agent', back_populates='listing_agent')
     owner_listing = db.relationship('User', back_populates='listings_owner')
-    location_of_listing = db.relationship('Location', back_populates='listing_location')
     images_of_listing = db.relationship('Image', back_populates='listing_images')
     bookings_listing = db.relationship('Booking', back_populates='listing_booking')
 
@@ -37,5 +40,10 @@ class Listing(db.Model):
             'bathrooms': self.bathrooms,
             'parking': self.parking,
             'laundry': self.laundry,
+            'address': self.address,
+            'country': self.country,
+            'city': self.city,
+            'state': self.state,
+            'zipcode': self.zipcode,
             'user_id': self.user_id,
         }

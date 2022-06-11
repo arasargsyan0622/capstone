@@ -19,24 +19,26 @@ def get_listing(id):
 
 @listing_routes.route("/", methods=["POST"])
 def create_listing():
+    # print("before form--------------------------------------------")
     form = ListingCreateForm()
     listings = Listing.query.all()
+    # print("after form--------------------------------------------")
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        if request.files:
-            image = request.files["image"]
-            if not allowed_file(image.filename):
-                return {"errors":"file type not permitted"}, 400
+        # if request.files:
+        #     image = request.files["image"]
+        #     if not allowed_file(image.filename):
+        #         return {"errors":"file type not permitted"}, 400
 
-            image.filename = get_unique_filename(image.filename)
+        #     image.filename = get_unique_filename(image.filename)
 
-            upload = upload_file_to_s3(image)
-            if "url" not in upload:
-                return upload, 400
+        #     upload = upload_file_to_s3(image)
+        #     if "url" not in upload:
+        #         return upload, 400
 
-            url = upload["url"]
-        else:
-            url =None
+        #     url = upload["url"]
+        # else:
+        #     url =None
 
         listing = Listing(
             title=form.title.data,
@@ -49,8 +51,13 @@ def create_listing():
             laundry=form.laundry.data,
             bedrooms=form.bedrooms.data,
             bathrooms=form.bathrooms.data,
+            address=form.address.data,
+            country=form.country.data,
+            city=form.city.data,
+            state=form.state.data,
+            zipcode=form.zipcode.data,
             user_id=form.user_id.data,
-            agent_id=form.agent_id.data
+            agent_id=form.agent_id.data,
         )
 
         db.session.add(listing)

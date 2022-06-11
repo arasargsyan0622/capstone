@@ -54,6 +54,11 @@ export const createListing = data => async dispatch => {
     formData.append("laundry", data.laundry)
     formData.append("bedrooms", data.bedrooms)
     formData.append("bathrooms", data.bathrooms)
+    formData.append("address", data.address)
+    formData.append("country", data.country)
+    formData.append("city", data.city)
+    formData.append("state", data.state)
+    formData.append("zipcode", data.zipcode)
     formData.append("user_id", data.user_id);
     formData.append("agent_id", data.agent_id);
 
@@ -71,7 +76,6 @@ export const createListing = data => async dispatch => {
 }
 
 export const updateListing = data => async dispatch => {
-    // console.log("Data in updateListing", data)
     const formData = new FormData()
     formData.append("title", data.title)
     formData.append("description", data.description)
@@ -107,20 +111,16 @@ const listingReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOAD_ALL_LISTING:
             const listings = action.listings.listings
-            // console.log("listnigs in reducer", listings)
             listings.forEach(listing => {
                 newState[listing.id] = listing
             })
             return newState
         case CREATE_LISTING:
-            // console.log("newState", newState)
-            // console.log("action", action)
             newState[action.listing.id] = action.listing;
             return newState;
         case EDIT_LISTING:
             delete newState[action.listing.id]
             newState[action.listing.id] = action.listing;
-            // console.log("newState in reducer", newState)
             return newState;
         case DELETE_LISTING:
             delete newState[action.listing.id]

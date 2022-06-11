@@ -10,6 +10,8 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import Listings from "./components/listings/listing_display";
 import AgentDisplay from "./components/agents/agent_display";
+// import LocationDisplay from "./components/locations/location_display";
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);

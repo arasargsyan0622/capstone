@@ -7,7 +7,7 @@ import agentReducer from './agent';
 const rootReducer = combineReducers({
   session,
   listings: listingReducer,
-  agents: agentReducer
+  agents: agentReducer,
 });
 
 

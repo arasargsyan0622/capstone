@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-
 import { createListing, getListings } from "../../store/listing";
 
 const NewListing = ({ setShow }) => {
@@ -15,15 +14,22 @@ const NewListing = ({ setShow }) => {
   const [laundry, setLaundry] = useState(false);
   const [bedrooms, setBedrooms] = useState(0);
   const [bathrooms, setBathrooms] = useState(0);
-  const [agent, setAgent] = useState()
-  const user = useSelector((state) => state.session.user);
-  const agents = Object.values(useSelector(state => state.agents));
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [address, setAddress] = useState("");
+  const [zipcode, setZipcode] = useState(0);
 
-  let agentId
+  const [agent, setAgent] = useState();
+  const user = useSelector((state) => state.session.user);
+  const agents = Object.values(useSelector((state) => state.agents));
+
+  let agentId;
+
   agents.map((agent) => {
-    agentId = agent?.id
-  })
-  // const [locationId, setLocationId] = useState(0);
+    agentId = agent?.id;
+  });
+
   // const [image, setImage] = useState("");
 
   const history = useHistory();
@@ -42,29 +48,29 @@ const NewListing = ({ setShow }) => {
       laundry,
       bedrooms,
       bathrooms,
+      address,
+      country,
+      state,
+      city,
+      zipcode,
       user_id: user.id,
-      agent_id: agentId
-      // location_id: locationId,
+      agent_id: agentId,
       // image,
-    }
-    // console.log("payload in new listing", payload);
+    };
     await dispatch(createListing(payload));
-    history.push("/listings")
-    setShow(false)
+    history.push("/listings");
+    setShow(false);
   };
 
   const handleCheckbox = (data) => {
-    if(data===isAvailable)
-      setIsAvailable(!isAvailable);
-    }
-    const handleCheckbox2 = (data) => {
-    if(data===parking)
-      setParking(!parking);
-    }
-    const handleCheckbox3 = (data) => {
-    if(data===laundry)
-      setLaundry(!laundry);
-    }
+    if (data === isAvailable) setIsAvailable(!isAvailable);
+  };
+  const handleCheckbox2 = (data) => {
+    if (data === parking) setParking(!parking);
+  };
+  const handleCheckbox3 = (data) => {
+    if (data === laundry) setLaundry(!laundry);
+  };
 
   return (
     <div>
@@ -102,7 +108,7 @@ const NewListing = ({ setShow }) => {
         />
         <label>Year Built:</label>
         <input
-          type="text"
+          type="number"
           value={yearBuilt}
           onChange={(e) => setYearBuilt(e.target.value)}
         />
@@ -118,7 +124,7 @@ const NewListing = ({ setShow }) => {
           type="checkbox"
           value={laundry}
           checked={laundry}
-          onChange={() =>  handleCheckbox3(laundry)}
+          onChange={() => handleCheckbox3(laundry)}
         />
         <label>Bedrooms:</label>
         <input
@@ -132,13 +138,43 @@ const NewListing = ({ setShow }) => {
           value={bathrooms}
           onChange={(e) => setBathrooms(e.target.value)}
         />
+        <label>Address:</label>
+        <input
+          type="text"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+        />
+        <label>Country:</label>
+        <input
+          type="text"
+          value={country}
+          onChange={(e) => setCountry(e.target.value)}
+        />
+        <label>State:</label>
+        <input
+          type="text"
+          value={state}
+          onChange={(e) => setState(e.target.value)}
+        />
+        <label>City:</label>
+        <input
+          type="text"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <label>Zip:</label>
+        <input
+          type="number"
+          value={zipcode}
+          onChange={(e) => setZipcode(e.target.value)}
+        />
         <select value={agent} onChange={(e) => setAgent(agent?.id)}>
           {agents.map((agent) => {
             return (
               <option key={agent?.id} value={agent?.id}>
                 {agent?.first_name}
               </option>
-            )
+            );
           })}
         </select>
         <button type="submit">Submit</button>
@@ -146,6 +182,5 @@ const NewListing = ({ setShow }) => {
     </div>
   );
 };
-
 
 export default NewListing;

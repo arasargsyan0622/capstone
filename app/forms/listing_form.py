@@ -13,9 +13,13 @@ class ListingCreateForm(FlaskForm):
     bathrooms = IntegerField('Bathrooms', validators=[DataRequired()])
     parking = BooleanField('Parking')
     laundry = BooleanField('Laundry')
+    address = StringField('Address', validators=[DataRequired()])
+    country = StringField('Country', validators=[DataRequired()])
+    city = StringField('City', validators=[DataRequired()])
+    state = StringField('State', validators=[DataRequired()])
+    zipcode = IntegerField('Zipcode', validators=[DataRequired()])
     user_id = IntegerField('UserId', validators=[DataRequired()])
     agent_id = IntegerField('AgentId', validators=[DataRequired()])
-
 
 class ListingUpdateForm(FlaskForm):
     title = StringField('Name', validators=[DataRequired()])
