@@ -95,6 +95,7 @@ def update_listing(id):
         db.session.add(listing)
         db.session.commit()
         return listing.to_dict()
+    return jsonify(form.errors), 400
 
 @listing_routes.route("/<int:id>", methods=["DELETE"])
 def delete_listing(id):

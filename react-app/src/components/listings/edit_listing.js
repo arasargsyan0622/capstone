@@ -7,10 +7,23 @@ import { updateListing } from '../../store/listing';
 function EditListing({ setShow }) {
     const history = useHistory();
     const dispatch = useDispatch();
-    const [ title, setTitle ] = useState("");
-    const [ description, setDescription ] = useState("");
-    const [ price, setPrice ] = useState("");
-    const [ isAvailable, setIsAvailable ] = useState(false);
+    const listings = Object.values(useSelector(state => state.listings));
+    let listingTitle
+    let listingDescription
+    let listingPrice
+    let listingAvailability
+
+    listings.map((listing) => {
+        listingTitle = listing.title
+        listingDescription = listing.description
+        listingPrice = listing.price
+        listingAvailability = listing.is_available
+    })
+
+    const [ title, setTitle ] = useState(listingTitle);
+    const [ description, setDescription ] = useState(listingDescription);
+    const [ price, setPrice ] = useState(listingPrice);
+    const [ isAvailable, setIsAvailable ] = useState(listingAvailability);
     const [ image, setImage ] = useState("");
 
     const { listingId } = useParams()
@@ -22,7 +35,7 @@ function EditListing({ setShow }) {
             description,
             price,
             isAvailable,
-            image,
+            // image,
             id: listingId
         }
         dispatch(updateListing(payload));
