@@ -13,6 +13,8 @@ class Agent(db.Model):
     license_number = db.Column(db.String(255), nullable=False)
     bio = db.Column(db.Text, nullable=False)
     photo = db.Column(db.String(255), nullable=False)
+    github = db.Column(db.String(255), nullable=False)
+    linkedin = db.Column(db.String(255), nullable=False)
 
     listing_agent = db.relationship('Listing', back_populates='agent_of_listing')
     reviews_agent = db.relationship('Review', back_populates='agent_review')
@@ -28,6 +30,7 @@ class Agent(db.Model):
             'license_number': self.license_number,
             'bio': self.bio,
             'photo': self.photo,
-            'location': self.location
-            # 'reviews_agent': self.reviews_agent
+            'location': self.location,
+            'github': self.github,
+            'linkedin': self.linkedin
         }

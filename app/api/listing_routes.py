@@ -2,6 +2,8 @@ from flask import Blueprint, jsonify, request
 from app.models.user import User
 from app.models.listing import Listing
 from app.forms.listing_form import ListingCreateForm, ListingUpdateForm
+from app.models.image import Image
+from app.forms.image_form import ImageCreateForm, ImageUpdateForm
 from app.models import db
 from app.api.aws_s3_bucket import upload_file_to_s3, allowed_file, get_unique_filename
 

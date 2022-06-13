@@ -45,7 +45,6 @@ function EditListing({ setShow }) {
 
     return (
         <div>
-            <h1>Edit Listing</h1>
             <form onSubmit={handleSubmit}>
                 <label>Title:</label>
                 <input

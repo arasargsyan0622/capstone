@@ -7,9 +7,7 @@ class ReviewCreateForm(FlaskForm):
     rating = StringField('Rating', validators=[DataRequired()])
     user_id = IntegerField("userId", validators=[DataRequired()])
     agent_id = IntegerField("agentId", validators=[DataRequired()])
-    # submit = SubmitField('Create')
 
 class ReviewUpdateForm(FlaskForm):
     comment = StringField('Comment', validators=[DataRequired()])
     rating = SelectField('Rating', validators=[DataRequired()])
-    # submit = SubmitField('Update')

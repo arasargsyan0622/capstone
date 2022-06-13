@@ -6,20 +6,15 @@ from app.models import db
 
 review_routes = Blueprint("review_routes", __name__)
 
-@review_routes.route("/")
-def all_reviews():
-    reviews = Review.query.all()
+@review_routes.route("/<int:id>")
+def all_reviews(id):
+    reviews = Review.query.filter(Review.listing_id == id)
     return {"reviews": [review.to_dict() for review in reviews]}
 
-@review_routes.route("/<int:id>")
-def get_review(id):
-    review = Review.query.get(id)
-    return review.to_dict()
 
 @review_routes.route("/", methods=["POST"])
 def add_review():
     form = ReviewCreateForm()
-    reviews = Review.query.all()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         review = Review(
