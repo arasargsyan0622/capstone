@@ -1,0 +1,56 @@
+.agents-list {
+    display: inline-flex;
+    justify-content: flex-start;
+    width: 40%;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid red;
+    margin-bottom: 10px;
+    margin-left: 25%
+}
+
+.agent-info {
+    margin-left: 2rem;
+}
+
+.agent-name {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 30px;
+    color: #3d424d;
+    margin-top: -2px;
+    margin-bottom: 2px;
+    text-decoration: none;
+}
+
+.agent-img {
+    width: 150px;
+    height: 200px;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px rgb(157 156 171 / 15%);
+}
+
+.agent-email {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: #343342;
+    margin-bottom: 2px
+}
+
+.agent-location {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #485455;
+    margin-bottom: 2px
+}
+
+.agent-license-number {
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #9d9cab;
+    line-height: 18px;
+    margin-bottom: 2px
+}

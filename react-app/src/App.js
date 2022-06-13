@@ -11,6 +11,7 @@ import { authenticate } from "./store/session";
 import Listings from "./components/listings/listing_display";
 import AgentDisplay from "./components/agents/agent_display";
 import Splash from "./components/splash/splash";
+import SingleAgent from "./components/agents/agentInfo";
 
 
 function App() {
@@ -58,7 +59,7 @@ function App() {
             <AgentDisplay />
           </Route>
           <Route path="/agents/:agentId(\d+)" exact={true}>
-            <AgentDisplay />
+            <SingleAgent />
           </Route>
         </Switch>
       </BrowserRouter>
