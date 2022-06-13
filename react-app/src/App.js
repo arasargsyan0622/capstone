@@ -10,7 +10,7 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import Listings from "./components/listings/listing_display";
 import AgentDisplay from "./components/agents/agent_display";
-// import LocationDisplay from "./components/locations/location_display";
+import Splash from "./components/splash/splash";
 
 
 function App() {
@@ -36,11 +36,8 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Switch>
-          <Route path="/login" exact={true}>
-            <LoginForm />
-          </Route>
-          <Route path="/sign-up" exact={true}>
-            <SignUpForm />
+          <Route path="/" exact={true}>
+            <Splash />
           </Route>
           <ProtectedRoute path="/users" exact={true}>
             <UsersList />
@@ -58,6 +55,9 @@ function App() {
             <Listings />
           </Route>
           <Route path="/agents" exact={true}>
+            <AgentDisplay />
+          </Route>
+          <Route path="/agents/:agentId(\d+)" exact={true}>
             <AgentDisplay />
           </Route>
         </Switch>

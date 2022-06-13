@@ -1,0 +1,74 @@
+.form-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 420px;
+    height: 100%;
+    padding: 35px;
+}
+
+.sign-up {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #343342;
+}
+
+.signup-header {
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #343342;
+}
+
+.names-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.first-name-container,
+.last-name-container,
+.sign-up-email-container,
+.password-container,
+.confirm-password-container {
+    position: relative;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid #c9d2d3;
+    padding: 0 0 0 16px;
+    margin-bottom: 15px;
+}
+
+.first-name-input,
+.last-name-input,
+.email-input,
+.password-input,
+.confirm-password-input {
+    border: 0;
+    padding: 12px 0;
+    font-size: 16px;
+    outline: 0;
+    font-weight: 600;
+}
+
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sign-up-button {
+    background: #343342;
+    color: #fff;
+    border: 1px solid #343342;
+    width: 247px;
+    min-height: 46px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+}

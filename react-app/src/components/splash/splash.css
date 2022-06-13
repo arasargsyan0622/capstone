@@ -1,0 +1,140 @@
+/* .splash-nav {
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+} */
+
+.login-btn {
+    background: #343342;
+    color: #fff;
+    border: 1px solid #343342;
+    min-height: 46px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.login-btn:hover {
+    background: #8982e0;
+}
+
+.splash-page-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 13%;
+}
+
+.splash-page-text-container > h1, .splash-btn {
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);}
+
+.splash-btn {
+  background-color: transparent;
+  color: white;
+  font-size: x-large;
+  padding: 20px;
+  cursor: pointer;
+  border: none;
+}
+
+.splash-btn:hover {
+  background-color: #ffc107;
+  color: white
+}
+
+.slide,
+.slide:after {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+.slide {
+  z-index: -1;
+}
+
+.slide li span {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -15px;
+  left: 0px;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: slideShow 5s linear infinite;
+}
+
+.slide li:nth-child(1) span {
+  background-image: url(../../images/1568648112267.jpeg);
+  animation-delay: 0s;
+}
+.slide li:nth-child(2) span {
+  background-image: url(../../images/DistinctiveHomesBackground-1.png);
+  animation-delay: 5s;
+}
+.slide li:nth-child(3) span {
+  background-image: url(../../images/istockphoto-1147674297-170667a.jpg);
+  animation-delay: 10s;
+}
+.slide li:nth-child(4) span {
+  background-image: url(../../images/Feature_a-bedroom-that-balances-work-and-rest.webp);
+  animation-delay: 15s;
+}
+.slide li:nth-child(5) span {
+  background-image: url(../../images/indoor-house-plants-for-the-living-room.jpg);
+  animation-delay: 20s;
+}
+.slide li:nth-child(6) span {
+  background-image: url(../../images/iStock-1195793605-home-winter.jpg);
+  animation-delay: 25s;
+}
+.slide li:nth-child(7) span {
+  background-image: url(../../images/istockphoto-1182454657-612x612.jpg);
+  animation-delay: 30s;
+}
+.slide li:nth-child(8) span {
+  background-image: url(../../images/istockphoto-1311356176-170667a.jpg);
+  animation-delay: 35s;
+}
+.slide li:nth-child(9) span {
+  background-image: url(../../images/photo-1564013799919-ab600027ffc6.jpeg);
+  animation-delay: 40s;
+}
+.slide li:nth-child(10) span {
+  background-image: url(../../images/photo-1584622781564-1d987f7333c1.jpg);
+  animation-delay: 45s;
+}
+.slide li:nth-child(11) span {
+  background-image: url(../../images/TOH_39.jpg);
+  animation-delay: 50s;
+}
+.slide li:nth-child(12) span {
+  background-image: url(../../images/w620x413.jpg);
+  animation-delay: 55s;
+}
+
+@keyframes slideShow {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}

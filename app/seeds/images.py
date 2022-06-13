@@ -2,7 +2,7 @@ from app.models import db, Image
 
 def seed_images():
     image1 = Image(
-        url='',
+        url='https://photos.zillowstatic.com/fp/7042992ea5680c5022dae51299c9f55e-p_e.jpg',
         listing_id=1,
         title='House',
         description='This is a house',
@@ -34,4 +34,3 @@ def seed_images():
 def undo_images():
     db.session.execute('TRUNCATE images RESTART IDENTITY CASCADE;')
     db.session.commit()
-
