@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { getAgents } from "../../store/agent";
+import AgentCard from './agentsCard';
+
 
 function AgentDisplay() {
     const dispatch = useDispatch();
@@ -19,11 +21,10 @@ function AgentDisplay() {
 
     return (
         <div>
-            <h1>Agents</h1>
             <div>
                 {agents.map(agent => (
-                    <div key={agent.id}>
-                        <a href={`/agents/${agent?.id}`}>Name: {agent?.first_name} {agent?.last_name}</a>
+                    <div className="daddy-container" key={agent.id}>
+                        <Link className="agent-name" to={`/agents/${agent.id}`}><AgentCard agent={agent}/></Link>
                     </div>
                 ))}
             </div>

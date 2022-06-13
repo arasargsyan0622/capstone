@@ -13,8 +13,6 @@ function User() {
       const user = await response.json();
       setUser(user);
     })();
-  console.log("uisers", user)
-  console.log("userId", userId)
   }, [userId]);
 
   if (!user) {

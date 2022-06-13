@@ -1,0 +1,77 @@
+/* .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+} */
+
+.form-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 407px;
+    height: 100%;
+    padding: 35px;
+}
+
+
+.login {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #343342;
+}
+
+.login-header {
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #343342;
+}
+
+.login-email-container,
+.password-container {
+    position: relative;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid #c9d2d3;
+    padding: 0 16px;
+    margin-bottom: 15px;
+}
+
+.log-in-button,
+.demo-btn {
+    background: #343342;
+    color: #fff;
+    border: 1px solid #343342;
+    width: 247px;
+    min-height: 46px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.log-in-button {
+    margin-bottom: 10px;
+}
+
+.password-container {
+    width: 229px;
+}
+
+.log-in-button:hover,
+.demo-btn:hover {
+    background: #8982e0;
+}

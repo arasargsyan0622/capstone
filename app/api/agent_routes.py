@@ -11,3 +11,9 @@ def all_agents():
     agents = Agent.query.all()
     print("in agent route", agents)
     return {"agents": [agent.to_dict() for agent in agents]}
+
+@agent_routes.route("/<int:id>")
+def get_agent(id):
+    agent = Agent.query.get(id)
+    return agent.to_dict()
+    

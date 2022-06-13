@@ -12,6 +12,7 @@ function Listings() {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const listings = Object.values(useSelector(state => state.listings));
+    console.log("listings", listings)
     const session = useSelector(state => state.session);
 
     useEffect(() => {

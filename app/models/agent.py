@@ -8,6 +8,7 @@ class Agent(db.Model):
     last_name = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False)
     phone = db.Column(db.String(255), nullable=False)
+    location = db.Column(db.String(255), nullable=False)
     company = db.Column(db.String(255), nullable=False)
     license_number = db.Column(db.String(255), nullable=False)
     bio = db.Column(db.Text, nullable=False)
@@ -27,5 +28,6 @@ class Agent(db.Model):
             'license_number': self.license_number,
             'bio': self.bio,
             'photo': self.photo,
+            'location': self.location
             # 'reviews_agent': self.reviews_agent
         }

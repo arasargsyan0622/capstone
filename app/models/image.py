@@ -20,5 +20,5 @@ class Image(db.Model):
             'listing_id': self.listing_id,
             'title': self.title,
             'description': self.description,
-            'agent_id': self.agent_id
-        }
+            'user_id': self.user_id,
+       }
