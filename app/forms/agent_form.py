@@ -8,5 +8,6 @@ class AgentCreateForm(FlaskForm):
     location = StringField('location', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired()])
     phone = StringField('Phone', validators=[DataRequired()])
+    rating = IntegerField('Rating', validators=[DataRequired()])
 
     submit = SubmitField('Create')

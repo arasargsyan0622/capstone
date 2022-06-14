@@ -15,6 +15,7 @@ class Agent(db.Model):
     photo = db.Column(db.String(255), nullable=False)
     github = db.Column(db.String(255), nullable=False)
     linkedin = db.Column(db.String(255), nullable=False)
+    rating = db.Column(db.Integer, nullable=False)
 
     listing_agent = db.relationship('Listing', back_populates='agent_of_listing')
     reviews_agent = db.relationship('Review', back_populates='agent_review')
@@ -32,5 +33,6 @@ class Agent(db.Model):
             'photo': self.photo,
             'location': self.location,
             'github': self.github,
-            'linkedin': self.linkedin
+            'linkedin': self.linkedin,
+            'rating': self.rating
         }

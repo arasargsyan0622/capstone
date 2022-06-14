@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { getAgent } from "../../store/agent";
+import ReviewDisplay from '../reviews/reviews_display';
 import AgentProfile from './agentProfile';
 
 
-function SingleAgent() {
+
+function SingleAgent({ review }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const { agentId } = useParams();
@@ -24,6 +26,7 @@ function SingleAgent() {
         <div>
             <div>
                 <AgentProfile agent={agents[agentId-1]} />
+                <ReviewDisplay reviews={review} />
             </div>
         </div>
     )
