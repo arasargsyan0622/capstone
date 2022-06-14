@@ -55,13 +55,9 @@ def add_review(id):
 
 @agent_routes.route("/<int:id>/reviews/<int:review_id>", methods=["PUT"])
 def update_review(id, review_id):
-    print("inside PUT \n")
     agent = Agent.query.get(id)
-    print("agent in update_review: ------------------------------ \n", agent)
     review = Review.query.get(review_id)
-    print("review in update_review: ------------------------------ \n", review)
     form = ReviewUpdateForm()
-    print("form in update_review: ------------------------------ \n", form.comment.data, form.rating.data)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit:
         review.comment = form.comment.data
@@ -74,10 +70,9 @@ def update_review(id, review_id):
     return jsonify(form.errors), 400
 
 @agent_routes.route("/<int:id>/reviews/<int:review_id>", methods=["DELETE"])
-def delete_review(agent_id, review_id):
+def delete_review(id, review_id):
     review = Review.query.get(review_id)
+    agent = Agent.query.get(id)
     db.session.delete(review)
     db.session.commit()
-    agent = Agent.query.get(agent_id)
-    reviews = agent.reviews
-    return {"reviews": [review.to_dict() for review in reviews]}
+    return review.to_dict()

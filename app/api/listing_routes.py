@@ -26,18 +26,19 @@ def create_listing():
     # print("before form--------------------------------------------")
     form = ListingCreateForm()
     listings = Listing.query.all()
-    # print("after form--------------------------------------------")
+    print("after form--------------------------------------------")
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         if request.files:
             image = request.files["image"]
+            print("image in route=--=-=-=-==\n\n\n\n", image)
             if not allowed_file(image.filename):
                 return {"errors":"file type not permitted"}, 400
 
             image.filename = get_unique_filename(image.filename)
 
             upload = upload_file_to_s3(image)
-
+            print("upload\n\n\n\n\n\n", upload)
             if "url" not in upload:
                 return upload, 400
 
@@ -63,6 +64,7 @@ def create_listing():
             zipcode=form.zipcode.data,
             user_id=form.user_id.data,
             agent_id=form.agent_id.data,
+            # images_of_listing=form.images_of_listing.data
         )
 
         db.session.add(listing)

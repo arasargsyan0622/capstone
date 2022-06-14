@@ -4,6 +4,7 @@ const clone = rfdc();
 const LOAD_ALL_REVIEWS = "/api/reviews/LOAD_REVIEWS";
 const ADD_REVIEW = "/api/reviews/ADD_REVIEW";
 const EDIT_REVIEW = "/api/reviews/EDIT_REVIEW"
+const DELETE_REVIEW = "/api/reviews/DELETE_REVIEW"
 
 const allReviews = reviews => {
     return {
@@ -22,6 +23,13 @@ const createReview = review => {
 const editReview = review => {
     return {
         type: EDIT_REVIEW,
+        review
+    }
+}
+
+const removeReview = review => {
+    return {
+        type: DELETE_REVIEW,
         review
     }
 }
@@ -72,6 +80,18 @@ export const updateReview = (data) => async dispatch => {
     }
 }
 
+export const deleteReview = (data) => async dispatch => {
+    console.log("data in delete", data)
+    const response = await fetch(`/api/agents/${data}/reviews/${data}`, {
+        method: "DELETE"
+    });
+    if (response.ok) {
+        const deletedReview = await response.json();
+        dispatch(removeReview(deletedReview));
+        return deletedReview;
+    }
+}
+
 const initialState = {}
 
 const reviewReducer = (state = initialState, action) => {
@@ -90,6 +110,9 @@ const reviewReducer = (state = initialState, action) => {
         case EDIT_REVIEW:
             delete newState[action.review.id]
             newState[action.review.id] = action.review;
+            return newState
+        case DELETE_REVIEW:
+            delete newState[action.review.id]
             return newState
         default:
             return state

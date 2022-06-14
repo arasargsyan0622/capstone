@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { getReviews } from "../../store/review";
 import EditReviewModal from "../modal/EditReviewModal";
+import DeleteReview from "./delete_review";
+
 
 const ReviewDisplay = () => {
     const dispatch = useDispatch();
@@ -28,6 +30,7 @@ const ReviewDisplay = () => {
                             <a href={`/agents/${agentId}/reviews/${review?.id}`}>Comment: {review?.comment}</a>
                         </div>
                         <EditReviewModal review={review} user={user}></EditReviewModal>
+                        { (user?.id === review?.user_id) ? <DeleteReview></DeleteReview> : <></> }
                     </>
                 ))}
             </div>

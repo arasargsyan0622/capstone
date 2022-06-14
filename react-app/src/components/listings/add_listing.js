@@ -19,10 +19,13 @@ const NewListing = ({ setShow }) => {
   const [state, setState] = useState("");
   const [address, setAddress] = useState("");
   const [zipcode, setZipcode] = useState(0);
+  // const [image, setImage] = useState(null);
 
   const [agent, setAgent] = useState();
   const user = useSelector((state) => state.session.user);
   const agents = Object.values(useSelector((state) => state.agents));
+
+
 
   let agentId;
 
@@ -30,7 +33,6 @@ const NewListing = ({ setShow }) => {
     agentId = agent?.id;
   });
 
-  // const [image, setImage] = useState("");
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -55,8 +57,10 @@ const NewListing = ({ setShow }) => {
       zipcode,
       user_id: user.id,
       agent_id: agentId,
-      // image,
+      // images_of_listing: image,
     };
+    // console.log("payload in add listing", payload)
+
     await dispatch(createListing(payload));
     history.push("/listings");
     setShow(false);
@@ -72,9 +76,20 @@ const NewListing = ({ setShow }) => {
     if (data === laundry) setLaundry(!laundry);
   };
 
+  // const updateImage = e => {
+  //   const file = e.target.files[0]
+  //   setImage(file)
+  // }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        {/* <label>Upload</label>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={updateImage}
+          /> */}
         <label>Title:</label>
         <input
           type="text"
@@ -177,6 +192,7 @@ const NewListing = ({ setShow }) => {
             );
           })}
         </select>
+
         <button type="submit">Submit</button>
       </form>
     </div>

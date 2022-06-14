@@ -22,6 +22,7 @@ class ListingCreateForm(FlaskForm):
     zipcode = IntegerField('Zipcode', validators=[DataRequired()])
     user_id = IntegerField('UserId', validators=[DataRequired()])
     agent_id = IntegerField('AgentId', validators=[DataRequired()])
+    # images_of_listing = StringField("Image", validators=[DataRequired()])
 
 class ListingUpdateForm(FlaskForm):
     title = StringField('Name', validators=[DataRequired()])

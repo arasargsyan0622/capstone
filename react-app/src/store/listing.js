@@ -61,7 +61,8 @@ export const createListing = data => async dispatch => {
     formData.append("zipcode", data.zipcode)
     formData.append("user_id", data.user_id);
     formData.append("agent_id", data.agent_id);
-
+    // formData.append("images_of_listing", data.images_of_listing)
+    console.log("data in thunk", data)
 
     const response = await fetch("/api/listings/", {
         method: "POST",
@@ -99,7 +100,7 @@ export const removeListing = id => async dispatch => {
 
     if(response.ok) {
         const listingId = await response.json()
-        console.log("listingid in thunk", listingId)
+        // console.log("listingid in thunk", listingId)
         dispatch(deleteListing(listingId))
     }
 }
