@@ -61,6 +61,9 @@ function App() {
           <Route path="/agents/:agentId(\d+)" exact={true}>
             <SingleAgent />
           </Route>
+          <Route path="/agents/:agentId(\d+)/reviews/:reviewId(\d+)" exact={true}>
+            <SingleAgent />
+          </Route>
         </Switch>
       </BrowserRouter>
     )

@@ -13,7 +13,6 @@ function Listings() {
     const [isLoaded, setIsLoaded] = useState(false);
     const listings = Object.values(useSelector(state => state.listings));
     const user = useSelector(state => state.session.user);
-    console.log("listings", listings)
     const session = useSelector(state => state.session);
 
     useEffect(() => {

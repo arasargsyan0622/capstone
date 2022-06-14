@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory, useParams } from 'react-router-dom';
-
 import { getReviews } from "../../store/review";
+import EditReviewModal from "../modal/EditReviewModal";
 
 const ReviewDisplay = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { agentId } = useParams();
-
-    const reviews = useSelector(state => state.reviews);
-    // console.log("reviews", reviews)
+    const user = useSelector(state => state.session.user);
+    const reviews = Object.values(useSelector(state => state.reviews));
 
     useEffect(() => {
+        //make the cleanstate and dispatch before dispatching getReviews
         dispatch(getReviews(agentId));
     }
     , [dispatch]);
@@ -21,11 +21,16 @@ const ReviewDisplay = () => {
     return (
         <div>
             <h2>Reviews</h2>
-            {/* <div>
+            <div>
                 {reviews.map(review => (
-                    <div review={review}>{review?.comment}</div>
+                    <>
+                        <div key={review?.id}>
+                            <a href={`/agents/${agentId}/reviews/${review?.id}`}>Comment: {review?.comment}</a>
+                        </div>
+                        <EditReviewModal review={review} user={user}></EditReviewModal>
+                    </>
                 ))}
-            </div> */}
+            </div>
         </div>
     )
 }
