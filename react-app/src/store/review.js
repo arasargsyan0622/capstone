@@ -26,11 +26,11 @@ const reviewReducer = (state = initialState, action) => {
     let newState = clone(state)
     switch (action.type) {
         case LOAD_ALL_REVIEWS:
-            const reviews = action.reviews.reviews
-            console.log("reviews in reduceer", reviews)
-            reviews.forEach(review => {
-                newState[review.id] = review
-            })
+            // const reviews = action.reviews.reviews
+            // console.log("reviews in reduceer", reviews)
+            // reviews.forEach(review => {
+            //     newState[review.id] = review
+            // })
             return newState
         default:
             return state
