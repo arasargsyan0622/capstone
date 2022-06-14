@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { getAgents } from "../../store/agent";
+import ReviewDisplay from '../reviews/reviews_display';
 import AgentCard from './agentsCard';
 
 
 function AgentDisplay() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const agents = Object.values(useSelector(state => state.agents));
-    const session = useSelector(state => state.session);
 
     useEffect(() => {
         if (!session.user) {
@@ -18,6 +17,9 @@ function AgentDisplay() {
 
         dispatch(getAgents());
     }, [dispatch]);
+
+    const agents = Object.values(useSelector(state => state.agents));
+    const session = useSelector(state => state.session);
 
     return (
         <div>

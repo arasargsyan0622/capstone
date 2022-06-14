@@ -10,7 +10,10 @@ def seed_agents():
         company='Threadgill',
         license_number='123456789',
         bio='I am a real estate agent',
-        photo='https://cdn.discordapp.com/attachments/978771595025862706/984191457340571779/IMG_2207.jpg'
+        photo='https://cdn.discordapp.com/attachments/978771595025862706/984191457340571779/IMG_2207.jpg',
+        github='https://github.com/ChrisThreadgill',
+        linkedin='https://www.linkedin.com/in/chris-threadgill-b05090185/',
+        rating=5
     )
 
     Darren = Agent(
@@ -18,11 +21,14 @@ def seed_agents():
         last_name='Kong',
         email='dkong@gmail.com',
         phone='123-456-7891',
-        location="Something, CA",
+        location="Antioch, CA",
         company='Kong',
         license_number='123456791',
         bio='I am a real estate agent',
-        photo='https://cdn.discordapp.com/attachments/978771595025862706/984186141131567184/20211106_101658.jpg'
+        photo='https://cdn.discordapp.com/attachments/978771595025862706/984186141131567184/20211106_101658.jpg',
+        github='https://github.com/dkong1321',
+        linkedin='https://www.linkedin.com/in/darren-kong-06b47013b/',
+        rating=5
     )
 
     Paul = Agent(
@@ -34,7 +40,10 @@ def seed_agents():
         company='Melhus',
         license_number='123456792',
         bio='I am a real estate agent, I promise',
-        photo='https://cdn.discordapp.com/attachments/978771223897047092/984191561069907998/IMG_0760.jpg'
+        photo='https://cdn.discordapp.com/attachments/978771223897047092/984191561069907998/IMG_0760.jpg',
+        github='https://github.com/pmelhus',
+        linkedin='https://www.linkedin.com/in/paulmelhus/',
+        rating=5
     )
 
     Vern = Agent(
@@ -46,7 +55,10 @@ def seed_agents():
         company='Chao',
         license_number='123456793',
         bio='I am a real estate agent',
-        photo='https://cdn.discordapp.com/attachments/978771595025862706/984187014859620412/unknown.png'
+        photo='https://cdn.discordapp.com/attachments/978771595025862706/984187014859620412/unknown.png',
+        github='https://github.com/VernyoonChao98',
+        linkedin="https://www.linkedin.com/in/vernyoon-chao-783494123/",
+        rating=5
     )
 
     Leo = Agent(
@@ -58,7 +70,10 @@ def seed_agents():
         company='Leo',
         license_number='123456794',
         bio='I am a fake agent',
-        photo='https://cdn.discordapp.com/attachments/978771595025862706/984189842533515284/Snapchat-2113315832.jpg'
+        photo='https://cdn.discordapp.com/attachments/978771595025862706/984189842533515284/Snapchat-2113315832.jpg',
+        github='https://github.com/Dedition',
+        linkedin="https://www.linkedin.com/in/leo-l-79a260b0/",
+        rating=5
     )
 
 

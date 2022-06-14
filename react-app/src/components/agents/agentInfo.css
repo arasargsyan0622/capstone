@@ -1,5 +1,93 @@
-.agent-profile-info {   
+.agent-profile-info {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
     background-color: #f5f5f5;
     padding-top: 47px;
     padding-bottom: 31px
+}
+
+.agent-left-side {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: flex-start; */
+    margin-bottom: 2%;
+    margin-right: 15%
+}
+
+.agent-profile-name {
+    color: #343342;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 39px;
+    margin-bottom: 3px;
+}
+
+.agent-profile-location {
+    color: #485455;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.agent-profile-email {
+    margin-top: 21px;
+    color: #343342;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.agent-profile-phone {
+    color: #343342;
+    font-size: 16px;
+    margin-top: 21px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.agent-profile-license {
+    color:  #6d797a;
+    font-size: 14px;
+    margin-top: 21px;
+    font-weight: 600;
+    line-height: 21px;
+}
+
+.links {
+    margin-top: 21px;
+}
+
+.agent-github {
+    margin-right: 0.5rem;
+}
+
+.agent-img {
+    width: 260px;
+    height: 260px;
+    border-radius: 15px;
+    margin-bottom: 20px
+}
+
+.agent-profile-bottom {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    margin-left: 30.5%;
+    justify-content: center;
+    margin-top: 21px;
+}
+
+.agent-profile-bottom-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.agent-profile-bio {
+    white-space: pre-line;
+    color: #6d797a;
+    font-size: 16px;
+    line-height: 1.5;
 }
