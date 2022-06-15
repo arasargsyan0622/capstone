@@ -2,21 +2,21 @@ from app.models import db, Review
 
 def seed_reviews():
     review1 = Review(
-        rating="bad",
+        rating=3,
         comment='Not the bets agent',
         user_id=1,
         agent_id=1
     )
 
     review2 = Review(
-        rating="good",
+        rating=4,
         comment='Great Agent',
         user_id=2,
         agent_id=2
     )
 
     review3 = Review(
-        rating="bad",
+        rating=1,
         comment='Horrible agent',
         user_id=3,
         agent_id=3

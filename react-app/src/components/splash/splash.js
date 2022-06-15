@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import HomePage from "../homepage/homepage";
 import Listings from "../listings/listing_display";
 import LoginFormModal from "../modal/loginModal";
 import SignupFormModal from "../modal/singupModal";

@@ -46,4 +46,5 @@ class Listing(db.Model):
             'state': self.state,
             'zipcode': self.zipcode,
             'user_id': self.user_id,
+            'images_of_listing': [image_of_listing.to_dict() for image_of_listing in self.images_of_listing]
         }

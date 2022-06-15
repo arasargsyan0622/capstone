@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import {  useHistory, useParams } from 'react-router-dom';
 import { updateListing } from '../../store/listing';
 
 function EditListing({ setShow }) {
     const history = useHistory();
     const dispatch = useDispatch();
     const listings = Object.values(useSelector(state => state.listings));
+
     let listingTitle
     let listingDescription
     let listingPrice
@@ -20,11 +20,12 @@ function EditListing({ setShow }) {
         listingAvailability = listing.is_available
     })
 
+    console.log("thsi little shit", listingAvailability)
     const [ title, setTitle ] = useState(listingTitle);
     const [ description, setDescription ] = useState(listingDescription);
     const [ price, setPrice ] = useState(listingPrice);
-    const [ isAvailable, setIsAvailable ] = useState(listingAvailability);
-    const [ image, setImage ] = useState("");
+    const [ isAvailable, setIsAvailable ] = useState(true);
+    // const [ image, setImage ] = useState("");
 
     const { listingId } = useParams()
 
@@ -42,6 +43,11 @@ function EditListing({ setShow }) {
         history.push(`/listings/${listingId}`);
         setShow(false)
     }
+
+    const handleCheckbox = (data) => {
+        if (data === isAvailable) setIsAvailable(!isAvailable);
+        else setIsAvailable(isAvailable)
+    };
 
     return (
         <div>
@@ -68,6 +74,7 @@ function EditListing({ setShow }) {
                 <input
                     type="checkbox"
                     value={isAvailable}
+                    checked={true}
                     onChange={(e) => setIsAvailable(e.target.value)}
                 />
                 {/* <label>Image:</label> */}

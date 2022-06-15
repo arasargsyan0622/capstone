@@ -5,9 +5,9 @@ class Image(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(255), nullable=False)
-    listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'))
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
+    listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     images_user = db.relationship('User', back_populates='user_images')

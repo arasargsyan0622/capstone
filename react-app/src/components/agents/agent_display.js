@@ -9,28 +9,33 @@ import AgentCard from './agentsCard';
 function AgentDisplay() {
     const dispatch = useDispatch();
     const history = useHistory();
-
+    const [ isLoaded, setIsLoaded ] = useState(false)
     useEffect(() => {
         if (!session.user) {
             history.push('/login');
         }
 
         dispatch(getAgents());
+        setIsLoaded(true)
     }, [dispatch]);
 
     const agents = Object.values(useSelector(state => state.agents));
     const session = useSelector(state => state.session);
 
+    if(!isLoaded) return null
+
     return (
-        <div>
+        isLoaded && (
             <div>
-                {agents.map(agent => (
-                    <div className="daddy-container" key={agent.id}>
-                        <Link className="agent-name" to={`/agents/${agent.id}`}><AgentCard agent={agent}/></Link>
-                    </div>
-                ))}
+                <div>
+                    {agents.map(agent => (
+                        <div className="daddy-container" key={agent.id}>
+                            <Link className="agent-name" to={`/agents/${agent.id}`}><AgentCard agent={agent}/></Link>
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
+        )
     )
 }
 

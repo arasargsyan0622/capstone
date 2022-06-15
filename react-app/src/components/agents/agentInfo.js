@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { getAgent } from "../../store/agent";
+import NewReviewModal from '../modal/NewReviewModal';
+import NewReview from '../reviews/create_review';
 import ReviewDisplay from '../reviews/reviews_display';
 import AgentProfile from './agentProfile';
 
@@ -27,6 +29,7 @@ function SingleAgent({ review }) {
             <div>
                 <AgentProfile agent={agents[agentId-1]} />
                 <ReviewDisplay reviews={review} />
+                <NewReviewModal />
             </div>
         </div>
     )

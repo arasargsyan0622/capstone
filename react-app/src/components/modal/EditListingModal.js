@@ -4,8 +4,6 @@ import EditListing from "../listings/edit_listing";
 
 function EditListingModal({listing, user}) {
     const [show, setShow] = useState(false);
-    console.log("user", user)
-    console.log("listing", listing)
     return (
         <>
             { (user?.id === listing?.user_id) ? <button onClick={() => setShow(true)}>Edit Listing</button> : <></> }
