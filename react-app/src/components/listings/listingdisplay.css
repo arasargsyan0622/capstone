@@ -1,0 +1,29 @@
+.listing-container {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.listing-price {
+    margin: 8px 0 0;
+    height: 20px;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 600;
+    color: #2A2A33
+}
+
+.listing-bds-bas {
+    margin: 8px 0 0;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 16px;
+}
+
+.listing-address {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+    margin: 8px 0 0
+}
