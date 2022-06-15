@@ -38,11 +38,11 @@ function Listings({agent}) {
                         <div className='listing-bds-bas'>{listing?.bedrooms} bds {listing?.bathrooms} ba {listing?.size} sqft</div>
                         <div className='listing-address'>{listing?.address}, {listing?.city}, {listing?.state} {listing?.zipcode}</div>
                     </div>
-                    {/* <EditListingModal listing={listing} user={user}></EditListingModal> */}
-                    {/* { (user?.id === listing?.user_id) ? <DeleteListing></DeleteListing> : <></> } */}
+                    <EditListingModal listing={listing} user={user}></EditListingModal>
+                    { (user?.id === listing?.user_id) ? <DeleteListing></DeleteListing> : <></> }
                     </>
                 ))}
-                {/* <NewListingModal></NewListingModal> */}
+                <NewListingModal></NewListingModal>
             </div>
         </div>
         // ) : null
