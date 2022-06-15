@@ -40,7 +40,7 @@ function EditListing({ setShow }) {
             id: listingId
         }
         dispatch(updateListing(payload));
-        history.push(`/listings/${listingId}`);
+        history.push(`/listings`);
         setShow(false)
     }
 
