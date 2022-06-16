@@ -78,6 +78,7 @@ def update_listing(id):
     print("form.description \n\n", form.description.data)
     print("form.price \n\n", form.price.data)
     print("form.is_available \n\n", form.is_available.data)
+    print("form \n\n\n", form.data)
     if form.validate_on_submit():
         # current_user = User.query.get(form.user_id.data)
         if request.files:

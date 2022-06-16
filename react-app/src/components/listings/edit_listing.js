@@ -34,13 +34,13 @@ function EditListing({ setShow }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const payload = {
-            // title,
             description,
             price,
-            isAvailable,
+            is_available: isAvailable,
             // image,
             id: listingId
         }
+        console.log("payload in edit", payload)
         dispatch(updateListing(payload));
         history.push(`/listings`);
         setShow(false)
@@ -48,8 +48,10 @@ function EditListing({ setShow }) {
 
     const handleCheckbox = (data) => {
         console.log("data in hadlecheckbox", data)
-        if (data === isAvailable) setIsAvailable(!isAvailable);
-        else setIsAvailable(isAvailable)
+        console.log("is avaialble in hadnel", isAvailable)
+        if (isAvailable === false) setIsAvailable(true);
+        else setIsAvailable(false)
+
     };
 
     return (
@@ -77,12 +79,9 @@ function EditListing({ setShow }) {
                 />
                 <div>
                 <label className="available-label">Is Available:</label>
-                <input
-                    type="checkbox"
-                    className="edit-checkbox"
-                    value={isAvailable}
-                    onChange={() => handleCheckbox(isAvailable)}
-                />
+                {console.log("isavailable in jsx", isAvailable)}
+                { isAvailable ? <input type="checkbox" className="edit-checkbox" value={isAvailable} defaultChecked onChange={handleCheckbox}/> :
+                                <input type="checkbox" className="edit-checkbox" value={isAvailable} onChange={handleCheckbox}/> }
                 </div>
                 {/* <label>Image:</label> */}
                 {/* <input
