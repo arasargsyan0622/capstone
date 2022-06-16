@@ -40,7 +40,7 @@ const LoginForm = () => {
 
   return (
     <form className="form-container" onSubmit={onLogin}>
-      <div>
+      <div className='login-errors'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
@@ -60,7 +60,7 @@ const LoginForm = () => {
             required
           />
         </div>
-        <div className="password-container">
+        <div className="login-password-container">
           <input
             name='password'
             type='password'
