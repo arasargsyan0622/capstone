@@ -7,6 +7,7 @@ import "./add_listing.css"
 
 const NewListing = ({ setShow }) => {
   // const [title, setTitle] = useState("");
+  const [errors, setErrors] = useState([])
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
   const [size, setSize] = useState(0);
@@ -40,6 +41,95 @@ const NewListing = ({ setShow }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors([])
+
+    if (!address.length) {
+      setErrors(["Please enter the address"]);
+      return;
+    }
+
+    if (address.length > 50) {
+      setErrors(["Address cannot be more than 50 characters"]);
+      return;
+    }
+
+   if (!city.length) {
+      setErrors(["Please enter the city"]);
+      return;
+    }
+
+    if (city.length > 30) {
+      setErrors(["City cannot be more than 30 characters"]);
+      return;
+    }
+
+   if (!state.length) {
+      setErrors(["Please enter the state"]);
+      return;
+    }
+
+    if (state.length > 15) {
+      setErrors(["State cannot be more than 15 characters"]);
+      return;
+    }
+
+    if(zipcode.length !== 5) {
+      setErrors(["Zipcode must have 5 digits"])
+      return
+    }
+
+    if(!description.length) {
+      setErrors(["Please enter the description"])
+      return
+    }
+
+    if(!price || price < 0) {
+      setErrors(["Please enter a valid price"])
+      return
+    }
+
+    if(!bedrooms.length || bedrooms < 0) {
+      setErrors(["Please enter a valid number of bedrooms"])
+      return
+    }
+
+    if (bedrooms > 65) {
+      setErrors(["Bedrooms cannot be more than 65"]);
+      return;
+    }
+
+    if(!bathrooms.length || bathrooms < 0) {
+      setErrors(["Please enter a valid number of bathrooms"])
+      return
+    }
+
+    if (bathrooms > 40) {
+      setErrors(["bathrooms cannot be more than 40"]);
+      return;
+    }
+
+    if(!size.length || size < 0) {
+      setErrors(["Please enter a valid size"])
+      return
+    }
+
+    if (size > 200000) {
+      setErrors(["Size cannot be more than 200,000 square feet"]);
+      return;
+    }
+
+    if(!yearBuilt.length || yearBuilt < 0) {
+      setErrors(["Please enter a valid yearBuilt"])
+      return
+    }
+
+    if (yearBuilt > new Date().getFullYear()) {
+      setErrors(["Year built cannot be in the future, hello?"]);
+      return;
+    }
+
+    console.log("errors", errors)
+
     const payload = {
       // title,
       description,
@@ -60,7 +150,7 @@ const NewListing = ({ setShow }) => {
       agent_id: agentId,
       // images_of_listing: image,
     };
-    console.log("payload in add listing", payload)
+    // console.log("payload in add listing", payload)
 
     await dispatch(createListing(payload));
     history.push("/listings");
@@ -85,6 +175,11 @@ const NewListing = ({ setShow }) => {
   return (
     <div>
       <form className="add-listing-form" onSubmit={handleSubmit}>
+        <div className="listing-errors">
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
         {/* <label>Upload</label>
         <input
           type="file"
@@ -102,7 +197,8 @@ const NewListing = ({ setShow }) => {
         </h1>
           <input
             type="text"
-            placeholder="Address"
+            placeholder="Address: 123 Cool Street/St."
+            pattern="^\d+\s[A-z]+\s[A-z]+"
             className="add-address-input"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
@@ -110,14 +206,16 @@ const NewListing = ({ setShow }) => {
         <div className="full-address">
           <input
             type="text"
-            placeholder="City"
+            placeholder="City: Your City"
+            pattern="^[a-zA-Z\- ]+$"
             className="add-city-input"
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
           <input
             type="text"
-            placeholder="State"
+            placeholder="State: California"
+            pattern="^[A-z].?[A-z]+."
             className="add-state-input"
             value={state}
             onChange={(e) => setState(e.target.value)}

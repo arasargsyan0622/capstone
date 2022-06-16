@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 774f8b69d138
+Revision ID: 1a62d3dfd93d
 Revises: 
-Create Date: 2022-06-15 10:43:14.007056
+Create Date: 2022-06-16 12:23:41.185565
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '774f8b69d138'
+revision = '1a62d3dfd93d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -48,16 +48,16 @@ def upgrade():
     sa.Column('description', sa.Text(), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
     sa.Column('size', sa.Integer(), nullable=False),
-    sa.Column('is_available', sa.Boolean(), nullable=False),
+    sa.Column('is_available', sa.Boolean(), nullable=True),
     sa.Column('year_built', sa.Integer(), nullable=False),
     sa.Column('bedrooms', sa.Integer(), nullable=False),
     sa.Column('bathrooms', sa.Integer(), nullable=False),
     sa.Column('parking', sa.Boolean(), nullable=True),
     sa.Column('laundry', sa.Boolean(), nullable=True),
-    sa.Column('address', sa.String(length=255), nullable=False),
+    sa.Column('address', sa.String(length=50), nullable=False),
     sa.Column('country', sa.String(length=255), nullable=False),
-    sa.Column('city', sa.String(length=255), nullable=False),
-    sa.Column('state', sa.String(length=255), nullable=False),
+    sa.Column('city', sa.String(length=30), nullable=False),
+    sa.Column('state', sa.String(length=15), nullable=False),
     sa.Column('zipcode', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('agent_id', sa.Integer(), nullable=True),
