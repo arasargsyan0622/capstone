@@ -15,7 +15,9 @@
 }
 
 .agents,
-.listings {
+.listings,
+.my-linkedin,
+.my-github {
     margin-right: 0.5rem;
     font-size: 18px;
     color:indianred;
@@ -35,4 +37,10 @@
     /* min-height: 30px; */
     cursor: pointer;
     font-family:monospace;
+}
+
+.my-linkedin,
+.my-github {
+    display: flex;
+    align-items: center;
 }
