@@ -40,7 +40,7 @@
 }
 
 .login-email-container,
-.password-container {
+.login-password-container {
     position: relative;
     background: #fff;
     display: inline-flex;
@@ -67,11 +67,15 @@
     margin-bottom: 10px;
 }
 
-.password-container {
-    width: 229px;
-}
-
 .log-in-button:hover,
 .demo-btn:hover {
     background: #8982e0;
+}
+
+.login-errors {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: red;
 }
