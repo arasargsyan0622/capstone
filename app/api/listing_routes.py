@@ -19,6 +19,7 @@ def all_listings():
 @listing_routes.route("/<int:id>")
 def get_listing(id):
     listing = Listing.query.get(id)
+    print("single listing route\n\n\n", listing)
     return listing.to_dict()
 
 @listing_routes.route("/", methods=["POST"])
