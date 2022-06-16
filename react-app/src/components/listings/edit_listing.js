@@ -2,29 +2,31 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {  useHistory, useParams } from 'react-router-dom';
 import { updateListing } from '../../store/listing';
+import "./edit_listing.css"
 
 function EditListing({ setShow }) {
     const history = useHistory();
     const dispatch = useDispatch();
     const listings = Object.values(useSelector(state => state.listings));
-
-    let listingTitle
+    const listing = Object.values(useSelector(state => state.curr_listing));
+    console.log("listing in edit", listing)
+    // let listingTitle
     let listingDescription
     let listingPrice
     let listingAvailability
 
     listings.map((listing) => {
-        listingTitle = listing.title
+        // listingTitle = listing.title
         listingDescription = listing.description
         listingPrice = listing.price
         listingAvailability = listing.is_available
     })
 
     console.log("thsi little shit", listingAvailability)
-    const [ title, setTitle ] = useState(listingTitle);
+    // const [ title, setTitle ] = useState(listingTitle);
     const [ description, setDescription ] = useState(listingDescription);
-    const [ price, setPrice ] = useState(listingPrice);
-    const [ isAvailable, setIsAvailable ] = useState(true);
+    const [ price, setPrice ] = useState(`${listingPrice}`);
+    const [ isAvailable, setIsAvailable ] = useState(listingAvailability);
     // const [ image, setImage ] = useState("");
 
     const { listingId } = useParams()
@@ -32,7 +34,7 @@ function EditListing({ setShow }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const payload = {
-            title,
+            // title,
             description,
             price,
             isAvailable,
@@ -45,45 +47,50 @@ function EditListing({ setShow }) {
     }
 
     const handleCheckbox = (data) => {
+        console.log("data in hadlecheckbox", data)
         if (data === isAvailable) setIsAvailable(!isAvailable);
         else setIsAvailable(isAvailable)
     };
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <label>Title:</label>
+            <form className="edit-form" onSubmit={handleSubmit}>
+                {/* <label>Title:</label>
                 <input
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                />
+                /> */}
                 <label>Description:</label>
                 <input
                     type="text"
+                    className="edit-description-input"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                 />
                 <label>Price:</label>
                 <input
                     type="text"
+                    className="edit-price-input"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                 />
-                <label>Is Available:</label>
+                <div>
+                <label className="available-label">Is Available:</label>
                 <input
                     type="checkbox"
+                    className="edit-checkbox"
                     value={isAvailable}
-                    checked={true}
-                    onChange={(e) => setIsAvailable(e.target.value)}
+                    onChange={() => handleCheckbox(isAvailable)}
                 />
+                </div>
                 {/* <label>Image:</label> */}
                 {/* <input
                     type="text"
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
                 /> */}
-                <button type="submit">Submit</button>
+                <button className="edit-btn" type="submit">Submit</button>
                 <></>
             </form>
         </div>

@@ -12,6 +12,8 @@ import Listings from "./components/listings/listing_display";
 import AgentDisplay from "./components/agents/agent_display";
 import Splash from "./components/splash/splash";
 import SingleAgent from "./components/agents/agentInfo";
+import Listing from "./components/listings/single_listing_display";
+
 
 
 function App() {

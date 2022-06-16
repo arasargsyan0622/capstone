@@ -6,7 +6,7 @@ function NewListingModal() {
   const [show, setShow] = useState(false);
     return (
         <>
-            <button onClick={() => setShow(true)}>
+            <button className="add-listing" onClick={() => setShow(true)}>
                 Add Listing
             </button>
             {show && (

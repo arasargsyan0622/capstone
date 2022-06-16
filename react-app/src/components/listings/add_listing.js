@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createListing, getListings } from "../../store/listing";
+import "./add_listing.css"
+
 
 const NewListing = ({ setShow }) => {
-  const [title, setTitle] = useState("");
+  // const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
   const [size, setSize] = useState(0);
   const [isAvailable, setIsAvailable] = useState(false);
+  // console.log("isAvailable". isAvailable)
   const [yearBuilt, setYearBuilt] = useState(0);
   const [parking, setParking] = useState(false);
   const [laundry, setLaundry] = useState(false);
@@ -25,8 +28,6 @@ const NewListing = ({ setShow }) => {
   const user = useSelector((state) => state.session.user);
   const agents = Object.values(useSelector((state) => state.agents));
 
-
-
   let agentId;
 
   agents.map((agent) => {
@@ -40,18 +41,18 @@ const NewListing = ({ setShow }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
-      title,
+      // title,
       description,
       price,
       size,
-      isAvailable,
+      is_available: isAvailable,
       year_built: yearBuilt,
       parking,
       laundry,
       bedrooms,
       bathrooms,
       address,
-      country,
+      country: "USA",
       state,
       city,
       zipcode,
@@ -59,7 +60,7 @@ const NewListing = ({ setShow }) => {
       agent_id: agentId,
       // images_of_listing: image,
     };
-    // console.log("payload in add listing", payload)
+    console.log("payload in add listing", payload)
 
     await dispatch(createListing(payload));
     history.push("/listings");
@@ -83,117 +84,187 @@ const NewListing = ({ setShow }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="add-listing-form" onSubmit={handleSubmit}>
         {/* <label>Upload</label>
         <input
           type="file"
           accept="image/*"
           onChange={updateImage}
           /> */}
-        <label>Title:</label>
-        <input
+        {/* <input
           type="text"
+          placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-        />
-        <label>Description:</label>
+        /> */}
+        <h1 className="country">
+          {country}
+        </h1>
+          <input
+            type="text"
+            placeholder="Address"
+            className="add-address-input"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
+        <div className="full-address">
+          <input
+            type="text"
+            placeholder="City"
+            className="add-city-input"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="State"
+            className="add-state-input"
+            value={state}
+            onChange={(e) => setState(e.target.value)}
+          />
+          {/* <select className="add-state-input">
+            <option value="AL">Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DE">Delaware</option>
+            <option value="DC">District Of Columbia</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option>
+            <option value="IL">Illinois</option>
+            <option value="IN">Indiana</option>
+            <option value="IA">Iowa</option>
+            <option value="KS">Kansas</option>
+            <option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option>
+            <option value="ME">Maine</option>
+            <option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <option value="MS">Mississippi</option>
+            <option value="MO">Missouri</option>
+            <option value="MT">Montana</option>
+            <option value="NE">Nebraska</option>
+            <option value="NV">Nevada</option>
+            <option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option>
+            <option value="NM">New Mexico</option>
+            <option value="NY">New York</option>
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option>
+            <option value="OR">Oregon</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VT">Vermont</option>
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <option value="WV">West Virginia</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WY">Wyoming</option>
+        </select> */}
+          <label>Zipcode: </label>
+          <input
+            type="number"
+            className="add-zipcode-input"
+            value={zipcode}
+            onChange={(e) => setZipcode(e.target.value)}
+          />
+        </div>
         <input
           type="text"
+          className="add-description-input"
+          placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <label>Price:</label>
         <input
           type="number"
+          placeholder="Price"
+          className="add-price-input"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
-        <label>Size:</label>
         <input
           type="number"
-          value={size}
-          onChange={(e) => setSize(e.target.value)}
-        />
-        <label>Is Available:</label>
-        <input
-          type="checkbox"
-          value={isAvailable}
-          checked={isAvailable}
-          onChange={() => handleCheckbox(isAvailable)}
-        />
-        <label>Year Built:</label>
-        <input
-          type="number"
-          value={yearBuilt}
-          onChange={(e) => setYearBuilt(e.target.value)}
-        />
-        <label>Parking:</label>
-        <input
-          type="checkbox"
-          value={parking}
-          checked={parking}
-          onChange={() => handleCheckbox2(parking)}
-        />
-        <label>Laundry:</label>
-        <input
-          type="checkbox"
-          value={laundry}
-          checked={laundry}
-          onChange={() => handleCheckbox3(laundry)}
-        />
-        <label>Bedrooms:</label>
-        <input
-          type="number"
+          className="add-bedrooms-input"
           value={bedrooms}
           onChange={(e) => setBedrooms(e.target.value)}
         />
-        <label>Bathrooms:</label>
         <input
           type="number"
+          className="add-bathrooms-input"
           value={bathrooms}
           onChange={(e) => setBathrooms(e.target.value)}
         />
-        <label>Address:</label>
-        <input
-          type="text"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
-        <label>Country:</label>
-        <input
-          type="text"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-        />
-        <label>State:</label>
-        <input
-          type="text"
-          value={state}
-          onChange={(e) => setState(e.target.value)}
-        />
-        <label>City:</label>
-        <input
-          type="text"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
-        <label>Zip:</label>
         <input
           type="number"
-          value={zipcode}
-          onChange={(e) => setZipcode(e.target.value)}
+          placeholder="Size in sqft"
+          className="add-size-input"
+          value={size}
+          onChange={(e) => setSize(e.target.value)}
         />
-        <select value={agent} onChange={(e) => setAgent(agent?.id)}>
-          {agents.map((agent) => {
-            return (
-              <option key={agent?.id} value={agent?.id}>
-                {agent?.first_name}
-              </option>
-            );
-          })}
-        </select>
-
-        <button type="submit">Submit</button>
+        <input
+          type="number"
+          placeholder="Year Built"
+          className="add-year-built-input"
+          value={yearBuilt}
+          onChange={(e) => setYearBuilt(e.target.value)}
+        />
+        <div className="checkboxes-container">
+          <div className="available-checkbox">
+            <label>Is Available</label>
+            <input
+              type="checkbox"
+              value={isAvailable}
+              checked={isAvailable}
+              onChange={() => handleCheckbox(isAvailable)}
+            />
+          </div>
+          <div className="parking-checkbox">
+          <label>Parking</label>
+          <input
+            type="checkbox"
+            value={parking}
+            checked={parking}
+            onChange={() => handleCheckbox2(parking)}
+          />
+          </div>
+          <div className="laundry-checkbox">
+          <label>Laundry</label>
+          <input
+            type="checkbox"
+            value={laundry}
+            checked={laundry}
+            onChange={() => handleCheckbox3(laundry)}
+          />
+          </div>
+        </div>
+        <div>
+          <label className="agent-label">Agent: </label>
+          <select className="agent-names" value={agent} onChange={(e) => setAgent(agent?.id)}>
+            {agents.map((agent) => {
+              return (
+                  <option className="agent-options" key={agent?.id} value={agent?.id}>
+                    {agent?.first_name}
+                  </option>
+              );
+            })}
+          </select>
+        </div>
+        <button className="add-btn" type="submit">Submit</button>
       </form>
     </div>
   );

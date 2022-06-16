@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { getReviews } from "../../store/review";
+import { getReviews, cleanCurrentReview } from "../../store/review";
 import EditReviewModal from "../modal/EditReviewModal";
 import DeleteReview from "./delete_review";
 
@@ -15,7 +15,10 @@ const ReviewDisplay = () => {
 
     useEffect(() => {
         //make the cleanstate and dispatch before dispatching getReviews
-        dispatch(getReviews(agentId));
+        dispatch(getReviews(agentId))
+        // return () => {
+        //     dispatch(cleanCurrentReview())
+        // }
     }
     , [dispatch]);
 
@@ -27,7 +30,7 @@ const ReviewDisplay = () => {
                 {reviews.map(review => (
                     <>
                         <div key={review?.id}>
-                            <a href={`/agents/${agentId}/reviews/${review?.id}`}>Comment: {review?.comment}</a>
+                            <Link to={`/agents/${agentId}/reviews/${review?.id}`}>Comment: {review?.comment}</Link>
                         </div>
                         <EditReviewModal review={review} user={user}></EditReviewModal>
                         { (user?.id === review?.user_id) ? <DeleteReview></DeleteReview> : <></> }

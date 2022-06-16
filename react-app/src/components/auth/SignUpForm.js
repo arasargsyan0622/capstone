@@ -122,7 +122,7 @@ const SignUpForm = () => {
             ></input>
           </div>
         </div>
-        <button class="sign-up-button" type='submit'>Sign Up</button>
+        <button className="sign-up-button" type='submit'>Sign Up</button>
       </div>
     </form>
   );

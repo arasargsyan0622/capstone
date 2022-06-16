@@ -17,7 +17,7 @@ const DeleteListing = () => {
 
     return (
         <div>
-            <button onClick={handleSubmit}>Delete Server</button>
+            <button className="delete-listing" onClick={handleSubmit}>Delete Server</button>
         </div>
     )
 }

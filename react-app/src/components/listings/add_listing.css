@@ -1,0 +1,89 @@
+.add-listing-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 80vh;
+}
+
+.add-description-input,
+.add-price-input,
+.add-address-input,
+.add-city-input,
+.add-state-input,
+.add-zipcode-input,
+.add-bedrooms-input,
+.add-bathrooms-input,
+.add-size-input,
+.add-year-built-input {
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #343342;
+    border-radius: 4px;
+    border: 1px solid #c9d2d3;
+}
+
+.add-description-input,
+.add-price-input,
+.add-address-input,
+.add-bedrooms-input,
+.add-bathrooms-input,
+.add-size-input,
+.add-year-built-input {
+    width: 85.2%;
+    border: 1px solid #c9d2d3;
+    border-radius: 4px;
+    padding: 0 0 0 16px;
+    height: 40px;
+    outline: 0;
+}
+
+.checkboxes-container {
+    display: inline-flex;
+    margin-bottom: 1.5rem;
+}
+
+.parking-checkbox {
+    margin-left: 13.1rem;
+}
+
+.laundry-checkbox {
+    margin-left: 13.1rem;
+}
+
+.agent-names,
+.agent-options {
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #343342;
+    color: #fff;
+}
+
+.agent-label {
+    font-size: 23px;
+    font-weight: 500;
+    color: #343342;
+}
+
+.add-btn {
+    background: #343342;
+    color: #fff;
+    border: 1px solid #343342;
+    width: 22%;
+    min-height: 46px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 2rem
+}
+
+.full-address {
+    /* margin-left: 656px; */
+    width: 656px;
+}
+
+.add-city-input {
+    width: 252px;
+}
