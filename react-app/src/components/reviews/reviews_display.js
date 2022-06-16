@@ -16,11 +16,10 @@ const ReviewDisplay = () => {
     useEffect(() => {
         //make the cleanstate and dispatch before dispatching getReviews
         dispatch(getReviews(agentId))
-        // return () => {
-        //     dispatch(cleanCurrentReview())
-        // }
-    }
-    , [dispatch]);
+        return () => {
+            dispatch(cleanCurrentReview())
+        }
+    }, [dispatch]);
 
 
     return (

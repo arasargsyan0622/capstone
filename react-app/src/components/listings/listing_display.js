@@ -41,8 +41,8 @@ function Listings() {
                         <div className="listing-image">First Image Goes Here</div>
                         <div className='listing-price'>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(listing?.price)}</div>
                         <div className='listing-bds-bas'>{listing?.bedrooms} bds {listing?.bathrooms} ba {listing?.size.toLocaleString("en-US")} sqft</div>
-                        <EditListingModal listing={listing} user={user}></EditListingModal>
-                        { (user?.id === listing?.user_id) ? <DeleteListing></DeleteListing> : <></> }
+                        {/* <EditListingModal listing={listing} user={user}></EditListingModal>
+                        { (user?.id === listing?.user_id) ? <DeleteListing></DeleteListing> : <></> } */}
                     </div>
                     </>
                 ))}

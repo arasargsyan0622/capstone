@@ -55,7 +55,7 @@ function App() {
             <Listings />
           </Route>
           <Route path="/listings/:listingId(\d+)">
-            <Listings />
+            <Listing />
           </Route>
           <Route path="/agents" exact={true}>
             <AgentDisplay />
