@@ -23,22 +23,18 @@ def get_listing(id):
 
 @listing_routes.route("/", methods=["POST"])
 def create_listing():
-    # print("before form--------------------------------------------")
     form = ListingCreateForm()
     listings = Listing.query.all()
-    print("after form--------------------------------------------")
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         if request.files:
             image = request.files["image"]
-            # print("image in route=--=-=-=-==\n\n\n\n", image)
             if not allowed_file(image.filename):
                 return {"errors":"file type not permitted"}, 400
 
             image.filename = get_unique_filename(image.filename)
 
             upload = upload_file_to_s3(image)
-            # print("upload\n\n\n\n\n\n", upload)
             if "url" not in upload:
                 return upload, 400
 
@@ -47,7 +43,6 @@ def create_listing():
             url =None
 
         listing = Listing(
-            # title=form.title.data,
             description=form.description.data,
             price=form.price.data,
             size=form.size.data,
@@ -71,7 +66,7 @@ def create_listing():
         db.session.commit()
 
         return listing.to_dict()
-    return {form.errors}, 400
+    return {"errors": form.errors}, 400
 
 @listing_routes.route("/<int:id>", methods=["PUT"])
 def update_listing(id):
@@ -98,8 +93,6 @@ def update_listing(id):
 
             url = upload["url"]
 
-
-        # listing.title = form.title.data
         listing.description = form.description.data
         listing.price = form.price.data
         listing.is_available = form.is_available.data

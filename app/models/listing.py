@@ -4,7 +4,6 @@ class Listing(db.Model):
     __tablename__ = "listings"
 
     id = db.Column(db.Integer, primary_key=True)
-    # title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     size = db.Column(db.Integer, nullable=False)
@@ -30,7 +29,6 @@ class Listing(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            # 'title': self.title,
             'description': self.description,
             'price': self.price,
             'is_available': self.is_available,
