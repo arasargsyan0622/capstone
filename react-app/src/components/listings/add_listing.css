@@ -1,3 +1,7 @@
+label {
+    font-family: monospace;
+}
+
 .add-listing-form {
     display: flex;
     flex-direction: column;
@@ -31,6 +35,7 @@
 .add-bedrooms-input,
 .add-bathrooms-input,
 .add-size-input,
+.add-zipcode-input,
 .add-year-built-input {
     width: 85.2%;
     border: 1px solid #c9d2d3;
@@ -86,4 +91,65 @@
 
 .add-city-input {
     width: 252px;
+}
+
+.listing-errors {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    color: red;
+    font-family: monospace;
+}
+
+.add-city-input {
+    width: 49.5%;
+}
+
+.add-state-input {
+    width: 49.5%;
+}
+
+.zipcode-container,
+.price-container,
+.bedroom-container,
+.bathroom-container,
+.size-container,
+.year-built-container {
+    width: 656px
+}
+
+.add-zipcode-input {
+    width: 83.5%;
+    margin-left: 25px;
+}
+
+.add-price-input {
+    width: 83.6%;
+    margin-left: 38px;
+}
+
+.add-bedrooms-input {
+    width: 83.6%;
+    margin-left: 23px;
+}
+
+.add-bathrooms-input {
+    width: 83.7%;
+    margin-left: 15px;
+}
+
+.add-size-input {
+    width: 83.8%;
+}
+
+.add-year-built-input {
+    width: 83.9%;
+}
+
+.add-state-input {
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #343342;
+    color: #fff;
 }

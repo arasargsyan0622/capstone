@@ -1,3 +1,4 @@
+import { faCropSimple } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -42,96 +43,74 @@ const NewListing = ({ setShow }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([])
+    let errorsArray = []
 
     if (!address.length) {
-      setErrors(["Please enter the address"]);
-      return;
+      errorsArray.push("Please enter the address");
     }
 
     if (address.length > 50) {
-      setErrors(["Address cannot be more than 50 characters"]);
-      return;
+      errorsArray.push("Address cannot be more than 50 characters");
     }
 
    if (!city.length) {
-      setErrors(["Please enter the city"]);
-      return;
+      errorsArray.push("Please enter the city");
     }
 
     if (city.length > 30) {
-      setErrors(["City cannot be more than 30 characters"]);
-      return;
-    }
-
-   if (!state.length) {
-      setErrors(["Please enter the state"]);
-      return;
-    }
-
-    if (state.length > 15) {
-      setErrors(["State cannot be more than 15 characters"]);
-      return;
+      errorsArray.push("City cannot be more than 30 characters");
     }
 
     if(zipcode.length !== 5) {
-      setErrors(["Zipcode must have 5 digits"])
-      return
+      errorsArray.push("Zipcode must have 5 digits")
     }
 
     if(!description.length) {
-      setErrors(["Please enter the description"])
-      return
+      errorsArray.push("Please enter the description")
     }
 
     if(!price || price < 0) {
-      setErrors(["Please enter a valid price"])
-      return
+      errorsArray.push("Please enter a valid price")
     }
 
     if(!bedrooms.length || bedrooms < 0) {
-      setErrors(["Please enter a valid number of bedrooms"])
-      return
+      errorsArray.push("Please enter a valid number of bedrooms")
     }
 
     if (bedrooms > 65) {
-      setErrors(["Bedrooms cannot be more than 65"]);
-      return;
+      errorsArray.push("Bedrooms cannot be more than 65");
     }
 
     if(!bathrooms.length || bathrooms < 0) {
-      setErrors(["Please enter a valid number of bathrooms"])
-      return
+      errorsArray.push("Please enter a valid number of bathrooms")
     }
 
     if (bathrooms > 40) {
-      setErrors(["bathrooms cannot be more than 40"]);
-      return;
+      errorsArray.push("bathrooms cannot be more than 40");
     }
 
     if(!size.length || size < 0) {
-      setErrors(["Please enter a valid size"])
-      return
+      errorsArray.push("Please enter a valid size")
     }
 
     if (size > 200000) {
-      setErrors(["Size cannot be more than 200,000 square feet"]);
-      return;
+      errorsArray.push("Size cannot be more than 200,000 square feet");
     }
 
     if(!yearBuilt.length || yearBuilt < 0) {
-      setErrors(["Please enter a valid yearBuilt"])
-      return
+      errorsArray.push("Please enter a valid yearBuilt")
     }
 
     if (yearBuilt > new Date().getFullYear()) {
-      setErrors(["Year built cannot be in the future, hello?"]);
-      return;
+      errorsArray.push("Year built cannot be in the future, hello?");
     }
 
-    console.log("errors", errors)
+    if(errorsArray.length) {
+      setErrors(errorsArray)
+      return
+    }
 
     const payload = {
-      // title,
       description,
       price,
       size,
@@ -150,7 +129,6 @@ const NewListing = ({ setShow }) => {
       agent_id: agentId,
       // images_of_listing: image,
     };
-    // console.log("payload in add listing", payload)
 
     await dispatch(createListing(payload));
     history.push("/listings");
@@ -186,15 +164,16 @@ const NewListing = ({ setShow }) => {
           accept="image/*"
           onChange={updateImage}
           /> */}
-        {/* <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        /> */}
         <h1 className="country">
           {country}
         </h1>
+        <input
+          type="text"
+          className="add-description-input"
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
           <input
             type="text"
             placeholder="Address: 123 Cool Street/St."
@@ -212,15 +191,7 @@ const NewListing = ({ setShow }) => {
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
-          <input
-            type="text"
-            placeholder="State: California"
-            pattern="^[A-z].?[A-z]+."
-            className="add-state-input"
-            value={state}
-            onChange={(e) => setState(e.target.value)}
-          />
-          {/* <select className="add-state-input">
+          <select className="add-state-input" onChange={e => setState(e.target.value)}>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -272,55 +243,62 @@ const NewListing = ({ setShow }) => {
             <option value="WV">West Virginia</option>
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
-        </select> */}
-          <label>Zipcode: </label>
+        </select>
+        </div>
+          <div className="zipcode-container">
+            <label>Zipcode: </label>
+            <input
+              type="number"
+              className="add-zipcode-input"
+              value={zipcode}
+              onChange={(e) => setZipcode(e.target.value)}
+            />
+          </div>
+        <div className="price-container">
+          <label>Price: </label>
           <input
             type="number"
-            className="add-zipcode-input"
-            value={zipcode}
-            onChange={(e) => setZipcode(e.target.value)}
+            className="add-price-input"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
           />
         </div>
-        <input
-          type="text"
-          className="add-description-input"
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Price"
-          className="add-price-input"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
-        <input
-          type="number"
-          className="add-bedrooms-input"
-          value={bedrooms}
-          onChange={(e) => setBedrooms(e.target.value)}
-        />
-        <input
-          type="number"
-          className="add-bathrooms-input"
-          value={bathrooms}
-          onChange={(e) => setBathrooms(e.target.value)}
-        />
+        <div className="bedroom-container">
+          <label>Bedroom: </label>
+          <input
+            type="number"
+            className="add-bedrooms-input"
+            value={bedrooms}
+            onChange={(e) => setBedrooms(e.target.value)}
+          />
+        </div>
+        <div className="bathroom-container">
+          <label>Bathroom: </label>
+          <input
+            type="number"
+            className="add-bathrooms-input"
+            value={bathrooms}
+            onChange={(e) => setBathrooms(e.target.value)}
+          />
+        </div>
+        <div className="size-container">
+        <label>Size(sqft): </label>
         <input
           type="number"
-          placeholder="Size in sqft"
           className="add-size-input"
           value={size}
           onChange={(e) => setSize(e.target.value)}
         />
+        </div>
+        <div className="year-built-container">
+        <label>Year Built: </label>
         <input
           type="number"
-          placeholder="Year Built"
           className="add-year-built-input"
           value={yearBuilt}
           onChange={(e) => setYearBuilt(e.target.value)}
         />
+        </div>
         <div className="checkboxes-container">
           <div className="available-checkbox">
             <label>Is Available</label>
