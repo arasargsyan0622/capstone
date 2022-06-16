@@ -1,14 +1,20 @@
 .listing-container {
     display: flex;
     /* flex-direction: column; */
+    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
 
-.listing-price {
+.listing-info {
+    border: 1px solid red
+}
+
+.listing-price,
+.listing-image {
     margin: 8px 0 0;
     height: 20px;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 20px;
     font-weight: 600;
     color: #2A2A33
@@ -22,8 +28,33 @@
 }
 
 .listing-address {
+    margin: 8px 0 0;
+    height: 20px;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 600;
+    color: #2A2A33;
+    text-decoration: none
+}
+
+.edit-listing,
+.delete-listing,
+.add-listing {
+    margin-top: 8px;
+    background: #343342;
+    color: #fff;
+    border: 1px solid #343342;
+    border-radius: 4px;
+    font-weight: 400;
     font-size: 12px;
-    font-weight: 300;
-    line-height: 14px;
-    margin: 8px 0 0
+    width: 100px;
+    min-height: 30px;
+    cursor: pointer;
+    font-family:monospace;
+}
+
+.listing-header {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
 }

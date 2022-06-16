@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { getListings } from "../../store/listing"
 import { getAgents } from "../../store/agent";
 import NewListingModal from '../modal/NewListingModal';
@@ -8,7 +8,7 @@ import EditListingModal from '../modal/EditListingModal';
 import DeleteListing from "./delete_listing"
 import "./listingdisplay.css"
 
-function Listings({agent}) {
+function Listings() {
     const history = useHistory();
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
@@ -28,21 +28,24 @@ function Listings({agent}) {
     return (
         // isLoaded ? (
         <div>
-            <h1>Listings</h1>
+            <div className='listing-header'>
+                <h1>Listings</h1>
+                <NewListingModal></NewListingModal>
+            </div>
             <div className="listing-container">
                 {listings.map(listing => (
                     <>
                     <div className='listing-info' key={listing?.id}>
-                        <a href={`/listings/${listing?.id}`}>Title: {listing?.title}</a>
+                        { (user?.id === listing?.user_id) ? <Link className='listing-address' to={`/listings/${listing.id}`}>* {listing?.address}, {listing?.city}, {listing?.state} {listing?.zipcode}</Link>
+                        : <Link className='listing-address' to={`/listings/${listing.id}`}>{listing?.address}, {listing?.city}, {listing?.state} {listing?.zipcode}</Link>}
+                        <div className="listing-image">First Image Goes Here</div>
                         <div className='listing-price'>${listing?.price}</div>
                         <div className='listing-bds-bas'>{listing?.bedrooms} bds {listing?.bathrooms} ba {listing?.size} sqft</div>
-                        <div className='listing-address'>{listing?.address}, {listing?.city}, {listing?.state} {listing?.zipcode}</div>
+                        <EditListingModal listing={listing} user={user}></EditListingModal> 
+                        { (user?.id === listing?.user_id) ? <DeleteListing></DeleteListing> : <></> }
                     </div>
-                    <EditListingModal listing={listing} user={user}></EditListingModal>
-                    { (user?.id === listing?.user_id) ? <DeleteListing></DeleteListing> : <></> }
                     </>
                 ))}
-                <NewListingModal></NewListingModal>
             </div>
         </div>
         // ) : null

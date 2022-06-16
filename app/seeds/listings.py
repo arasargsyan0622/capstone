@@ -2,7 +2,7 @@ from app.models import db, Listing
 
 def seed_listings():
     house = Listing(
-        title='House',
+        # title='House',
         description='This is a house',
         price=2700,
         is_available=False,
@@ -22,7 +22,7 @@ def seed_listings():
     )
 
     apartment = Listing(
-        title='Apartment',
+        # title='Apartment',
         description='This is an apartment',
         price=1800,
         is_available=True,
@@ -42,7 +42,7 @@ def seed_listings():
     )
 
     condo = Listing(
-        title='Condo',
+        # title='Condo',
         description='This is a condo',
         price=2200,
         is_available=False,

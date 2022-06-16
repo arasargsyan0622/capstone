@@ -25,7 +25,7 @@ def get_agent(id):
 def all_reviews(id):
     # agent = Agent.query.get(id)
     # print("agent in all_reviews: ------------------------------", agent)
-    reviews = Review.query.filter(Review.agent_id==id)
+    reviews = Review.query.filter(Review.agent_id==id).all()
     # print("reviews in route ---------==-=-=-=-=-==============-=-=-=", reviews)
     return {"reviews" : [review.to_dict() for review in reviews]}
 

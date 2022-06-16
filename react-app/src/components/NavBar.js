@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { useSelector, useDispatch } from 'react-redux';
 import "./NavBar.css"
@@ -13,7 +13,7 @@ const NavBar = () => {
   return session.user ? (
     <nav className='nav'>
         <NavLink  to='/' exact={true} activeClassName='active'>
-          <div className="home-icon"><a><img className="home-icon" src='https://images-platform.99static.com/KTGtDEOgPpLWzQqaF3MhUok7l6I=/500x500/top/smart/99designs-contests-attachments/43/43793/attachment_43793546'></img></a></div>
+          <div className="home-icon"><img className="home-icon" src='https://images-platform.99static.com/KTGtDEOgPpLWzQqaF3MhUok7l6I=/500x500/top/smart/99designs-contests-attachments/43/43793/attachment_43793546'></img></div>
         </NavLink>
       <div className='nav-btns'>
         <NavLink className="listings" to='/listings' exact={true} activeClassName='active'>

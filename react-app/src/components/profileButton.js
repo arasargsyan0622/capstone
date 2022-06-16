@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 import * as sessionActions from "../store/session"
 import { faUserCircle  } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -44,6 +44,9 @@ function ProfileButton({ user }) {
         <>
           <div className="username">Hello, {user?.firstName}</div>
           <div className="email">Your Listings</div>
+          {/* <NavLink className="agents" to='/agents' exact={true} activeClassName='active'>
+            Our Agents
+          </NavLink> */}
           <div>
             <button className="logout-btn" onClick={logout}>Log Out</button>
           </div>

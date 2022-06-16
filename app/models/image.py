@@ -11,7 +11,7 @@ class Image(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     images_user = db.relationship('User', back_populates='user_images')
-    listing_images = db.relationship('Listing', back_populates='images_of_listing')
+    listing_images = db.relationship('Listing', foreign_keys=[listing_id], back_populates='images_of_listing')
 
     def to_dict(self):
         return {

@@ -2,6 +2,7 @@ import rfdc from "rfdc"
 const clone = rfdc()
 
 const LOAD_ALL_LISTING = "/api/listings/LOAD_LISTINGS"
+const LOAD_LISTING = "/api/listings/LOAD_LISTING"
 const CREATE_LISTING = "/api/listings/CREATE_LISTING"
 const EDIT_LISTING = "/api/listings/EDIT_LISTING"
 const DELETE_LISTING = "/api/listings/DELETE_LISTING"
@@ -10,6 +11,13 @@ const allListings = listings => {
     return {
         type: LOAD_ALL_LISTING,
         listings
+    }
+}
+
+const oneListing = listing => {
+    return {
+        type: LOAD_LISTING,
+        listing
     }
 }
 
@@ -42,9 +50,17 @@ export const getListings = () => async dispatch => {
     }
 }
 
+export const getListing = id => async dispatch => {
+    const response = await fetch(`/api/listings/${id}`)
+    if(response.ok) {
+        const listing = await response.json()
+        dispatch(oneListing(listing))
+    }
+}
+
 export const createListing = data => async dispatch => {
     const formData = new FormData()
-    formData.append("title", data.title)
+    // formData.append("title", data.title)
     formData.append("description", data.description)
     formData.append("price", data.price)
     formData.append("size", data.size)
@@ -78,7 +94,7 @@ export const createListing = data => async dispatch => {
 
 export const updateListing = data => async dispatch => {
     const formData = new FormData()
-    formData.append("title", data.title)
+    // formData.append("title", data.title)
     formData.append("description", data.description)
     formData.append("price", data.price)
     formData.append("is_available", data.is_available)
@@ -115,6 +131,9 @@ const listingReducer = (state = initialState, action) => {
             listings.forEach(listing => {
                 newState[listing.id] = listing
             })
+            return newState
+        case LOAD_LISTING:
+            newState[action.listing.id] = action.listing
             return newState
         case CREATE_LISTING:
             newState[action.listing.id] = action.listing;

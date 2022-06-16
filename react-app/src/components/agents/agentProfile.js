@@ -16,8 +16,8 @@ function AgentProfile({ agent }) {
                     <div className="agent-profile-phone"><FontAwesomeIcon icon={faPhone}/> {agent?.phone}</div>
                     <div className="agent-profile-license">Agent License # {agent?.license_number}</div>
                     <div className="links">
-                        <a className="agent-github" href={agent?.github} target="_blank"><FontAwesomeIcon icon={faGithub}/></a>
-                        <a className="agent-linkedin" href={agent?.linkedin} target="_blank"><FontAwesomeIcon icon={faLinkedin}/></a>
+                        <Link className="agent-github" to={agent?.github} target="_blank"><FontAwesomeIcon icon={faGithub}/></Link>
+                        <Link className="agent-linkedin" to={agent?.linkedin} target="_blank"><FontAwesomeIcon icon={faLinkedin}/></Link>
                     </div>
                 </div>
                 <img className="agent-img" src={agent?.photo}></img>

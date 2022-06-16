@@ -4,11 +4,11 @@ class Listing(db.Model):
     __tablename__ = "listings"
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(255), nullable=False)
+    # title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     size = db.Column(db.Integer, nullable=False)
-    is_available = db.Column(db.Boolean, nullable=False)
+    is_available = db.Column(db.Boolean)
     year_built = db.Column(db.Integer, nullable=False)
     bedrooms = db.Column(db.Integer, nullable=False)
     bathrooms = db.Column(db.Integer, nullable=False)
@@ -30,7 +30,7 @@ class Listing(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'title': self.title,
+            # 'title': self.title,
             'description': self.description,
             'price': self.price,
             'is_available': self.is_available,
@@ -46,5 +46,5 @@ class Listing(db.Model):
             'state': self.state,
             'zipcode': self.zipcode,
             'user_id': self.user_id,
-            'images_of_listing': [image_of_listing.to_dict() for image_of_listing in self.images_of_listing]
+            # 'images_of_listing': [image_of_listing.to_dict() for image_of_listing in self.images_of_listing]
         }

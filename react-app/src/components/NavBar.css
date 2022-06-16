@@ -14,7 +14,25 @@
     padding-top: 0.8rem;
 }
 
-.listings,
-.agents {
-    margin-right: 0.5rem
+.agents,
+.listings {
+    margin-right: 0.5rem;
+    font-size: 18px;
+    color:indianred;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: monospace;
+}
+
+.logout-btn {
+    background: #343342;
+    color: #fff;
+    border: 1px solid #343342;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 12px;
+    width: 70px;
+    /* min-height: 30px; */
+    cursor: pointer;
+    font-family:monospace;
 }

@@ -4,13 +4,14 @@ import session from './session'
 import listingReducer from './listing';
 import agentReducer from './agent';
 import reviewReducer from './review';
-
+import currListingReducer from './currListing';
 
 const rootReducer = combineReducers({
   session,
   listings: listingReducer,
   agents: agentReducer,
-  reviews: reviewReducer
+  reviews: reviewReducer,
+  curr_listing: currListingReducer
 });
 
 

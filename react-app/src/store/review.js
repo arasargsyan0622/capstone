@@ -5,6 +5,7 @@ const LOAD_ALL_REVIEWS = "/api/reviews/LOAD_REVIEWS";
 const ADD_REVIEW = "/api/reviews/ADD_REVIEW";
 const EDIT_REVIEW = "/api/reviews/EDIT_REVIEW"
 const DELETE_REVIEW = "/api/reviews/DELETE_REVIEW"
+const CLEAN_CURRENT_REVIEW = "/api/reviews/CLEAN_CURRENT_REVIEW";
 
 const allReviews = reviews => {
     return {
@@ -31,6 +32,12 @@ const removeReview = review => {
     return {
         type: DELETE_REVIEW,
         review
+    }
+}
+
+export const cleanCurrentReview = () => {
+    return {
+        type: CLEAN_CURRENT_REVIEW
     }
 }
 
@@ -114,6 +121,9 @@ const reviewReducer = (state = initialState, action) => {
         case DELETE_REVIEW:
             delete newState[action.review.id]
             return newState
+        case CLEAN_CURRENT_REVIEW:
+            const cleanState = {}
+            return cleanState
         default:
             return state
     }
