@@ -1,0 +1,178 @@
+.address-icons,
+.city-numbers {
+    display: flex;
+    margin-left: 25%;
+}
+
+.single-bed {
+    margin-left: 30%;
+}
+
+.single-bath {
+    margin-left: 7%;
+}
+
+.single-square {
+    margin-left: 7%;
+}
+
+.single-address {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 39px;
+    color: #343342;
+    font-family: monospace;
+}
+
+.single-btns {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.single-listing-header {
+    margin-top: 2rem
+}
+
+.listing-city {
+    margin-right: 10rem;
+    font-weight: 700;
+    font-size: 18px;
+    color: #343342;
+    font-family: monospace;
+    line-height: 30px;
+}
+.bed-container {
+    margin-left: 20rem;
+    margin-top: 0.5rem;
+}
+
+.bath-container {
+    margin-left: 5rem;
+    margin-top: 0.5rem;
+}
+
+.sqft-container {
+    margin-left: 4rem;
+    margin-top: 0.5rem;
+}
+
+.listing-beds {
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    font-weight: 700;
+    font-size: 14px;
+    color: #343342;
+    font-family: monospace;
+    line-height: 30px;
+}
+
+.listing-baths {
+    margin-top: 0.5rem;
+    font-weight: 700;
+    font-size: 14px;
+    color: #343342;
+    font-family: monospace;
+    line-height: 30px;
+}
+
+.listing-sqft {
+    margin-top: 0.5rem;
+    font-weight: 700;
+    font-size: 14px;
+    color: #343342;
+    font-family: monospace;
+    line-height: 30px;
+}
+
+.images-container {
+    margin-top: 10rem;
+}
+
+.property-info-container {
+    display: flex;
+    margin-top: 5rem;
+    margin-left: 25%;
+}
+
+.desc-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #343342;
+    font-family: monospace;
+}
+
+.property-description {
+    margin-top: 3rem;
+    font-size: 14px;
+    line-height: 24px;
+    color: #6d797a;
+    white-space: break-spaces;
+}
+
+.property-details {
+    margin-top: 5rem;
+    font-size:18px;
+    font-weight: 600;
+    color: #343342;
+    font-family: monospace;
+    line-height: 1.5;
+}
+
+.year-built-container-single {
+    display: flex;
+    margin-top: 3rem;
+}
+
+.year-built-num {
+    margin-left: 20rem;
+}
+
+.house-size-container,
+.parking-container-single,
+.laundry-container-single,
+.isAvailable-container-single {
+    display: flex;
+    margin-top: 1.5rem;
+}
+
+.house-size-num {
+    margin-left: 19.5rem;
+}
+
+.parking-value {
+    margin-left: 19.5rem;
+}
+
+.price-agent-container {
+    background-color: rgb(182, 210, 238);
+    margin-left: 10rem;
+    width: 300px;
+    height: 250px;
+}
+
+.find-container {
+    margin-top: 1.5rem;
+}
+
+.find-btn,
+.bookin-btn {
+    background: #343342;
+    color: #fff;
+    border: 1px solid #343342;
+    width: 100%;
+    min-height: 46px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.price-num {
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 32px;
+    font-family: monospace;
+    color: rgb(0, 0, 0)
+}
