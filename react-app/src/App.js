@@ -13,7 +13,7 @@ import AgentDisplay from "./components/agents/agent_display";
 import Splash from "./components/splash/splash";
 import SingleAgent from "./components/agents/agentInfo";
 import Listing from "./components/listings/single_listing_display";
-
+import { Helmet } from "react-helmet";
 
 
 function App() {
@@ -37,6 +37,12 @@ function App() {
   return (
     isLoaded && (
       <BrowserRouter>
+      <Helmet>
+          <meta charSet="utf-8" />
+          <title>ltnk</title>
+          <link rel="canonical" href="http://mysite.com/example" />
+          <meta name="description" content="Title and icon" />
+      </Helmet>
         <NavBar />
         <Switch>
           <Route path="/" exact={true}>
