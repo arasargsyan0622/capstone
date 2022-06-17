@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { addReview } from "../../store/review";
+import "./addreview.css"
 
 const NewReview = ({ setShow }) => {
     const dispatch = useDispatch();
@@ -40,29 +41,32 @@ const NewReview = ({ setShow }) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form className="add-review-form" onSubmit={handleSubmit}>
                 <div className="listing-errors">
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
                     ))}
                 </div>
-                <label>Comment:</label>
+                <label className="comment-label">Comment:</label>
                 <textarea
+                    className="comment-add-review"
                     name="comment"
                     required
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                 />
-                <label>Rating:</label>
-                <select onChange={e=>setRating(e.target.value)}>
-                    <option selected disabled>Choose a rating</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <button type="submit">Submit</button>
+                <div className="rating-container">
+                    <label className="rating-label">Rating:</label>
+                    <select onChange={e=>setRating(e.target.value)}>
+                        <option selected disabled>Choose a rating</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <button className="add-review-btn" type="submit">Submit</button>
             </form>
         </div>
     )

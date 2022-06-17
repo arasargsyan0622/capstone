@@ -33,6 +33,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
+    text-decoration: none;
     padding: 0.5rem;
     border: 1px solid black;
 }
@@ -51,4 +52,10 @@
 .edit-btn-review,
 .delete-btn-review {
     height: 27px;
+}
+
+.rating {
+    margin-top: 0.5rem;
+    font-size: 18px;
+    font-weight: 700;
 }

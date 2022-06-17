@@ -33,16 +33,16 @@ const ReviewDisplay = () => {
             </div>
             <div className="reviews-container">
                 {reviews.map(review => (
-                    <div className="review-card">
+                    <Link to={`/agents/${agentId}/reviews/${review?.id}`} className="review-card">
                         <div className="comment-section" key={review?.id}>
-                            <Link to={`/agents/${agentId}/reviews/${review?.id}`} className="comment">Comment: {review?.comment}</Link>
-                            <div>Rating: {review?.rating}</div>
+                            <div className="comment">{review?.comment}</div>
+                            <div className="rating">Rating: {review?.rating}</div>
                         </div>
                         <div className="review-btns">
                             <EditReviewModal className="meow" review={review} user={user}></EditReviewModal>
                             { (user?.id === review?.user_id) ? <DeleteReview></DeleteReview> : <></> }
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>
