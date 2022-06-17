@@ -41,6 +41,5 @@
 
 .my-linkedin,
 .my-github {
-    display: flex;
-    align-items: center;
+    margin-top: 0.8rem;
 }

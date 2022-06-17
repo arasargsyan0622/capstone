@@ -35,18 +35,71 @@ function Listing() {
             <div className='single-listing-header-container'>
                 {listings.map(listing => (
                     <>
-                        <EditListingModal listing={listing} user={user}></EditListingModal>
-                        { (user?.id === listing?.user_id) ? <DeleteListing></DeleteListing> : <></> }
+                        <div className='single-btns'>
+                            <EditListingModal listing={listing} user={user}></EditListingModal>
+                            { (user?.id === listing?.user_id) ? <DeleteListing></DeleteListing> : <></> }
+                        </div>
                         <div className='single-listing-header'>
                             <div className='address-icons'>
-                                <div>{listing?.address}</div>
-                                <div><FontAwesomeIcon icon={faBed}/></div>
-                                <div><FontAwesomeIcon icon={faBath}/></div>
-                                <div><FontAwesomeIcon icon={faVectorSquare}/></div>
+                                <div className='address-container-single'>
+                                    <div className='single-address'>{listing?.address}</div>
+                                    <div className='listing-city'>{listing?.city}, {listing?.state} {listing?.zipcode}</div>
+                                </div>
+                                <div className='bed-container'>
+                                    <div className='single-bed'><FontAwesomeIcon icon={faBed} size="xl"/></div>
+                                    <div className='listing-beds'>{listing?.bedrooms} Beds</div>
+                                </div>
+                                <div className='bath-container'>
+                                    <div className='single-bath'><FontAwesomeIcon icon={faBath} size="xl"/></div>
+                                    <div className='listing-baths'>{listing?.bathrooms} Baths </div>
+                                </div>
+                                <div className='sqft-container'>
+                                    <div className='single-square'><FontAwesomeIcon icon={faVectorSquare} size="xl"/></div>
+                                    <div className='listing-sqft'>{listing?.size} SQ FT</div>
+                                </div>
                             </div>
-                            <div className='city-numbers'>
-                                <div>{listing?.city}, {listing?.state} {listing?.zipcode}</div>
-                                <div>{listing?.bedrooms} Beds {listing?.bathrooms} Baths {listing?.size} SQ FT</div>
+                        </div>
+                        <div className='images-container'>
+                            <div>IMAGES GOES HERE 440X450px</div>
+                        </div>
+                        <div className='property-info-container'>
+                            <div className='property-info'>
+                                <div className='desc-text'>Property Description</div>
+                                <div className='property-description'>{listing?.description}</div>
+                                <div className='property-details'>Property Details</div>
+                                <div className='year-built-container-single'>
+                                    <div className='year-built-text'>Year Built</div>
+                                    <div className='year-built-num'>{listing?.year_built}</div>
+                                </div>
+                                <div className='house-size-container'>
+                                    <div className='house-size-text'>House Size</div>
+                                    <div className='house-size-num'>{listing?.size} SQ FT</div>
+                                </div>
+                                <div className='parking-container-single'>
+                                    <div className='parking-text'>Parking</div>
+                                    <div className='parking-value'>{listing?.parking}</div>
+                                </div>
+                                <div className='laundry-container-single'>
+                                    <div className='laundry-text'>Laundry</div>
+                                    <div className='laundry-value'>{listing?.laundry}</div>
+                                </div>
+                                <div className='isAvailable-container-single'>
+                                    <div className='isAvailable-text'>Availability</div>
+                                    <div className='isAvailable-value'>{listing?.isAvailable}</div>
+                                </div>
+                            </div>
+                            <div className='price-agent-container'>
+                                <div className='price-container-single'>
+                                    <div className='price-num'>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(listing?.price)}</div>
+                                </div>
+                                <div className='find-container'>
+                                    <Link to="/agents">
+                                        <button className="find-btn" type="submit">Find Agents</button>
+                                    </Link>
+                                </div>
+                                <div className='schedule-container'>
+                                    <button className="bookin-btn" type='submit'>Schedule A Booking (In progress)</button>
+                                </div>
                             </div>
                         </div>
                     </>
