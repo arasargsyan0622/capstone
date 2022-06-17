@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { deleteReview } from '../../store/review'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const DeleteReview = () => {
     const history = useHistory()
@@ -17,7 +19,7 @@ const DeleteReview = () => {
 
     return (
         <div>
-            <button onClick={handleSubmit}>Delete Review</button>
+            <button className="delete-btn-review" onClick={handleSubmit}><FontAwesomeIcon icon={faTrash}/></button>
         </div>
     )
 }

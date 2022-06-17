@@ -94,11 +94,11 @@ function Listing() {
                                 </div>
                                 <div className='find-container'>
                                     <Link to="/agents">
-                                        <button className="find-btn" type="submit">Find Agents</button>
+                                        <button className="find-btn" type="submit">Find an Agent</button>
                                     </Link>
                                 </div>
                                 <div className='schedule-container'>
-                                    <button className="bookin-btn" type='submit'>Schedule A Booking (In progress)</button>
+                                    <div className="bookin-btn" type='submit'>Schedule A Booking (In progress)</div>
                                 </div>
                             </div>
                         </div>

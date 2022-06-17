@@ -3,7 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { getReviews, cleanCurrentReview } from "../../store/review";
 import EditReviewModal from "../modal/EditReviewModal";
+import NewReviewModal from "../modal/NewReviewModal";
 import DeleteReview from "./delete_review";
+
+import "./reviews.css"
 
 
 const ReviewDisplay = () => {
@@ -24,16 +27,22 @@ const ReviewDisplay = () => {
 
     return (
         <div>
-            <h2>Reviews</h2>
-            <div>
+            <div className="reviews-header-container">
+                <div className="reviews-header-text">Reviews</div>
+                <NewReviewModal />
+            </div>
+            <div className="reviews-container">
                 {reviews.map(review => (
-                    <>
-                        <div key={review?.id}>
-                            <Link to={`/agents/${agentId}/reviews/${review?.id}`}>Comment: {review?.comment}</Link>
+                    <div className="review-card">
+                        <div className="comment-section" key={review?.id}>
+                            <Link to={`/agents/${agentId}/reviews/${review?.id}`} className="comment">Comment: {review?.comment}</Link>
+                            <div>Rating: {review?.rating}</div>
                         </div>
-                        <EditReviewModal review={review} user={user}></EditReviewModal>
-                        { (user?.id === review?.user_id) ? <DeleteReview></DeleteReview> : <></> }
-                    </>
+                        <div className="review-btns">
+                            <EditReviewModal className="meow" review={review} user={user}></EditReviewModal>
+                            { (user?.id === review?.user_id) ? <DeleteReview></DeleteReview> : <></> }
+                        </div>
+                    </div>
                 ))}
             </div>
         </div>

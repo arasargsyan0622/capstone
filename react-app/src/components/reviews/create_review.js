@@ -7,15 +7,23 @@ const NewReview = ({ setShow }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { agentId } = useParams();
-    console.log("agentId", agentId)
+    // console.log("agentId", agentId)
+    const [errors, setErrors] = useState([])
     const [comment, setComment] = useState("");
-    const [rating, setRating] = useState(0);
+    const [rating, setRating] = useState("Choose a rating");
     const userId = useSelector(state => state.session.user?.id);
-
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrors([])
+        let errorArray = []
+
+        if(rating === "Choose a rating") {
+            errorArray.push(["Please choose a rating"])
+            setErrors(errorArray)
+        }
+
         const payload = {
             comment,
             rating,
@@ -23,14 +31,21 @@ const NewReview = ({ setShow }) => {
             agent_id: agentId
         };
 
-        await dispatch(addReview(payload));
-        history.push(`/agents/${agentId}`);
-        setShow(false);
+        const createReview = await dispatch(addReview(payload));
+        if (createReview) {
+            history.push(`/agents/${agentId}`);
+            setShow(false);
+        }
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
+                <div className="listing-errors">
+                    {errors.map((error, ind) => (
+                        <div key={ind}>{error}</div>
+                    ))}
+                </div>
                 <label>Comment:</label>
                 <textarea
                     name="comment"
@@ -40,7 +55,8 @@ const NewReview = ({ setShow }) => {
                 />
                 <label>Rating:</label>
                 <select onChange={e=>setRating(e.target.value)}>
-                    <option value="1" >1</option>
+                    <option selected disabled>Choose a rating</option>
+                    <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>

@@ -26,8 +26,12 @@ function AgentDisplay() {
 
     return (
         isLoaded && (
-            <div>
-                <div>
+            <div className='agent-body'>
+                <div className='agent-display-header'>
+                    <h1 className='agent-header'>Find an Agent Who Knows Your Market Best</h1>
+                    <div className='search'>Search (in progress)</div>
+                </div>
+                <div className='agent container'>
                     {agents.map(agent => (
                         <div className="daddy-container" key={agent.id}>
                             <Link className="agent-name" to={`/agents/${agent.id}`}><AgentCard agent={agent}/></Link>
