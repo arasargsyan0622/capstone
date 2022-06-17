@@ -1,12 +1,15 @@
 .listing-container {
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
+    border: 1px solid black;
 }
 
 .listing-info {
+    margin-top: 1rem;
+    margin-left: 3rem;
     border: 1px solid red
 }
 

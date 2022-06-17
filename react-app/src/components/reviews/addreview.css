@@ -1,0 +1,44 @@
+.add-review-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    width: 30vh;
+}
+
+.comment-add-review {
+    margin-bottom: 8px;
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #343342;
+    border-radius: 4px;
+    border: 1px solid #c9d2d3;
+}
+
+.comment-label,
+.rating-label {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #343342;
+    font-family: monospace;
+}
+
+.rating-container {
+    display: flex;
+}
+
+.add-review-btn {
+    background: #343342;
+    color: #fff;
+    border: 1px solid #343342;
+    width: 25%;
+    min-height: 46px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 1rem;
+}
