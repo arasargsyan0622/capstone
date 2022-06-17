@@ -29,7 +29,6 @@ function SingleAgent({ review }) {
             <div>
                 <AgentProfile agent={agents[agentId-1]} />
                 <ReviewDisplay reviews={review} />
-                <NewReviewModal />
             </div>
         </div>
     )

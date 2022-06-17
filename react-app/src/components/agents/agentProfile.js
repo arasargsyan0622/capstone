@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function AgentProfile({ agent }) {
     return (
-        <>
+        <div>
             <div className='agent-profile-info'>
                 <div className="agent-left-side">
                     <div className="agent-profile-name">{agent?.first_name} {agent?.last_name}</div>
@@ -26,7 +26,7 @@ function AgentProfile({ agent }) {
                 <div className="agent-profile-bottom-name">About {agent?.first_name}</div>
                 <div className="agent-profile-bio">{agent?.bio}</div>
             </div>
-        </>
+        </div>
     )
 }
 

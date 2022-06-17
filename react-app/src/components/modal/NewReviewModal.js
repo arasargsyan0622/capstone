@@ -6,7 +6,7 @@ function NewReviewModal() {
     const [show, setShow] = useState(false);
     return (
         <>
-            <button onClick={() => setShow(true)}>
+            <button className="add-review" onClick={() => setShow(true)}>
                 Add Review
             </button>
             {show && (
