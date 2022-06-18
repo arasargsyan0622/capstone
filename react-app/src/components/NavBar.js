@@ -23,9 +23,9 @@ const NavBar = () => {
           Github
         </a>
       <div className='nav-btns'>
-        <NavLink className="listings" to='/listings' exact={true} activeClassName='active'>
+        {/* <NavLink className="listings" to='/listings' exact={true} activeClassName='active'>
           Listings
-        </NavLink>
+        </NavLink> */}
         <NavLink className="agents" to='/agents' exact={true} activeClassName='active'>
           Agents
         </NavLink>

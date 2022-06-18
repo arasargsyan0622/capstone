@@ -87,9 +87,8 @@ export const updateReview = (data) => async dispatch => {
     }
 }
 
-export const deleteReview = (data) => async dispatch => {
-    console.log("data in delete", data)
-    const response = await fetch(`/api/agents/${data}/reviews/${data}`, {
+export const deleteReview = (id, review_id) => async dispatch => {
+    const response = await fetch(`/api/agents/${id}/reviews/${review_id}`, {
         method: "DELETE"
     });
     if (response.ok) {

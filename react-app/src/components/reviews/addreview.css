@@ -42,3 +42,8 @@
     font-weight: 600;
     margin-top: 1rem;
 }
+
+.comment-section {
+    overflow-wrap: normal;
+}
+

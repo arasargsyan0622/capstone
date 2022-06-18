@@ -29,6 +29,12 @@ def all_reviews(id):
     # print("reviews in route ---------==-=-=-=-=-==============-=-=-=", reviews)
     return {"reviews" : [review.to_dict() for review in reviews]}
 
+@agent_routes.route("/<int:id>/reviews/<int:review_id>")
+def get_review(id, review_id):
+    agent = Agent.query.get(id)
+    review = Review.query.get(review_id)
+    return review.to_dict()
+
 
 @agent_routes.route("/<int:id>/reviews", methods=["POST"])
 def add_review(id):

@@ -5,13 +5,16 @@ import listingReducer from './listing';
 import agentReducer from './agent';
 import reviewReducer from './review';
 import currListingReducer from './currListing';
+import currReviewReducer from './currReview';
+
 
 const rootReducer = combineReducers({
   session,
   listings: listingReducer,
   agents: agentReducer,
   reviews: reviewReducer,
-  curr_listing: currListingReducer
+  curr_listing: currListingReducer,
+  curr_review: currReviewReducer
 });
 
 

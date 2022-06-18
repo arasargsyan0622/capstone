@@ -9,11 +9,11 @@ const DeleteReview = () => {
     const history = useHistory()
     const dispatch = useDispatch()
 
-    const { reviewId, agentId } = useParams()
+    const { agentId, reviewId } = useParams()
 
     const handleSubmit = async e => {
         e.preventDefault()
-        await dispatch(deleteReview(reviewId))
+        await dispatch(deleteReview(agentId, reviewId))
         history.push(`/agents/${agentId}`)
     }
 

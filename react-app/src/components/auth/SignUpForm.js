@@ -18,6 +18,12 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+
+    if(password !== repeatPassword) {
+      setErrors(['Passwords do not match']);
+      return;
+    }
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(firstName, lastName, email, password));
       if (data) {
@@ -71,6 +77,7 @@ const SignUpForm = () => {
           <div className='names-container'>
             <div className='first-name-container'>
               <input
+                required
                 type='text'
                 name='first_name'
                 className='first-name-input'
@@ -81,6 +88,7 @@ const SignUpForm = () => {
             </div>
             <div className='last-name-container'>
               <input
+                required
                 type='text'
                 name='last_name'
                 className='last-name-input'
@@ -92,16 +100,19 @@ const SignUpForm = () => {
           </div>
           <div className='sign-up-email-container'>
             <input
+              required
               type='text'
+              pattern='^\S+@\S+\.\S+$'
               name='email'
               className='email-input'
-              placeholder='Email address'
+              placeholder='Email address: example@example.com'
               onChange={updateEmail}
               value={email}
             ></input>
           </div>
           <div className='password-container'>
             <input
+              required
               type='password'
               name='password'
               className='password-input'

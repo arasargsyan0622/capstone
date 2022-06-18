@@ -20,9 +20,17 @@ const NewReview = ({ setShow }) => {
         setErrors([])
         let errorArray = []
 
+        if (comment.length < 3 || comment.length > 500) {
+            errorArray.push("Comment must be between 3 and 500 characters")
+        }
+
         if(rating === "Choose a rating") {
             errorArray.push(["Please choose a rating"])
-            setErrors(errorArray)
+        }
+
+        if(errorArray.length) {
+        setErrors(errorArray)
+        return
         }
 
         const payload = {

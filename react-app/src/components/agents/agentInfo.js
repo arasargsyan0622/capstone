@@ -5,6 +5,7 @@ import { getAgent } from "../../store/agent";
 import NewReviewModal from '../modal/NewReviewModal';
 import NewReview from '../reviews/create_review';
 import ReviewDisplay from '../reviews/reviews_display';
+import Review from '../reviews/single_review';
 import AgentProfile from './agentProfile';
 
 
