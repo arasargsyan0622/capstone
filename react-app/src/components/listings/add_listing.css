@@ -8,7 +8,7 @@ label {
     align-items: center;
     justify-content: center;
     height: 80vh;
-    width: 80vh;
+    width: 80vw;
 }
 
 .add-description-input,
@@ -86,7 +86,7 @@ label {
 
 .full-address {
     /* margin-left: 656px; */
-    width: 656px;
+    width: 87%;
 }
 
 .add-city-input {
@@ -103,7 +103,7 @@ label {
 }
 
 .add-city-input {
-    width: 49.5%;
+    width: 49.7%;
 }
 
 .add-state-input {
@@ -116,35 +116,35 @@ label {
 .bathroom-container,
 .size-container,
 .year-built-container {
-    width: 656px
+    width: 86.8%
 }
 
 .add-zipcode-input {
-    width: 83.5%;
-    margin-left: 25px;
+    width: 88.6%;
+    margin-left: 1.4rem;
 }
 
 .add-price-input {
-    width: 83.6%;
-    margin-left: 38px;
+    width: 88.4%;
+    margin-left: 37px;
 }
 
 .add-bedrooms-input {
-    width: 83.6%;
-    margin-left: 23px;
+    width: 88.6%;
+    margin-left: 21px;
 }
 
 .add-bathrooms-input {
-    width: 83.7%;
+    width: 88.5%;
     margin-left: 15px;
 }
 
 .add-size-input {
-    width: 83.8%;
+    width: 88.5%;
 }
 
 .add-year-built-input {
-    width: 83.9%;
+    width: 88.5%;
 }
 
 .add-state-input {

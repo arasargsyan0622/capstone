@@ -14,6 +14,8 @@ import Splash from "./components/splash/splash";
 import SingleAgent from "./components/agents/agentInfo";
 import Listing from "./components/listings/single_listing_display";
 import { Helmet } from "react-helmet";
+import Review from "./components/reviews/single_review";
+
 
 
 function App() {
@@ -70,7 +72,7 @@ function App() {
             <SingleAgent />
           </Route>
           <Route path="/agents/:agentId(\d+)/reviews/:reviewId(\d+)" exact={true}>
-            <SingleAgent />
+            <Review />
           </Route>
         </Switch>
       </BrowserRouter>
