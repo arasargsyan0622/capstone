@@ -35,7 +35,7 @@ function Review() {
                     <img className="img-agent" src={agent?.photo}></img>
                     <div className='except-img'>
                         <div className="single-comment-section" key={review?.id}>
-                            <h1 className='comment-header'>{agent?.first_name}'s Review</h1>
+                            <h1 className='comment-header'>{session.user.firstName}'s Review</h1>
                             <div className="single-comment-container">
                                 <div className="single-comment">{review?.comment}</div>
                             </div>

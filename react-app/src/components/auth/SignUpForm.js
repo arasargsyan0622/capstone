@@ -80,8 +80,9 @@ const SignUpForm = () => {
                 required
                 type='text'
                 name='first_name'
+                pattern='[a-z,A-Z]{1,10}'
                 className='first-name-input'
-                placeholder='First Name'
+                placeholder='First Name: John'
                 onChange={updateFirstName}
                 value={firstName}
               ></input>
@@ -90,9 +91,10 @@ const SignUpForm = () => {
               <input
                 required
                 type='text'
+                pattern='[a-z,A-Z]{1,10}'
                 name='last_name'
                 className='last-name-input'
-                placeholder='Last Name'
+                placeholder='Last Name: Doe'
                 onChange={updateLastName}
                 value={lastName}
               ></input>
