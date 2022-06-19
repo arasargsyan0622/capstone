@@ -107,6 +107,30 @@ const NewListing = ({ setShow }) => {
       errorsArray.push("Year built cannot be in the future, hello?");
     }
 
+    if(!url1.length) {
+      errorsArray.push("Please enter a valid url for url1")
+    }
+
+    if(!url1.endsWith(".png") || !url1.endsWith(".jpg") || !url1.endsWith(".jpeg")) {
+      errorsArray.push("Please enter a valid url for url1")
+    }
+
+    if(!url2.length) {
+      errorsArray.push("Please enter a valid url for url2")
+    }
+
+    if(!url2.endsWith(".png") || !url2.endsWith(".jpg") || !url2.endsWith(".jpeg")) {
+      errorsArray.push("Please enter a valid url for url2")
+    }
+
+    if(!url3.length) {
+      errorsArray.push("Please enter a valid url for url3")
+    }
+
+    if(!url3.endsWith(".png") || !url3.endsWith(".jpg") || !url3.endsWith(".jpeg")) {
+      errorsArray.push("Please enter a valid url for url3")
+    }
+
     if(errorsArray.length) {
       setErrors(errorsArray)
       return
