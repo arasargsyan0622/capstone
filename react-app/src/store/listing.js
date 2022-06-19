@@ -101,6 +101,9 @@ export const updateListing = data => async dispatch => {
     formData.append("description", data.description)
     formData.append("price", data.price)
     formData.append("is_available", data.is_available)
+    formData.append("url1", data.url1)
+    formData.append("url2", data.url2)
+    formData.append("url3", data.url3)
     console.log("data", data)
     const response = await fetch(`/api/listings/${data.id}`, {
         method: "PUT",

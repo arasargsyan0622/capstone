@@ -100,9 +100,9 @@ def update_listing(id):
 
         listing.description = form.description.data
         listing.price = form.price.data
-        # listing.url1 = form.url1.data
-        # listing.url2 = form.url2.data
-        # listing.url3 = form.url3.data
+        listing.url1 = form.url1.data
+        listing.url2 = form.url2.data
+        listing.url3 = form.url3.data
         listing.is_available = form.is_available.data
 
         db.session.add(listing)

@@ -14,6 +14,9 @@ function EditListing({ setShow }) {
     const listingDescription = listing?.description;
     const listingPrice = listing?.price;
     const listingAvailability = listing?.is_available;
+    const listingUrl1 = listing?.url1;
+    const listingUrl2 = listing?.url2;
+    const listingUrl3 = listing?.url3;
     console.log("listingAvailability", listingAvailability)
 
     // console.log("thsi little shit", listingAvailability)
@@ -21,6 +24,9 @@ function EditListing({ setShow }) {
     const [ description, setDescription ] = useState(listingDescription);
     const [ price, setPrice ] = useState(`${listingPrice}`);
     const [ isAvailable, setIsAvailable ] = useState(listingAvailability);
+    const [url1, setUrl1] = useState(listingUrl1);
+    const [url2, setUrl2] = useState(listingUrl2);
+    const [url3, setUrl3] = useState(listingUrl3);
     // const [ image, setImage ] = useState("");
 
     const { listingId } = useParams()
@@ -31,6 +37,9 @@ function EditListing({ setShow }) {
             description,
             price,
             is_available: isAvailable,
+            url1,
+            url2,
+            url3,
             // image,
             id: listingId
         }
@@ -57,6 +66,27 @@ function EditListing({ setShow }) {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 /> */}
+                <input
+                    type="text"
+                    className="url1"
+                    placeholder="Url1"
+                    value={url1}
+                    onChange={(e) => setUrl1(e.target.value)}
+                />
+                <input
+                    type="text"
+                    className="url2"
+                    placeholder="Url2"
+                    value={url2}
+                    onChange={(e) => setUrl2(e.target.value)}
+                />
+                <input
+                    type="text"
+                    className="url3"
+                    placeholder="Url3"
+                    value={url3}
+                    onChange={(e) => setUrl3(e.target.value)}
+                />
                 <label>Description:</label>
                 <input
                     type="text"
