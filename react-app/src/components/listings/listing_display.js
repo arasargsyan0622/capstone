@@ -38,7 +38,7 @@ function Listings() {
                     <div className='listing-info' key={listing?.id}>
                         { (user?.id === listing?.user_id) ? <Link className='listing-address' to={`/listings/${listing.id}`}>* {listing?.address}, {listing?.city}, {listing?.state} {listing?.zipcode}</Link>
                         : <Link className='listing-address' to={`/listings/${listing.id}`}>{listing?.address}, {listing?.city}, {listing?.state} {listing?.zipcode}</Link>}
-                        <div className="listing-image">First Image Goes Here</div>
+                        <Link to={`/listings/${listing.id}`}><img className="listing-image" src={listing?.url1}></img></Link>
                         <div className='listing-price'>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(listing?.price)}</div>
                         <div className='listing-bds-bas'>{listing?.bedrooms} bds {listing?.bathrooms} ba {listing?.size.toLocaleString("en-US")} sqft</div>
                         {/* <EditListingModal listing={listing} user={user}></EditListingModal>

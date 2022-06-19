@@ -20,7 +20,10 @@ label {
 .add-bedrooms-input,
 .add-bathrooms-input,
 .add-size-input,
-.add-year-built-input {
+.add-year-built-input,
+.url1,
+.url2,
+.url3 {
     margin-bottom: 8px;
     font-size: 16px;
     font-weight: 600;
@@ -152,4 +155,10 @@ label {
     font-weight: 600;
     background-color: #343342;
     color: #fff;
+}
+
+.url1,
+.url2,
+.url3 {
+    width: 86.3%;
 }

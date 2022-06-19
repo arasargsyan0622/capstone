@@ -7,20 +7,14 @@ import "./edit_listing.css"
 function EditListing({ setShow }) {
     const history = useHistory();
     const dispatch = useDispatch();
-    const listings = Object.values(useSelector(state => state.listings));
-    const listing = Object.values(useSelector(state => state.curr_listing));
+    // const listings = Object.values(useSelector(state => state.listings));
+    const listing = Object.values(useSelector(state => state.curr_listing))[0];
     // console.log("listing in edit", listing)
-    // let listingTitle
-    let listingDescription
-    let listingPrice
-    let listingAvailability
 
-    listings.map((listing) => {
-        // listingTitle = listing.title
-        listingDescription = listing.description
-        listingPrice = listing.price
-        listingAvailability = listing.is_available
-    })
+    const listingDescription = listing?.description;
+    const listingPrice = listing?.price;
+    const listingAvailability = listing?.is_available;
+    console.log("listingAvailability", listingAvailability)
 
     // console.log("thsi little shit", listingAvailability)
     // const [ title, setTitle ] = useState(listingTitle);
@@ -46,7 +40,7 @@ function EditListing({ setShow }) {
         setShow(false)
     }
 
-    const handleCheckbox = (data) => {
+    const handleCheckbox = () => {
         // console.log("data in hadlecheckbox", data)
         // console.log("is avaialble in hadnel", isAvailable)
         if (isAvailable === false) setIsAvailable(true);
@@ -80,7 +74,7 @@ function EditListing({ setShow }) {
                 <div>
                 <label className="available-label">Is Available:</label>
                 {/* {console.log("isavailable in jsx", isAvailable)} */}
-                { isAvailable ? <input type="checkbox" className="edit-checkbox" value={isAvailable} defaultChecked onChange={handleCheckbox}/> :
+                { isAvailable ? <input type="checkbox" className="edit-checkbox" defaultChecked value={isAvailable} onChange={handleCheckbox}/> :
                                 <input type="checkbox" className="edit-checkbox" value={isAvailable} onChange={handleCheckbox}/> }
                 </div>
                 {/* <label>Image:</label> */}
