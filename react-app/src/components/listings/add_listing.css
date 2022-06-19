@@ -7,8 +7,9 @@ label {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh;
+    max-height: 100vh;
     width: 80vw;
+    /* overflow: scroll; */
 }
 
 .add-description-input,
