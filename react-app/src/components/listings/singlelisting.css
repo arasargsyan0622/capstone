@@ -84,10 +84,6 @@
     line-height: 30px;
 }
 
-.images-container {
-    margin-top: 10rem;
-}
-
 .property-info-container {
     display: flex;
     margin-top: 5rem;
@@ -140,7 +136,15 @@
 }
 
 .parking-value {
-    margin-left: 19.5rem;
+    margin-left: 20.9rem;
+}
+
+.laundry-value {
+    margin-left: 20.5rem;
+}
+
+.isAvailable-value {
+    margin-left: 19.2rem;
 }
 
 .price-agent-container {
@@ -175,4 +179,16 @@
     line-height: 32px;
     font-family: monospace;
     color: rgb(0, 0, 0)
+}
+
+.images-container {
+    display: flex;
+    margin-top: 10rem;
+}
+
+.single-url1,
+.single-url2,
+.single-url3 {
+    width: 33.4%;
+    height: 450px;
 }

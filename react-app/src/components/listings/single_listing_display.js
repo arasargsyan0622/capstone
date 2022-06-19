@@ -60,7 +60,10 @@ function Listing() {
                             </div>
                         </div>
                         <div className='images-container'>
-                            <div>IMAGES GOES HERE 440X450px</div>
+                            {/* <div>IMAGES GOES HERE 440X450px</div> */}
+                            <img className="single-url1" src={listing?.url1}></img>
+                            <img className="single-url2" src={listing?.url2}></img>
+                            <img className="single-url3" src={listing?.url3}></img>
                         </div>
                         <div className='property-info-container'>
                             <div className='property-info'>
@@ -77,15 +80,18 @@ function Listing() {
                                 </div>
                                 <div className='parking-container-single'>
                                     <div className='parking-text'>Parking</div>
-                                    <div className='parking-value'>{listing?.parking}</div>
+                                    { listing?.parking ? <div className='parking-value'>Yes</div> :
+                                    <div className='parking-value'>No</div> }
                                 </div>
                                 <div className='laundry-container-single'>
                                     <div className='laundry-text'>Laundry</div>
-                                    <div className='laundry-value'>{listing?.laundry}</div>
+                                    { listing?.laundry ? <div className='laundry-value'>Yes</div> :
+                                    <div className='laundry-value'>No</div> }
                                 </div>
                                 <div className='isAvailable-container-single'>
                                     <div className='isAvailable-text'>Availability</div>
-                                    <div className='isAvailable-value'>{listing?.isAvailable}</div>
+                                    { listing?.is_available == true ? <div className='isAvailable-value'>Yes</div>
+                                        : <div className='isAvailable-value'>No</div> }
                                 </div>
                             </div>
                             <div className='price-agent-container'>
@@ -97,9 +103,9 @@ function Listing() {
                                         <button className="find-btn" type="submit">Find an Agent</button>
                                     </Link>
                                 </div>
-                                <div className='schedule-container'>
+                                {/* <div className='schedule-container'>
                                     <div className="bookin-btn" type='submit'>Schedule A Booking (In progress)</div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </>

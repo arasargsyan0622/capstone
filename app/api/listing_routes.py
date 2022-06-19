@@ -58,6 +58,9 @@ def create_listing():
             city=form.city.data,
             state=form.state.data,
             zipcode=form.zipcode.data,
+            url1=form.url1.data,
+            url2=form.url2.data,
+            url3=form.url3.data,
             user_id=form.user_id.data,
             agent_id=form.agent_id.data,
             # images_of_listing=form.images_of_listing.data
@@ -97,6 +100,9 @@ def update_listing(id):
 
         listing.description = form.description.data
         listing.price = form.price.data
+        listing.url1 = form.url1.data
+        listing.url2 = form.url2.data
+        listing.url3 = form.url3.data
         listing.is_available = form.is_available.data
 
         db.session.add(listing)

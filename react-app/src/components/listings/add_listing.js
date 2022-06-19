@@ -7,7 +7,6 @@ import "./add_listing.css"
 
 
 const NewListing = ({ setShow }) => {
-  // const [title, setTitle] = useState("");
   const [errors, setErrors] = useState([])
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
@@ -24,6 +23,9 @@ const NewListing = ({ setShow }) => {
   const [state, setState] = useState("");
   const [address, setAddress] = useState("");
   const [zipcode, setZipcode] = useState(0);
+  const [url1, setUrl1] = useState("");
+  const [url2, setUrl2] = useState("");
+  const [url3, setUrl3] = useState("");
   // const [image, setImage] = useState(null);
 
   const [agent, setAgent] = useState();
@@ -125,6 +127,9 @@ const NewListing = ({ setShow }) => {
       state,
       city,
       zipcode,
+      url1,
+      url2,
+      url3,
       user_id: user.id,
       agent_id: agentId,
       // images_of_listing: image,
@@ -158,15 +163,36 @@ const NewListing = ({ setShow }) => {
             <div key={ind}>{error}</div>
           ))}
         </div>
+        <h1 className="country">
+          {country}
+        </h1>
+        <input
+          type="text"
+          className="url1"
+          placeholder="Url1"
+          value={url1}
+          onChange={(e) => setUrl1(e.target.value)}
+        />
+        <input
+          type="text"
+          className="url2"
+          placeholder="Url2"
+          value={url2}
+          onChange={(e) => setUrl2(e.target.value)}
+        />
+        <input
+          type="text"
+          className="url3"
+          placeholder="Url3"
+          value={url3}
+          onChange={(e) => setUrl3(e.target.value)}
+        />
         {/* <label>Upload</label>
         <input
           type="file"
           accept="image/*"
           onChange={updateImage}
           /> */}
-        <h1 className="country">
-          {country}
-        </h1>
         <input
           type="text"
           className="add-description-input"

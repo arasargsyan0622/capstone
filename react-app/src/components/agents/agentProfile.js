@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faInbox, faPhone,  } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { Link } from "react-router-dom";
+import { ExternalLink } from 'react-external-link';
 
 function AgentProfile({ agent }) {
     return (
@@ -16,8 +17,8 @@ function AgentProfile({ agent }) {
                     <div className="agent-profile-phone"><FontAwesomeIcon icon={faPhone}/> {agent?.phone}</div>
                     <div className="agent-profile-license">Agent License # {agent?.license_number}</div>
                     <div className="links">
-                        <Link className="agent-github" to={agent?.github} target="_blank"><FontAwesomeIcon icon={faGithub}/></Link>
-                        <Link className="agent-linkedin" to={agent?.linkedin} target="_blank"><FontAwesomeIcon icon={faLinkedin}/></Link>
+                        <ExternalLink  className="agent-github" href={agent?.github} target="_blank"><FontAwesomeIcon icon={faGithub}/></ExternalLink >
+                        <ExternalLink  className="agent-linkedin" href={agent?.linkedin} target="_blank"><FontAwesomeIcon icon={faLinkedin}/></ExternalLink >
                     </div>
                 </div>
                 <img className="agent-img" src={agent?.photo}></img>

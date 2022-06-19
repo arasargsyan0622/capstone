@@ -12,7 +12,7 @@ const oneListing = listing => {
 }
 
 export const getListing = id => async dispatch => {
-    console.log("in thunk of currlisting", id)
+    // console.log("in thunk of currlisting", id)
     const response = await fetch(`/api/listings/${id}`)
     if(response.ok) {
         const listing = await response.json()
