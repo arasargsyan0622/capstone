@@ -43,7 +43,6 @@ function ProfileButton({ user }) {
       {showMenu && (
         <>
           <div className="username">Hello, {user?.firstName}</div>
-          <div className="email">Your Listings</div>
           {/* <NavLink className="agents" to='/agents' exact={true} activeClassName='active'>
             Our Agents
           </NavLink> */}
