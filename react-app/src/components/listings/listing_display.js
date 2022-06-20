@@ -36,7 +36,7 @@ function Listings() {
                 {listings.map(listing => (
                     <>
                     <div className='listing-info' key={listing?.id}>
-                        <Link to={`/listings/${listing.id}`}><img className="listing-image" src={listing?.url1}></img></Link>
+                        <Link to={`/listings/${listing.id}`}><img className="listing-image" src={listing?.url1} alt="check-your-url"></img></Link>
                         <div className='listing-info-container'>
                             { (user?.id === listing?.user_id) ? <Link className='listing-address' to={`/listings/${listing.id}`}>* {listing?.address}, {listing?.city}, {listing?.state} {listing?.zipcode}</Link>
                             : <Link className='listing-address' to={`/listings/${listing.id}`}>{listing?.address}, {listing?.city}, {listing?.state} {listing?.zipcode}</Link>}
