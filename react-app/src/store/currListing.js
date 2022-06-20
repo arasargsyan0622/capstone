@@ -34,7 +34,7 @@ const currListingReducer = (state = initialState, action) => {
     let newState = clone(state)
     switch(action.type) {
         case LOAD_LISTING:
-            console.log("in reducer of currlisting", newState)
+            // console.log("in reducer of currlisting", newState)
             newState[action.listing.id] = action.listing
             return newState
         case CLEAN_CURRENT_LISTING:

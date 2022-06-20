@@ -111,7 +111,7 @@ const NewListing = ({ setShow }) => {
       errorsArray.push("Please enter a valid url for url1")
     }
 
-    if(!url1.endsWith(".png") || !url1.endsWith(".jpg") || !url1.endsWith(".jpeg")) {
+    if(!url1.endsWith(".png") && !url1.endsWith(".jpg") && !url1.endsWith(".jpeg")) {
       errorsArray.push("Please enter a valid url for url1")
     }
 
@@ -119,7 +119,7 @@ const NewListing = ({ setShow }) => {
       errorsArray.push("Please enter a valid url for url2")
     }
 
-    if(!url2.endsWith(".png") || !url2.endsWith(".jpg") || !url2.endsWith(".jpeg")) {
+    if(!url2.endsWith(".png") && !url2.endsWith(".jpg") && !url2.endsWith(".jpeg")) {
       errorsArray.push("Please enter a valid url for url2")
     }
 
@@ -127,7 +127,7 @@ const NewListing = ({ setShow }) => {
       errorsArray.push("Please enter a valid url for url3")
     }
 
-    if(!url3.endsWith(".png") || !url3.endsWith(".jpg") || !url3.endsWith(".jpeg")) {
+    if(!url3.endsWith(".png") && !url3.endsWith(".jpg") && !url3.endsWith(".jpeg")) {
       errorsArray.push("Please enter a valid url for url3")
     }
 
