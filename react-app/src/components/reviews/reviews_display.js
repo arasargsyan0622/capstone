@@ -18,7 +18,7 @@ const ReviewDisplay = () => {
     const reviews = Object.values(useSelector(state => state.reviews));
 
     const review = Object.values(useSelector(state => state.curr_review));
-    console.log("review", review)
+    // console.log("review", review)
 
     useEffect(() => {
         //make the cleanstate and dispatch before dispatching getReviews

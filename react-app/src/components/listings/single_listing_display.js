@@ -15,7 +15,7 @@ function Listing() {
     const dispatch = useDispatch();
     const { listingId } = useParams()
     const listings = Object.values(useSelector(state => state.curr_listing));
-    console.log("currLisnting", listings)
+    // console.log("currLisnting", listings)
     const user = useSelector(state => state.session.user);
     const session = useSelector(state => state.session);
 

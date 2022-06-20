@@ -81,7 +81,7 @@ export const createListing = data => async dispatch => {
     formData.append("user_id", data.user_id);
     formData.append("agent_id", data.agent_id);
     // formData.append("images_of_listing", data.images_of_listing)
-    console.log("data in thunk", data)
+    // console.log("data in thunk", data)
 
     const response = await fetch("/api/listings/", {
         method: "POST",
@@ -104,7 +104,7 @@ export const updateListing = data => async dispatch => {
     formData.append("url1", data.url1)
     formData.append("url2", data.url2)
     formData.append("url3", data.url3)
-    console.log("data", data)
+    // console.log("data", data)
     const response = await fetch(`/api/listings/${data.id}`, {
         method: "PUT",
         body: formData

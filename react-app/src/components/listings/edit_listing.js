@@ -17,7 +17,7 @@ function EditListing({ setShow }) {
     const listingUrl1 = listing?.url1;
     const listingUrl2 = listing?.url2;
     const listingUrl3 = listing?.url3;
-    console.log("listingAvailability", listingAvailability)
+    // console.log("listingAvailability", listingAvailability)
 
     // console.log("thsi little shit", listingAvailability)
     // const [ title, setTitle ] = useState(listingTitle);

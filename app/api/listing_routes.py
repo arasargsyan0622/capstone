@@ -19,7 +19,7 @@ def all_listings():
 @listing_routes.route("/<int:id>")
 def get_listing(id):
     listing = Listing.query.get(id)
-    print("single listing route\n\n\n", listing)
+    # print("single listing route\n\n\n", listing)
     return listing.to_dict()
 
 @listing_routes.route("/", methods=["POST"])
@@ -75,14 +75,14 @@ def create_listing():
 @listing_routes.route("/<int:id>", methods=["PUT"])
 def update_listing(id):
     listing = Listing.query.get(id)
-    print("befor form \n\n\n\n")
+    # print("befor form \n\n\n\n")
     form = ListingUpdateForm()
-    print("after form \n\n\n\n")
+    # print("after form \n\n\n\n")
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("form.description \n\n", form.description.data)
-    print("form.price \n\n", form.price.data)
-    print("form.is_available \n\n", form.is_available.data)
-    print("form \n\n\n", form.data)
+    # print("form.description \n\n", form.description.data)
+    # print("form.price \n\n", form.price.data)
+    # print("form.is_available \n\n", form.is_available.data)
+    # print("form \n\n\n", form.data)
     if form.validate_on_submit():
         # current_user = User.query.get(form.user_id.data)
         if request.files:

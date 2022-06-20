@@ -13,7 +13,7 @@ const oneReview = review => {
 }
 
 export const getReview = (id, reviewId) => async dispatch => {
-    console.log("id in single review thunk", id)
+    // console.log("id in single review thunk", id)
     const response = await fetch(`/api/agents/${id}/reviews/${reviewId}`)
     if(response.ok) {
         const review = await response.json()

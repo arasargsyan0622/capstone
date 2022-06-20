@@ -46,7 +46,7 @@ export const getReviews = (agentId) => async dispatch => {
     // console.log("response", response)
     if (response.ok) {
         const reviews = await response.json();
-        console.log("reviews ini get reviews", reviews)
+        // console.log("reviews ini get reviews", reviews)
         dispatch(allReviews(reviews));
         return reviews;
     }
@@ -75,7 +75,7 @@ export const updateReview = (data) => async dispatch => {
     const formData = new FormData()
     formData.append("comment", data.comment)
     formData.append("rating", data.rating)
-    console.log("data", data)
+    // console.log("data", data)
     const response = await fetch(`/api/agents/${data.id}/reviews/${data.review_id}`, {
         method: "PUT",
         body: formData
