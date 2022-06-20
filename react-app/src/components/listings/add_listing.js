@@ -112,7 +112,7 @@ const NewListing = ({ setShow }) => {
     }
 
     if(!url1.endsWith(".png") && !url1.endsWith(".jpg") && !url1.endsWith(".jpeg")) {
-      errorsArray.push("Please enter a valid format for url1")
+      errorsArray.push("Please enter a valid format for url1: .png, .jpg, or .jpeg")
     }
 
     if(!url2.length) {
@@ -120,7 +120,7 @@ const NewListing = ({ setShow }) => {
     }
 
     if(!url2.endsWith(".png") && !url2.endsWith(".jpg") && !url2.endsWith(".jpeg")) {
-      errorsArray.push("Please enter a valid format for url2")
+      errorsArray.push("Please enter a valid format for url2: .png, .jpg, or .jpeg")
     }
 
     if(!url3.length) {
@@ -128,7 +128,7 @@ const NewListing = ({ setShow }) => {
     }
 
     if(!url3.endsWith(".png") && !url3.endsWith(".jpg") && !url3.endsWith(".jpeg")) {
-      errorsArray.push("Please enter a valid format for url3")
+      errorsArray.push("Please enter a valid format for url3: .png, .jpg, or .jpeg")
     }
 
     if(errorsArray.length) {
