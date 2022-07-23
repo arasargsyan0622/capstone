@@ -15,13 +15,22 @@ import SingleAgent from "./components/agents/agentInfo";
 import Listing from "./components/listings/single_listing_display";
 import { Helmet } from "react-helmet";
 import Review from "./components/reviews/single_review";
+// import { MapContainer } from "./components/maps";
+import { GoogleApiWrapper } from "google-maps-react";
+import Map from "./components/map/map";
+import mapStyles from "./components/map/mapStyles";
 
+import {
+    useLoadScript,
+} from "@react-google-maps/api"
 
+const libraries = ["places"]
 
 function App() {
   const [loaded, setLoaded] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoad, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     (async () => {
@@ -32,12 +41,16 @@ function App() {
     })();
   }, [dispatch]);
 
-  if (!loaded) {
-    return null;
-  }
+  const { isLoaded , loadError } = useLoadScript({
+      googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+      libraries,
+  })
+
+  if (loadError) return "Error loading maps"
+  if (!isLoaded) return "Loading Maps"
 
   return (
-    isLoaded && (
+    isLoad && (
       <BrowserRouter>
       <Helmet>
           <meta charSet="utf-8" />
@@ -64,6 +77,12 @@ function App() {
           </Route>
           <Route path="/listings/:listingId(\d+)">
             <Listing />
+          </Route>
+          <Route path="/map">
+            <Map />
+            {/* <GoogleApiWrapper> */}
+            {/* <MapContainer /> */}
+            {/* </GoogleApiWrapper> */}
           </Route>
           <Route path="/agents" exact={true}>
             <AgentDisplay />

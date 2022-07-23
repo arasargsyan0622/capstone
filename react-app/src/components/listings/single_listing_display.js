@@ -43,7 +43,7 @@ function Listing() {
                             <div className='address-icons'>
                                 <div className='address-container-single'>
                                     <div className='single-address'>{listing?.address}</div>
-                                    <div className='listing-city'>{listing?.city}, {listing?.state} {listing?.zipcode}</div>
+                                    <div className='listing-city'>{listing?.city}, {listing?.state}</div>
                                 </div>
                                 <div className='bed-container'>
                                     <div className='single-bed'><FontAwesomeIcon icon={faBed} size="xl"/></div>
@@ -89,7 +89,7 @@ function Listing() {
                                     <div className='laundry-value'>No</div> }
                                 </div>
                                 <div className='isAvailable-container-single'>
-                                    <div className='isAvailable-text'>Availability</div>
+                                    <div className='isAvailable-text'>Is Available?</div>
                                     { listing?.is_available == true ? <div className='isAvailable-value'>Yes</div>
                                         : <div className='isAvailable-value'>No</div> }
                                 </div>

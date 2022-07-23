@@ -76,3 +76,16 @@
     margin-left: 1rem;
     margin-top:0.3rem
 }
+
+.is-available {
+    display: flex;
+    margin-top:0.3rem
+}
+
+.availability {
+    margin-left: 0.5rem
+}
+
+/* .listing-display-page {
+    display: flex;
+} */
