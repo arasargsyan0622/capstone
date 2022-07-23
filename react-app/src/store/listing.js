@@ -74,10 +74,11 @@ export const createListing = data => async dispatch => {
     formData.append("country", data.country)
     formData.append("city", data.city)
     formData.append("state", data.state)
-    formData.append("zipcode", data.zipcode)
     formData.append("url1", data.url1)
     formData.append("url2", data.url2)
     formData.append("url3", data.url3)
+    formData.append("lat", data.lat)
+    formData.append("lng", data.lng)
     formData.append("user_id", data.user_id);
     formData.append("agent_id", data.agent_id);
     // formData.append("images_of_listing", data.images_of_listing)

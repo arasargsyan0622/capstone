@@ -57,10 +57,12 @@ def create_listing():
             country=form.country.data,
             city=form.city.data,
             state=form.state.data,
-            zipcode=form.zipcode.data,
+            # zipcode=form.zipcode.data,
             url1=form.url1.data,
             url2=form.url2.data,
             url3=form.url3.data,
+            lat=form.lat.data,
+            lng=form.lng.data,
             user_id=form.user_id.data,
             agent_id=form.agent_id.data,
             # images_of_listing=form.images_of_listing.data
