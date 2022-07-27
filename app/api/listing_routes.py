@@ -65,7 +65,7 @@ def create_listing():
             agent_id=form.agent_id.data,
             # images_of_listing=form.images_of_listing.data
         )
-        print("\n\n\n\n\n", images_of_listing)
+        # print("\n\n\n\n\n", images_of_listing)
 
         db.session.add(listing)
         db.session.commit()
@@ -120,30 +120,30 @@ def delete_listing(id):
     return listing.to_dict()
 
 
-@listing_routes.route("/images", methods=['POST'])
-def add_listing_images():
-    newFile = request.form.get('newFile')
-    print(newFile)
-    if newFile == 'true':
-        if "file" not in request.files:
-            return "No user_file key in request.files"
-        file = request.files['file']
+# @listing_routes.route("/images", methods=['POST'])
+# def add_listing_images():
+#     newFile = request.form.get('newFile')
+#     print(newFile)
+#     if newFile == 'true':
+#         if "file" not in request.files:
+#             return "No user_file key in request.files"
+#         file = request.files['file']
 
-        if file:
-            listing_id = request.form.get('spot_id')
-            file_url = upload_file_to_s3(file)
-            # file_url = file_url.replace(" ", "+")
-            image = Image(listing_id=listing_id, url=file_url["url"])
-            db.session.add(image)
-            db.session.commit()
+#         if file:
+#             listing_id = request.form.get('spot_id')
+#             file_url = upload_file_to_s3(file)
+#             # file_url = file_url.replace(" ", "+")
+#             image = Image(listing_id=listing_id, url=file_url["url"])
+#             db.session.add(image)
+#             db.session.commit()
 
-    if newFile == 'false':
-        listing_id = request.form.get('listing_id')
-        url = request.form.get('file')
-        print(listing_id)
-        print(url)
-        image = Image(listing_id=listing_id, url=url)
-        db.session.add(image)
-        db.session.commit()
+#     if newFile == 'false':
+#         listing_id = request.form.get('listing_id')
+#         url = request.form.get('file')
+#         print(listing_id)
+#         print(url)
+#         image = Image(listing_id=listing_id, url=url)
+#         db.session.add(image)
+#         db.session.commit()
 
-    return {'message': 'okay'}
+#     return {'message': 'okay'}

@@ -159,7 +159,7 @@ const NewListing = ({ setShow }) => {
       return;
     }
 
-    let cleanImages = images.map((image) => image.file);
+    // let cleanImages = images.map((image) => image.file);
 
     const payload = {
       description,
@@ -217,7 +217,7 @@ const NewListing = ({ setShow }) => {
     await dispatch(createListing(payload));
     history.push("/listings");
     setShow(false);
-    console.log("efnejrger", lat, lng, value)
+    // console.log("efnejrger", lat, lng, value)
   };
 
   const handleCheckbox = (data) => {
