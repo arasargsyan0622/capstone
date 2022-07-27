@@ -17,7 +17,6 @@ class Listing(db.Model):
     country = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(30), nullable=False)
     state = db.Column(db.String(15), nullable=False)
-    # zipcode = db.Column(db.Integer, nullable=False)
     url1 = db.Column(db.Text, nullable=False)
     url2 = db.Column(db.Text, nullable=False)
     url3 = db.Column(db.Text, nullable=False)
@@ -47,12 +46,11 @@ class Listing(db.Model):
             'country': self.country,
             'city': self.city,
             'state': self.state,
-            # 'zipcode': self.zipcode,
             'url1': self.url1,
             'url2': self.url2,
             'url3': self.url3,
             'lat': self.lat,
             'lng': self.lng,
             'user_id': self.user_id,
-            # 'images_of_listing': [image_of_listing.to_dict() for image_of_listing in self.images_of_listing]
+            'images_of_listing': [image_of_listing.to_dict() for image_of_listing in self.images_of_listing]
         }

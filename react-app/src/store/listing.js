@@ -60,7 +60,6 @@ export const getListing = id => async dispatch => {
 
 export const createListing = data => async dispatch => {
     const formData = new FormData()
-    // formData.append("title", data.title)
     formData.append("description", data.description)
     formData.append("price", data.price)
     formData.append("size", data.size)
@@ -127,6 +126,21 @@ export const removeListing = id => async dispatch => {
         dispatch(deleteListing(listingId))
     }
 }
+
+
+// export const uploadFile = (fileForm) => async (dispatch) => {
+//   const { listing_id, file, newFile } = fileForm;
+
+//   const form = new FormData();
+//   form.append("file", file);
+//   form.append("listing_id", listing_id);
+//   form.append("newFile", newFile);
+
+//   const res = await fetch("/api/listings/images", {
+//     method: "POST",
+//     body: form,
+//   });
+// };
 
 const initialState = {}
 

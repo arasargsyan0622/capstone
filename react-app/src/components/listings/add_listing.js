@@ -1,10 +1,8 @@
-import { faCropSimple } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createListing, getListings } from "../../store/listing";
+import { createListing, uploadFile } from "../../store/listing";
 import "./add_listing.css";
-import Search from "../map/map";
 import {
   Combobox,
   ComboboxInput,
@@ -53,7 +51,7 @@ const NewListing = ({ setShow }) => {
   const [url1, setUrl1] = useState("");
   const [url2, setUrl2] = useState("");
   const [url3, setUrl3] = useState("");
-  // const [image, setImage] = useState(null);
+  const [images, setImages] = useState(null);
 
   const [agent, setAgent] = useState();
   const user = useSelector((state) => state.session.user);
@@ -161,6 +159,8 @@ const NewListing = ({ setShow }) => {
       return;
     }
 
+    let cleanImages = images.map((image) => image.file);
+
     const payload = {
       description,
       price,
@@ -182,13 +182,42 @@ const NewListing = ({ setShow }) => {
       lng,
       user_id: user.id,
       agent_id: agentId,
-      // images_of_listing: image,
     };
 
+    // const listingData = await dispatch(
+    //   createListing(
+    //     description,
+    //     price,
+    //     size,
+    //     isAvailable,
+    //     yearBuilt,
+    //     parking,
+    //     laundry,
+    //     bedrooms,
+    //     bathrooms,
+    //     addressArray[0],
+    //     addressArray[1],
+    //     addressArray[2],
+    //     addressArray[3],
+    //     url1,
+    //     url2,
+    //     url3,
+    //     lat,
+    //     lng,
+    //     user.id,
+    //     agentId,
+    //   )
+    // )
+
+
+    // await addImages(cleanImages, listingData[1].id);
+    //   window.alert("Successful post.");
+    //   history.push("/");
+    // };
     await dispatch(createListing(payload));
     history.push("/listings");
     setShow(false);
-    // console.log("efnejrger", lat, lng, value)
+    console.log("efnejrger", lat, lng, value)
   };
 
   const handleCheckbox = (data) => {
@@ -203,7 +232,24 @@ const NewListing = ({ setShow }) => {
 
   // const updateImage = (e) => {
   //   const file = e.target.files[0];
+  //   console.log("file is  wuerfghweruighr", file)
   //   setImage(file);
+  // };
+
+  // ******************
+
+  // const addImages = async (images, listing_id) => {
+  //   for (let x = 0; x < images.length; x++) {
+  //     const obj = {
+  //       file: images[x],
+  //       listing_id: listing_id,
+  //       newFile: true,
+  //     };
+
+  //     await dispatch(uploadFile(obj));
+  //   }
+
+  //   // history.push(`/spots/${listing_id}`);
   // };
 
   return (
@@ -235,8 +281,8 @@ const NewListing = ({ setShow }) => {
           value={url3}
           onChange={(e) => setUrl3(e.target.value)}
         />
-        {/* <label>Upload</label> */}
-        {/* <input
+        {/* <label>Upload</label>
+        <input
           type="file"
           accept="image/*"
           onChange={updateImage}
@@ -256,7 +302,6 @@ const NewListing = ({ setShow }) => {
             try {
               const results = await getGeocode({ address });
               const { lat, lng } = await getLatLng(results[0]);
-              // console.log("converting address to lat lng", { lat, lng });
               setLat(lat)
               setLng(lng)
             } catch (error) {
