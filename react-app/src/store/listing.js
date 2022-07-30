@@ -80,6 +80,10 @@ export const createListing = data => async dispatch => {
     formData.append("lng", data.lng)
     formData.append("user_id", data.user_id);
     formData.append("agent_id", data.agent_id);
+    formData.append("image", data.image)
+    // formData.append("url", data.url);
+
+
     // formData.append("images_of_listing", data.images_of_listing)
     // console.log("data in thunk", data)
 

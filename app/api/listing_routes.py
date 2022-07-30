@@ -8,6 +8,8 @@ from app.models.review import Review
 from app.forms.review_form import ReviewCreateForm, ReviewUpdateForm
 from app.models import db
 from app.api.aws_s3_bucket import upload_file_to_s3, allowed_file, get_unique_filename
+from app.models.image import Image
+from app.config import Config
 
 listing_routes = Blueprint("listing_routes", __name__)
 
@@ -26,21 +28,27 @@ def create_listing():
     form = ListingCreateForm()
     listings = Listing.query.all()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print("rekgmiegrg\n\n\n\n\n", form.data)
     if form.validate_on_submit():
-        # if request.files:
-        #     image = request.files["image"]
-        #     if not allowed_file(image.filename):
-        #         return {"errors":"file type not permitted"}, 400
+        if request.files:
+            image = request.files["image"]
+            print("this is image \n\n\n\n", image)
+            if not allowed_file(image.filename):
+                return {"errors":"file type not permitted"}, 400
 
-        #     image.filename = get_unique_filename(image.filename)
+            image.filename = get_unique_filename(image.filename)
 
-        #     upload = upload_file_to_s3(image)
-        #     if "url" not in upload:
-        #         return upload, 400
+            upload = upload_file_to_s3(image)
+            print("this is upload idk\n\n\n\n", upload)
+            # check if upload worked
+            if "url" not in upload:
+                return upload, 400
 
-        #     url = upload["url"]
-        # else:
-        #     url =None
+            url = upload["url"]
+            print("url before else, \n\n\n\n", url)
+        else:
+            url = None
+            print("url is \n\n\n\n\n", url)
 
         listing = Listing(
             description=form.description.data,
@@ -63,9 +71,9 @@ def create_listing():
             lng=form.lng.data,
             user_id=form.user_id.data,
             agent_id=form.agent_id.data,
+            url=url
             # images_of_listing=form.images_of_listing.data
         )
-        # print("\n\n\n\n\n", images_of_listing)
 
         db.session.add(listing)
         db.session.commit()
@@ -76,14 +84,8 @@ def create_listing():
 @listing_routes.route("/<int:id>", methods=["PUT"])
 def update_listing(id):
     listing = Listing.query.get(id)
-    # print("befor form \n\n\n\n")
     form = ListingUpdateForm()
-    # print("after form \n\n\n\n")
     form['csrf_token'].data = request.cookies['csrf_token']
-    # print("form.description \n\n", form.description.data)
-    # print("form.price \n\n", form.price.data)
-    # print("form.is_available \n\n", form.is_available.data)
-    # print("form \n\n\n", form.data)
     if form.validate_on_submit():
         # current_user = User.query.get(form.user_id.data)
         if request.files:
@@ -140,10 +142,15 @@ def delete_listing(id):
 #     if newFile == 'false':
 #         listing_id = request.form.get('listing_id')
 #         url = request.form.get('file')
-#         print(listing_id)
-#         print(url)
+#         # print(listing_id)
+#         # print(url)
 #         image = Image(listing_id=listing_id, url=url)
 #         db.session.add(image)
 #         db.session.commit()
 
 #     return {'message': 'okay'}
+
+@listing_routes.route("/images")
+def get_all_images():
+    images = Image.query.order_by(Image.id.desc()).all()
+    return {"images": [image.to_dict() for image in images]}
