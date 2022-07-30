@@ -9,10 +9,8 @@ ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
 
 s3 = boto3.client(
     "s3",
-    # aws_access_key_id=os.environ.get("S3_KEY"),
-    aws_access_key_id="AKIA3KBOG65QOAR6WL6A",
-    # aws_secret_access_key=os.environ.get("S3_SECRET")
-    aws_secret_access_key="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"
+    aws_access_key_id=os.environ.get("S3_KEY"),
+    aws_secret_access_key=os.environ.get("S3_SECRET")
 )
 
 def allowed_file(filename):
