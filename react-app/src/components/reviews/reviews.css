@@ -90,6 +90,7 @@
     flex-wrap: wrap;
     display: flex;
     padding: 1rem;
+    width: auto;
 }
 
 .single-comment {

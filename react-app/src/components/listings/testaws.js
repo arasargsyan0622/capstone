@@ -1,4 +1,4 @@
-import React, { useState, useRef} from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createListing, uploadFile } from "../../store/listing";
@@ -16,7 +16,7 @@ import usePlacesAutoComplete, {
   getLatLng,
 } from "use-places-autocomplete";
 
-const NewListing = ({ setShow }) => {
+const Test = () => {
 
 //  starting for combo
   const [lat, setLat] = useState("")
@@ -51,7 +51,8 @@ const NewListing = ({ setShow }) => {
   const [url1, setUrl1] = useState("");
   const [url2, setUrl2] = useState("");
   const [url3, setUrl3] = useState("");
-  const [image, setImage] = useState(null);
+  const [images, setImages] = useState(null);
+
   const [agent, setAgent] = useState();
   const user = useSelector((state) => state.session.user);
   const agents = Object.values(useSelector((state) => state.agents));
@@ -64,7 +65,6 @@ const NewListing = ({ setShow }) => {
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const ref = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -182,7 +182,7 @@ const NewListing = ({ setShow }) => {
       lng,
       user_id: user.id,
       agent_id: agentId,
-      image
+
     };
 
     // const listingData = await dispatch(
@@ -217,7 +217,7 @@ const NewListing = ({ setShow }) => {
     // };
     await dispatch(createListing(payload));
     history.push("/listings");
-    setShow(false);
+    // setShow(false);
     // console.log("efnejrger", lat, lng, value)
   };
 
@@ -231,11 +231,11 @@ const NewListing = ({ setShow }) => {
     if (data === laundry) setLaundry(!laundry);
   };
 
-    // const updateImage = (e) => {
-    //   const file = e.target.files[0];
-    //   console.log("igierjgerg", file)
-    //   setImage(file);
-    // }
+//   const updateImage = (e) => {
+//     const file = e.target.files[0];
+//     console.log("file is  wuerfghweruighr", file)
+//     setImages(file);
+//   };
 
   // ******************
 
@@ -282,12 +282,11 @@ const NewListing = ({ setShow }) => {
           value={url3}
           onChange={(e) => setUrl3(e.target.value)}
         />
-        {/* <label>Upload</label>
-          <input
-            ref={ref}
-            type="file"
-            name="listing image"
-            onChange={updateImage}
+        {/* <label>Upload</label> */}
+        {/* <input
+          type="file"
+          accept="image/*"
+          onChange={updateImage}
           /> */}
         <input
           type="text"
@@ -430,4 +429,4 @@ const NewListing = ({ setShow }) => {
   );
 };
 
-export default NewListing;
+export default Test;

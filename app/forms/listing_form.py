@@ -18,7 +18,6 @@ class ListingCreateForm(FlaskForm):
     country = StringField('Country', validators=[DataRequired()])
     city = StringField('City', validators=[DataRequired()])
     state = StringField('State', validators=[DataRequired()])
-    # zipcode = IntegerField('Zipcode', validators=[DataRequired()])
     url1 = StringField('Url1', validators=[DataRequired()])
     url2 = StringField('Url2', validators=[DataRequired()])
     url3 = StringField('Url3', validators=[DataRequired()])

@@ -5,7 +5,7 @@ import { getAgent } from '../../store/agent';
 import { getReview, cleanCurrentReview } from '../../store/currReview';
 import EditReviewModal from '../modal/EditReviewModal';
 import DeleteReview from './delete_review';
-
+import "./reviews.css"
 
 
 function Review() {
