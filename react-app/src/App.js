@@ -16,7 +16,7 @@ import Listing from "./components/listings/single_listing_display";
 import { Helmet } from "react-helmet";
 import Review from "./components/reviews/single_review";
 // import { MapContainer } from "./components/maps";
-import { GoogleApiWrapper } from "google-maps-react";
+// import { GoogleApiWrapper } from "google-maps-react";
 import Map from "./components/map/map";
 import mapStyles from "./components/map/mapStyles";
 
