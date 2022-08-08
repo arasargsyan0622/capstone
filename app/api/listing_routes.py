@@ -71,8 +71,7 @@ def create_listing():
             lng=form.lng.data,
             user_id=form.user_id.data,
             agent_id=form.agent_id.data,
-            url=url
-            # images_of_listing=form.images_of_listing.data
+            # url=url
         )
 
         db.session.add(listing)

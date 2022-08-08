@@ -42,8 +42,9 @@ function Listings() {
                     <div className='listing-info' key={listing?.id}>
                         <Link to={`/listings/${listing.id}`}><img className="listing-image" src={listing?.url1} alt="check-your-url"></img></Link>
                         <div className='listing-info-container'>
-                            { (user?.id === listing?.user_id) ? <Link className='listing-address' to={`/listings/${listing.id}`}>* {listing?.address}, {listing?.city}, {listing?.state}</Link>
+                           <div className='listing-full-address'> { (user?.id === listing?.user_id) ? <Link className='listing-address' to={`/listings/${listing.id}`}>* {listing?.address}, {listing?.city}, {listing?.state}</Link>
                             : <Link className='listing-address' to={`/listings/${listing.id}`}>{listing?.address}, {listing?.city}, {listing?.state}</Link>}
+                            </div>
                             <div className='listing-price'>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(listing?.price)}</div>
                             <div className='listing-bds-bas'>{listing?.bedrooms} bds {listing?.bathrooms} ba {listing?.size.toLocaleString("en-US")} sqft</div>
                             <div className='is-available'>

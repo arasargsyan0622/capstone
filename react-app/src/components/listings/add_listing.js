@@ -231,11 +231,11 @@ const NewListing = ({ setShow }) => {
     if (data === laundry) setLaundry(!laundry);
   };
 
-    const updateImage = (e) => {
-      const file = e.target.files[0];
-      console.log("igierjgerg", file)
-      setImage(file);
-    }
+    // const updateImage = (e) => {
+    //   const file = e.target.files[0];
+    //   console.log("igierjgerg", file)
+    //   setImage(file);
+    // }
 
   // ******************
 
@@ -282,13 +282,13 @@ const NewListing = ({ setShow }) => {
           value={url3}
           onChange={(e) => setUrl3(e.target.value)}
         />
-        <label>Upload</label>
+        {/* <label>Upload</label>
           <input
             ref={ref}
             type="file"
             name="listing image"
             onChange={updateImage}
-          />
+          /> */}
         <input
           type="text"
           className="add-description-input"
