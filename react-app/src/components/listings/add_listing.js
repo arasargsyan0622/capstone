@@ -51,7 +51,7 @@ const NewListing = ({ setShow }) => {
   const [url1, setUrl1] = useState("");
   const [url2, setUrl2] = useState("");
   const [url3, setUrl3] = useState("");
-  const [image, setImage] = useState(null);
+  // const [image, setImage] = useState(null);
   const [agent, setAgent] = useState();
   const user = useSelector((state) => state.session.user);
   const agents = Object.values(useSelector((state) => state.agents));
@@ -182,7 +182,7 @@ const NewListing = ({ setShow }) => {
       lng,
       user_id: user.id,
       agent_id: agentId,
-      image
+      // image
     };
 
     // const listingData = await dispatch(
