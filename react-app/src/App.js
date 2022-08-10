@@ -42,7 +42,7 @@ function App() {
   }, [dispatch]);
 
   const { isLoaded , loadError } = useLoadScript({
-      googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+      googleMapsApiKey: "AIzaSyCD4HqDWtcp8kz09do8TUk0_CR0TJjCZcY",
       libraries,
   })
 
