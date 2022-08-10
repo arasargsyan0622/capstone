@@ -41,7 +41,7 @@ const options = {
 };
 
 export default function Map() {
-  Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
+  Geocode.setApiKey("AIzaSyCD4HqDWtcp8kz09do8TUk0_CR0TJjCZcY");
 
   const dispatch = useDispatch();
   const history = useHistory();
