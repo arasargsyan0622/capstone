@@ -133,6 +133,10 @@ export default function Map() {
             // }}
           />
         ))}
+        <Marker
+          title={'The marker`s title will appear as a tooltip.'}
+          name={'SOMA'}
+          position={{lat: 37.778519, lng: -122.405640}} />
         {selected ? (
           <InfoWindow
             position={{ lat: selected.lat, lng: selected.lng }}
