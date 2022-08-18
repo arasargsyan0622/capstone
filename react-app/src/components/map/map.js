@@ -124,6 +124,8 @@ export default function Map() {
         {listings.map((listing) => (
           <Marker
             // key={marker.time.toISOString}
+            title="listings"
+            name={listings?.title}
             position={{ lat: listing?.lat, lng: listing?.lng }}
             icon={ listing?.is_available == true ? { url: "/go-home.svg", scaledSize: new window.google.maps.Size(27, 27) } :
                  { url: "/not-a.svg", scaledSize: new window.google.maps.Size(27, 27) }}
@@ -133,10 +135,10 @@ export default function Map() {
             // }}a
           />
         ))}
-        <Marker
+        {/* <Marker
           title={'The marker`s title will appear as a tooltip.'}
           name={'SOMA'}
-          position={{lat: 37.778519, lng: -122.405640}} />
+          position={{lat: 37.778519, lng: -122.405640}} /> */}
         {selected ? (
           <InfoWindow
             position={{ lat: selected.lat, lng: selected.lng }}
