@@ -130,7 +130,7 @@ export default function Map() {
 
             // onClick={() => {
             //   setClick(!click);
-            // }}
+            // }}a
           />
         ))}
         <Marker

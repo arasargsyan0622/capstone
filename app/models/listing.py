@@ -22,7 +22,7 @@ class Listing(db.Model):
     url3 = db.Column(db.Text, nullable=False)
     lat = db.Column(db.Float)
     lng = db.Column(db.Float)
-    url = db.Column(db.String(255), nullable=False)
+    # url = db.Column(db.String(255), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     agent_id = db.Column(db.Integer, db.ForeignKey('agents.id'))
 
@@ -52,7 +52,7 @@ class Listing(db.Model):
             'url3': self.url3,
             'lat': self.lat,
             'lng': self.lng,
-            'url': self.url,
+            # 'url': self.url,
             'user_id': self.user_id,
             # 'images_of_listing': [image_of_listing.to_dict() for image_of_listing in self.images_of_listing]
         }
