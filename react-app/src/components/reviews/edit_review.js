@@ -13,7 +13,6 @@ function EditReview({ setShow }) {
 
     const reviews = Object.values(useSelector(state => state.reviews));
     const review = Object.values(useSelector(state => state.curr_review))[0]
-
     const reviewComment = review?.comment
     const reviewRating = review?.rating
 
