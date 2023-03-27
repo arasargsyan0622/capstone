@@ -31,12 +31,15 @@ function Listings() {
     return (
         // isLoaded ? (
         <div className='listing-display-page'>
-            <Map></Map>
             <div className='listing-header'>
                 <h1>Listings</h1>
                 <NewListingModal></NewListingModal>
             </div>
             <div className="listing-container">
+                <div className='map'>
+                    <Map></Map>
+                </div>
+                <div className='listings-container'>
                 {listings.map(listing => (
                     <>
                     <div className='listing-info' key={listing?.id}>
@@ -58,6 +61,7 @@ function Listings() {
                     </div>
                     </>
                 ))}
+                </div>
             </div>
         </div>
         // ) : null

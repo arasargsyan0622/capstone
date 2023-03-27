@@ -26,8 +26,9 @@ import { useHistory } from "react-router-dom";
 import { getListings } from "../../store/listing";
 
 const mapContainerStyle = {
-  width: "98vw",
-  height: "98vh",
+  marginTop: "0.5rem",
+  width: "50vw",
+  height: "50vh",
 };
 const center = {
   lat: 34,
@@ -109,11 +110,11 @@ export default function Map() {
                     🏠
                 </span>
             </h1> */}
-
       <Search panTo={panTo} />
-      <Locate panTo={panTo} />
+      {/* <Locate panTo={panTo} /> */}
 
       <GoogleMap
+        style="width:200px; height:200px; margin: 1rem"
         mapContainerStyle={mapContainerStyle}
         zoom={10}
         center={center}
@@ -154,31 +155,31 @@ export default function Map() {
   );
 }
 
-function Locate({ panTo }) {
-  return (
-    <button
-      className="locate"
-      onClick={() => {
-        navigator.geolocation.getCurrentPosition(
-          (position) =>
-            panTo({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            }),
-          () => null
-        );
-      }}
-    >
-      <img
-        className="locate"
-        src="https://cdn.shopify.com/s/files/1/0502/4697/5681/files/Compass_Logo_black_664x.jpg?v=1617594215"
-      />
-    </button>
-  );
-}
+// function Locate({ panTo }) {
+//   return (
+//     <button
+//       className="locate"
+//       onClick={() => {
+//         navigator.geolocation.getCurrentPosition(
+//           (position) =>
+//             panTo({
+//               lat: position.coords.latitude,
+//               lng: position.coords.longitude,
+//             }),
+//           () => null
+//         );
+//       }}
+//     >
+//       <img
+//         className="locate"
+//         src="https://cdn.shopify.com/s/files/1/0502/4697/5681/files/Compass_Logo_black_664x.jpg?v=1617594215"
+//       />
+//     </button>
+//   );
+// }
 
 export function Search({ panTo }) {
-  const [lat, setLat] = useState();
+  const [lat, combosetLat] = useState();
   const [long, setLong] = useState();
 
   const {
@@ -197,6 +198,7 @@ export function Search({ panTo }) {
   return (
     <div>
       <Combobox
+        className="searches"
         onSelect={async (address) => {
           setValue(address, false);
           clearSuggestions();
@@ -211,7 +213,26 @@ export function Search({ panTo }) {
           }
         }}
       >
+          <button
+            className="locate"
+            onClick={() => {
+              navigator.geolocation.getCurrentPosition(
+                (position) =>
+                  panTo({
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                  }),
+                () => null
+              );
+            }}
+          >
+            <img
+              className="locate"
+              src="https://cdn.shopify.com/s/files/1/0502/4697/5681/files/Compass_Logo_black_664x.jpg?v=1617594215"
+            />
+        </button>
         <ComboboxInput
+          className="search"
           value={value}
           onChange={(e) => {
             setValue(e.target.value);
