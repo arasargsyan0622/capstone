@@ -27,6 +27,7 @@ import { getListings } from "../../store/listing";
 
 const mapContainerStyle = {
   marginTop: "0.5rem",
+  marginLeft: "0.5rem",
   width: "50vw",
   height: "50vh",
 };

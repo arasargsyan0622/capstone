@@ -312,6 +312,7 @@ const NewListing = ({ setShow }) => {
           }}
         >
           <ComboboxInput
+            className="search-input"
             value={value}
             onChange={(e) => {
               setValue(e.target.value);

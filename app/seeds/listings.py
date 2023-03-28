@@ -18,9 +18,9 @@ def seed_listings():
         lat=34.2062174,
         lng=-118.4725625,
         # url='https://photos.zillowstatic.com/fp/7042992ea5680c5022dae51299c9f55e-p_e.jpg',
-        url1='https://cflare.smarteragent.com/rest/Resizer?url=https%3A%2F%2Fapi-prod.corelogic.com%2Ftrestle%2FMedia%2FCRMLS%2FProperty%2FPHOTO-jpeg%2F1014598438%2F0%2FMTU0Mi80MjgvMTk%2FMTkvMTAyOTcvMTY0NzQyMjM5Mw%2FqqNV7J7CnwumL-0ATMSVIB35P3nNc82WCdAS6GDznc8&quality=0.8&webp=true&sig_id=69&width=1100',
-        url2='https://cflare.smarteragent.com/rest/Resizer?url=https%3A%2F%2Fapi-prod.corelogic.com%2Ftrestle%2FMedia%2FCRMLS%2FProperty%2FPHOTO-jpeg%2F1014598438%2F9%2FMTU0Mi80MjgvMTk%2FMTkvMTAyOTcvMTY0NzQyMjM5Mw%2FTMZAlHencoH0CsKh3b9ouHSUMWz6SIhdhoBNXcOREQg&quality=0.8&webp=true&sig_id=69&width=1100',
-        url3='https://cflare.smarteragent.com/rest/Resizer?url=https%3A%2F%2Fapi-prod.corelogic.com%2Ftrestle%2FMedia%2FCRMLS%2FProperty%2FPHOTO-jpeg%2F1014598438%2F13%2FMTU0Mi80MjgvMTk%2FMTkvMTAyOTcvMTY0NzQyMjM5Mw%2FwP9oOLGTqnAhwB5M_ozYK7J57GGJ6FNdrdX19B1FwV8&quality=0.8&webp=true&sig_id=69&width=1100',
+        url1='https://photos.zillowstatic.com/fp/25778627da4de8beddf31a7e2183a14d-uncropped_scaled_within_1536_1152.webp',
+        url2='https://photos.zillowstatic.com/fp/cc64183875e5004ab92ca8fd1e0ae329-uncropped_scaled_within_1536_1152.webp',
+        url3='https://photos.zillowstatic.com/fp/debc292f72ee7a4a99b7d38df94568fd-uncropped_scaled_within_1536_1152.webp',
         user_id=1,
         agent_id=1
     )
@@ -42,9 +42,9 @@ def seed_listings():
         lat=33.998957,
         lng=-118.4396316,
         # url='https://photos.zillowstatic.com/fp/f5120a1a8e5f1b68c6fc821cb3bfaf1b-p_e.jpg',
-        url1="https://cflare.smarteragent.com/rest/Resizer?url=https%3A%2F%2Fapi-prod.corelogic.com%2Ftrestle%2FMedia%2FCRMLS%2FProperty%2FPHOTO-jpeg%2F1004066072%2F0%2FMTU0Mi80MjgvMTk%2FMTkvMTAyOTcvMTY1NDg5NTIwMw%2FzjQCNg-9tB-xhPP4r-HIT9wRyN8cIjv0URxzQBlmQ1A&quality=0.8&webp=true&sig_id=69&width=1100",
-        url2="https://cflare.smarteragent.com/rest/Resizer?url=https%3A%2F%2Fapi-prod.corelogic.com%2Ftrestle%2FMedia%2FCRMLS%2FProperty%2FPHOTO-jpeg%2F1004066072%2F5%2FMTU0Mi80MjgvMTk%2FMTkvMTAyOTcvMTY1NDg5NTIwMw%2F4iexOhUhX2SYJDeZLMbWhsp1e6QPphWBuYEFjMsJMVE&quality=0.8&webp=true&sig_id=69&width=1100",
-        url3="https://cflare.smarteragent.com/rest/Resizer?url=https%3A%2F%2Fapi-prod.corelogic.com%2Ftrestle%2FMedia%2FCRMLS%2FProperty%2FPHOTO-jpeg%2F1004066072%2F3%2FMTU0Mi80MjgvMTk%2FMTkvMTAyOTcvMTY1NDg5NTIwMw%2F2NrJwZYbVyxTi2umEB5b3zz6mSCeZdYVcApgDQ2k0co&quality=0.8&webp=true&sig_id=69&width=1100",
+        url1="https://photos.zillowstatic.com/fp/3afe3187507a1e93f1c202b9286eb0b5-uncropped_scaled_within_1536_1152.webp",
+        url2="https://photos.zillowstatic.com/fp/0e63cb3590da8de4a14e9286ef5013dd-uncropped_scaled_within_1536_1152.webp",
+        url3="https://photos.zillowstatic.com/fp/eb78880b5070e18a4bc3ebd87dc6b483-uncropped_scaled_within_1536_1152.webp",
         user_id=2,
         agent_id=2
     )
@@ -66,9 +66,9 @@ def seed_listings():
         lat=34.2062174,
         lng=-118.4725625,
         # url='https://photos.zillowstatic.com/fp/d68ae27403ec8e55cec62eacce3480b8-p_e.jpg',
-        url1="https://cflare.smarteragent.com/rest/Resizer?url=https%3A%2F%2Fapi-prod.corelogic.com%2Ftrestle%2FMedia%2FCRMLS%2FProperty%2FPHOTO-jpeg%2F1018569234%2F1%2FMTU0Mi80MjgvMTk%2FMTkvMTAyOTcvMTY1NDY4MjQwNQ%2FpuTVLo_-yJtmWv_2Bq5vgAijTzdjG9y5ZsDWN9_FXbM&quality=0.8&webp=true&sig_id=69&width=1100",
-        url2="https://cflare.smarteragent.com/rest/Resizer?url=https%3A%2F%2Fapi-prod.corelogic.com%2Ftrestle%2FMedia%2FCRMLS%2FProperty%2FPHOTO-jpeg%2F1018569234%2F6%2FMTU0Mi80MjgvMTk%2FMTkvMTAyOTcvMTY1NDY4MjQwNQ%2FlEZ-LDThIl8PtiFLO5qrDsmcGFhsewM6xJZVf1UMvKM&quality=0.8&webp=true&sig_id=69&width=1100",
-        url3="https://cflare.smarteragent.com/rest/Resizer?url=https%3A%2F%2Fapi-prod.corelogic.com%2Ftrestle%2FMedia%2FCRMLS%2FProperty%2FPHOTO-jpeg%2F1018569234%2F17%2FMTU0Mi80MjgvMTk%2FMTkvMTAyOTcvMTY1NDY4MjQwNQ%2FjVLF32P_IWfoWiPLgCU4aOEC_4Ys-A7Rp-juqaafmuY&quality=0.8&webp=true&sig_id=69&width=1100",
+        url1="https://photos.zillowstatic.com/fp/6aedde664dd5d42e8c7d15845111c103-uncropped_scaled_within_1536_1152.webp",
+        url2="https://photos.zillowstatic.com/fp/45e2c3e3419e73735457f1aba3859549-uncropped_scaled_within_1536_1152.webp",
+        url3="https://photos.zillowstatic.com/fp/fcc2e6becda86281e0114482fb4e5027-uncropped_scaled_within_1536_1152.webp",
         user_id=3,
         agent_id=3
     )
