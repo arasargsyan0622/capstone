@@ -11,7 +11,6 @@ from .reviews import seed_reviews, undo_reviews
 # So we can type `flask seed --help`
 seed_commands = AppGroup('seed')
 
-
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():
